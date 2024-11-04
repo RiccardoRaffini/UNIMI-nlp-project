@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from torch.utils.data import Dataset
 
-from utils import dataframe_information, field_string_to_list, field_time_to_string, field_ingredients_quantities, dictionary_time_to_string
+from commons.utils import dataframe_information, field_string_to_list, field_time_to_string, field_ingredients_quantities, dictionary_time_to_string
 
 FOODCOM_RECIPES_DATASET_LOCATION = './datasets/food_com_recipes_review/recipes.csv'
 FOODCOM_REVIEWS_DATASET_LOCATION = './datasets/food_com_recipes_review/reviews.csv'
@@ -14,7 +14,9 @@ RECIPES3K_DATASET_LOCATION = './datasets/recipes3k/*.json'
 
 def load_foodcom_review_dataset(
     recipes_filename:str = FOODCOM_RECIPES_DATASET_LOCATION,
-    reviews_filename:str = FOODCOM_REVIEWS_DATASET_LOCATION
+    reviews_filename:str = FOODCOM_REVIEWS_DATASET_LOCATION,
+    missing_reviews:str = 'drop', # 'drop' | 'default' | 'noaction'
+    default_rating_value:float = 0.0
 ) -> pd.DataFrame:
     ## Recipes data
     recipe_columns = [
@@ -50,7 +52,17 @@ def load_foodcom_review_dataset(
     reviews_dataset.set_index('Id', inplace=True)
 
     ## Composing recipes and reviews
-    composite_dataset = recipes_dataset.join(reviews_dataset, how='inner')
+    assert (missing_reviews in ['drop', 'default', 'noaction']), f'{missing_reviews} is not a valida action for missing reviews'
+    assert 0.0 <= default_rating_value <= 5.0, f'Default rating value must be in the (inclusive) interval [0.0, 5.0]'
+
+    if missing_reviews == 'drop':
+        join_way = 'inner'
+    else:
+        join_way = 'left'
+    composite_dataset = recipes_dataset.join(reviews_dataset, how=join_way)
+
+    if missing_reviews == 'default':
+        composite_dataset['Rating'].fillna(default_rating_value, inplace=True)
 
     return composite_dataset
 
