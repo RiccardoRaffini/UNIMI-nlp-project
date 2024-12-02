@@ -1,0 +1,4 @@
+python -m spacy init config ./scripts/ner_training/base_config.cfg --lang en --pipeline ner --optimize efficiency --force
+python -m spacy init fill-config ./scripts/ner_training/base_config.cfg ./scripts/ner_training/config.cfg
+
+python -m spacy train ./scripts/ner_training/config.cfg --output ./models/ --paths.train ./scripts/ner_training/train_data.spacy --paths.dev ./scripts/ner_training/test_data.spacy
