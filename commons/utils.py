@@ -4,6 +4,8 @@ import re
 from typing import List, Tuple
 
 def field_string_to_list(string:str) -> List[str]:
+    string = string.replace('\\"', '')
+    
     pattern = r'"(.*?)"'
     matches = re.findall(pattern, string)
 
