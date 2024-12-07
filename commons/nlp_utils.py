@@ -127,10 +127,23 @@ class RecipeProcessor():
             
         return None
     
-    def process_instructions(self, instructions:List[str]) -> List[Tuple[List[str], List[List[str]], List[List[str]], List[List[str]]]]:
+    def process_instructions(self, instructions:List[str]) -> List[Tuple[List[str], List[List[str]], List[List[str]], List[List[Tuple[str, List[str], List[str]]]]]]:
+        """
+        Calls :func:`process_instruction` on each instruction contained in the
+        given list, returning a list of processed instructions.
+
+        Args:
+            instructions (List[str]): list of strings representing the instructions
+            to process.
+
+        Returns:
+            List[Tuple[List[str], List[List[str]], List[List[str]], List[List[Tuple[str, List[str], List[str]]]]]]:
+            a list containing the groups of processed information, a group for each instruction.
+        """
+
         return [self.process_instruction(instruction) for instruction in instructions]
 
-    def process_instruction(self, instruction:str) -> Tuple[List[str], List[List[str]], List[List[str]], List[List[str]]]:
+    def process_instruction(self, instruction:str) -> Tuple[List[str], List[List[str]], List[List[str]], List[List[Tuple[str, List[str], List[str]]]]]:
         """
         Processes a string representing a *recipe instruction*, splitting it in
         *steps* and subsequent *sentences* in them.
@@ -147,7 +160,7 @@ class RecipeProcessor():
             **instruction** (str): string representing the instruction to process.
 
         Returns:
-            Tuple[List[str], List[List[str]], List[List[str]], List[List[str]]]:
+            Tuple[List[str], List[List[str]], List[List[str]], List[List[Tuple[str, List[str], List[str]]]]]:
             four list of texts, ingredients, tools and actions.
         """
 
