@@ -127,7 +127,7 @@ class RecipeProcessor():
             
         return None
     
-    def process_instructions(self, instructions:List[str]) -> List[Tuple[List[str], List[List[str]], List[List[str]], List[List[Tuple[str, List[str], List[str]]]]]]:
+    def process_instructions(self, instructions:List[str]) -> List[Tuple[List[str], List[Set[str]], List[Set[str]], List[List[Tuple[str, List[str], List[str]]]]]]:
         """
         Calls :func:`process_instruction` on each instruction contained in the
         given list, returning a list of processed instructions.
@@ -137,13 +137,13 @@ class RecipeProcessor():
             to process.
 
         Returns:
-            List[Tuple[List[str], List[List[str]], List[List[str]], List[List[Tuple[str, List[str], List[str]]]]]]:
+            List[Tuple[List[str], List[Set[str]], List[Set[str]], List[List[Tuple[str, List[str], List[str]]]]]]:
             a list containing the groups of processed information, a group for each instruction.
         """
 
         return [self.process_instruction(instruction) for instruction in instructions]
 
-    def process_instruction(self, instruction:str) -> Tuple[List[str], List[List[str]], List[List[str]], List[List[Tuple[str, List[str], List[str]]]]]:
+    def process_instruction(self, instruction:str) -> Tuple[List[str], List[Set[str]], List[Set[str]], List[List[Tuple[str, List[str], List[str]]]]]:
         """
         Processes a string representing a *recipe instruction*, splitting it in
         *steps* and subsequent *sentences* in them.
@@ -160,7 +160,7 @@ class RecipeProcessor():
             **instruction** (str): string representing the instruction to process.
 
         Returns:
-            Tuple[List[str], List[List[str]], List[List[str]], List[List[Tuple[str, List[str], List[str]]]]]:
+            Tuple[List[str], List[Set[str]], List[Set[str]], List[List[Tuple[str, List[str], List[str]]]]]:
             four list of texts, ingredients, tools and actions.
         """
 
@@ -184,8 +184,8 @@ class RecipeProcessor():
             step_tool_entities = [entity for entity in step_food_entities if entity['entity_group'] == 'TOOL']
             step_action_entities = [entity for entity in step_food_entities if entity['entity_group'] == 'ACTION']
 
-            step_ingredients = []
-            step_tools = []
+            step_ingredients = set()
+            step_tools = set()
             step_actions = []
 
             ## Traverse sentence-trees in step
@@ -220,10 +220,10 @@ class RecipeProcessor():
                                 overlapping_ingredient = self._token_entities_overlaps(current_object, step_ingredient_entities)
                                 overlapping_tool = self._token_entities_overlaps(current_object, step_tool_entities)
                                 if overlapping_ingredient:
-                                    step_ingredients.append(overlapping_ingredient['word'])
+                                    step_ingredients.add(overlapping_ingredient['word'])
                                     action_primary_objects.append(overlapping_ingredient['word'])
                                 elif overlapping_tool:
-                                    step_tools.append(overlapping_tool['word'])
+                                    step_tools.add(overlapping_tool['word'])
                                     action_primary_objects.append(overlapping_tool['word'])
 
                                 ## Find chained objects
@@ -243,10 +243,10 @@ class RecipeProcessor():
                                         overlapping_ingredient = self._token_entities_overlaps(current_object, step_ingredient_entities)
                                         overlapping_tool = self._token_entities_overlaps(current_object, step_tool_entities)
                                         if overlapping_ingredient:
-                                            step_ingredients.append(overlapping_ingredient['word'])
+                                            step_ingredients.add(overlapping_ingredient['word'])
                                             action_secondary_objects.append(overlapping_ingredient['word'])
                                         elif overlapping_tool:
-                                            step_tools.append(overlapping_tool['word'])
+                                            step_tools.add(overlapping_tool['word'])
                                             action_secondary_objects.append(overlapping_tool['word'])
                                         else:
                                             action_secondary_objects.append(current_object.text)
