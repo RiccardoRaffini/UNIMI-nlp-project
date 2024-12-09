@@ -1,6 +1,9 @@
+import networkx as nx
 import pandas as pd
+import pygraphviz
+import re
 from functools import reduce
-from typing import List
+from typing import List, Tuple, Dict, Any
 
 from commons.nlp_utils import RecipeProcessor
 
@@ -101,3 +104,123 @@ class Recipe:
             processed_instructions,
             ([], [], [])
         )
+
+class RecipeGraph:
+    @classmethod
+    def from_recipe(cls, recipe:Recipe, additional_configuration:Dict[str, Any] = None) -> 'RecipeGraph':
+        ## Create empty recipe graph
+        recipe_graph = cls(additional_configuration=additional_configuration)
+        
+        ## Iterate recipe's steps
+        last_subtree_root_index = -1
+        for step_ingredients, step_tools, step_actions in zip(recipe.steps_ingredients, recipe.steps_tools, recipe.steps_actions):            
+            ## Iterate actions in step
+            previous_action_index = -1
+            for action, primary_objects, secondary_objects in step_actions:
+                ## Create primary object nodes
+                primary_objects_indices = []
+                for object in primary_objects:
+                    if object in step_ingredients:
+                        index = recipe_graph.add_ingredient_node(object)
+                    elif object in step_tools:
+                        index = recipe_graph.add_tool_node(object)
+                    else:
+                        index = recipe_graph.add_misc_node(object)
+
+                    primary_objects_indices.append(index)
+
+                ## Create secondary object nodes
+                secondary_objects_indices = []
+                for object in secondary_objects:
+                    if object in step_ingredients:
+                        index = recipe_graph.add_ingredient_node(object)
+                    elif object in step_tools:
+                        index = recipe_graph.add_tool_node(object)
+                    else:
+                        index = recipe_graph.add_misc_node(object)
+
+                    secondary_objects_indices.append(index)
+
+                ## Connect to previous steps
+                if previous_action_index != -1:
+                    primary_objects_indices.append(previous_action_index)
+                elif last_subtree_root_index != -1:
+                    primary_objects_indices.append(last_subtree_root_index)
+
+                ## Add action node
+                action_index = recipe_graph.add_action_node(action, primary_objects_indices, secondary_objects_indices)
+                previous_action_index = action_index
+
+            last_subtree_root_index = previous_action_index
+
+        return recipe_graph
+
+    def __init__(self, additional_configuration:Dict[str, Any] = None):
+        ## Underlying graph
+        self._graph = nx.Graph()
+
+        ## Graph configuration
+        self._graph_configuration = {
+            'node_attributes': {
+                'ingredient': {'fillcolor': '#ffe070', 'shape': 'ellipse'},
+                'tool': {'fillcolor': '#c6f7a6', 'shape': 'ellipse'},
+                'action': {'fillcolor': '#bcd9f5', 'shape': 'box'},
+                'misc': {'fillcolor': '#f0f0f0', 'shape': 'circle'},
+            }
+        }
+
+        if additional_configuration is not None:
+            self._graph_configuration = self._graph_configuration | additional_configuration
+
+    def add_ingredient_node(self, ingredient_name:str) -> int:
+        node_index = len(self._graph.nodes)
+        return self.add_recipe_node(node_index, ingredient_name, 'ingredient')
+
+    def add_tool_node(self, tool_name:str) -> int:
+        node_index = len(self._graph.nodes)
+        return self.add_recipe_node(node_index, tool_name, 'tool')
+
+    def add_action_node(self, action_text:str, primary_objects_nodes:List[int], secondary_objects_nodes:List[str] = None) -> int:
+        node_index = len(self._graph.nodes)
+        self.add_recipe_node(node_index, action_text, 'action')
+
+        for primary_index in primary_objects_nodes:
+            self.add_generic_edge(node_index, primary_index, {'type': 'primary'})
+
+        for secondary_index in secondary_objects_nodes:
+            self.add_generic_edge(node_index, secondary_index, {'type': 'secondary'})
+        
+        return node_index
+    
+    def add_misc_node(self, text:str) -> int:
+        node_index = len(self._graph.nodes)
+        return self.add_recipe_node(node_index, text, 'misc')
+
+    def add_recipe_node(self, index:int, label:str, type:str) -> int:
+        node_attributes = {'label': label}
+        node_attributes.update(self._graph_configuration['node_attributes'][type])
+
+        self._graph.add_node(index, **node_attributes)
+        return index
+
+    def add_generic_edge(self, node_1:int, node_2:int, attributes:Dict[str, Any] = {}) -> None:
+        self._graph.add_edge(node_1, node_2, **attributes)
+
+    def to_gviz(self, filename:str) -> None:
+        agraph:pygraphviz.AGraph = nx.nx_agraph.to_agraph(self._graph)
+
+        agraph.node_attr['style'] = 'rounded,filled'
+        agraph.graph_attr['rankdir'] = 'BT'
+
+        for node in agraph.iternodes():
+            node.attr['label'] = f"<{re.sub(' ', '<BR />', node.attr['label'])}>"
+
+        agraph.layout(prog='dot')
+        agraph.draw(filename)
+        #agraph.write('recipe_graph.dot')
+
+    def __str__(self):
+        pass
+
+    def __repr__(self):
+        pass
