@@ -67,12 +67,24 @@ class Recipe:
         self._raw_instructions = instructions.copy()
 
         ## Processed fields
-        self._step_ingredients = None
-        self._step_tools = None
-        self._step_actions = None
+        self._steps_ingredients = None
+        self._steps_tools = None
+        self._steps_actions = None
 
         ## Process new recipe
         self._process_recipe()
+
+    @property
+    def steps_ingredients(self) -> List[List[str]]:
+        return self._steps_ingredients.copy()
+
+    @property
+    def steps_tools(self) -> List[List[str]]:
+        return self._steps_tools.copy()
+
+    @property
+    def steps_actions(self) -> List[List[Tuple[str, List[str], List[str]]]]:
+        return self._steps_actions.copy()
 
     def _process_recipe(self) -> None:
         """
@@ -84,7 +96,7 @@ class Recipe:
 
         processed_instructions = self.processor.process_instructions(self._raw_instructions)
 
-        self._step_ingredients, self._step_tools, self._step_actions = reduce(
+        self._steps_ingredients, self._steps_tools, self._steps_actions = reduce(
             lambda a, b: (a[0] + b[1], a[1] + b[2], a[2] + b[3]),
             processed_instructions,
             ([], [], [])
