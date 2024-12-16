@@ -7,6 +7,40 @@ from typing import List, Tuple, Dict, Any
 
 from commons.nlp_utils import RecipeProcessor
 
+class RecipeObject:
+    def __init__(self, name:str, adjectives:List[str]=[]):
+        self._name = name
+        self._adjectives = adjectives.copy()
+
+    @property
+    def base_object(self) -> str:
+        return self._name
+    
+    @property
+    def full_object(self) -> str:
+        if self._adjectives:
+            return f'{" ".join(self._adjectives)} {self._name}'
+        else:
+            return self.base_object
+    
+    def __str__(self):
+        return self.full_object
+    
+    def __repr__(self):
+        return self.full_object
+    
+class Ingredient(RecipeObject):
+    def __init__(self, name:str, adjectives:List[str]=[]):
+        super(Ingredient, self).__init__(name, adjectives)
+
+class Tool(RecipeObject):
+    def __init__(self, name:str, adjectives:List[str]=[]):
+        super(Tool, self).__init__(name, adjectives)
+
+class Miscellaneous(RecipeObject):
+    def __init__(self, name:str, adjectives:List[str]=[]):
+        super(Miscellaneous, self).__init__(name, adjectives)
+
 class Recipe:
     """
     A class that allows to represent a cooking recipe. Recipes are characterized

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import spacy
 import nltk
 import torch
@@ -6,7 +8,10 @@ from spacy.displacy import render
 from spacy.language import Language
 import spacy.tokens
 from transformers import pipeline
-from typing import Tuple, List, Any, Optional, Dict, Set
+from typing import Tuple, List, Any, Optional, Dict, Set, Union
+
+import commons.recipes as recipes
+#from commons.recipes import Ingredient, Tool, Miscellaneous
 
 LANGUAGE_MODEL_NAME = 'en_core_web_trf' # 'en_core_web_trf' 'en_core_web_lg' 'en_core_web_sm' 'it_core_news_lg' 'it_core_news_sm'
 FOOD_MODEL_PATH = 'models/bert-finetuned-food-ner'
@@ -25,6 +30,8 @@ class RecipeProcessor():
         additional_prepositions:Set[str] = set(),
         ignored_verbs:Set[str] = set(),
         additional_verbs:Set[str] = set(),
+        ignored_objects:Set[str] = set(),
+        additional_objects:Set[str] = set(),
         device:str=('cuda' if torch.cuda.is_available() else 'cpu')
     ) -> None:
         """
@@ -55,6 +62,14 @@ class RecipeProcessor():
             english words that should also be considered during instructions
             processing. Defaults to empty set.
 
+            **ignored_objects** (Set[str], optional): set of strings representing
+            objects or terms that should be ignored during instructions processing.
+            Defaults to empty set.
+
+            **additional_objects** (Set[str], optional): set of strings representing
+            objects or terms that should also be considered during instructions
+            processing. Defaults to empty set.
+
             **device** (str, optional): type or name of device on which the food
             model shoul be executed. Defaults to 'cuda' if a torch-capable GPU
             device is available.
@@ -71,7 +86,7 @@ class RecipeProcessor():
 
         ## Generic language model
         self._language_model_name = language_model_name
-        self._language_model = spacy.load(self._language_model_name)
+        self._language_model = spacy.load(self._language_model_name, disable=['ner', 'textcat'])
         
         @Language.component('custom_sentence_end_semicolon')
         def custom_sentence_end_semicolon(document):
@@ -88,6 +103,8 @@ class RecipeProcessor():
         self._additional_prepositions = additional_prepositions.copy()
         self._ignored_verbs = ignored_verbs.copy()
         self._additional_verbs = additional_verbs.copy()
+        self._ignored_objects = ignored_objects.copy()
+        self._additional_objects = additional_objects.copy()
 
     def _split_instruction_in_steps(self, instruction:str) -> List[str]:
         """
@@ -127,7 +144,47 @@ class RecipeProcessor():
             
         return None
     
-    def process_instructions(self, instructions:List[str]) -> List[Tuple[List[str], List[Set[str]], List[Set[str]], List[List[Tuple[str, List[str], List[str]]]]]]:
+    def process_object(self, object_tree:spacy.tokens.Token, valid_ingredients:List[Dict[str, Any]], valid_tools:List[Dict[str, Any]]) \
+        -> Optional[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]:
+        ## Find noun and adjectives
+        noun = object_tree
+        adjectives = []
+
+        for child_node in object_tree.children:
+            if child_node.dep_ == 'amod':
+                adjectives.append(child_node.text)
+
+            elif child_node.dep_ == 'prep':
+                return self.process_object(next(child_node.children), valid_ingredients, valid_tools)
+
+        ## Check valid object
+        overlapping_ingredient = self._token_entities_overlaps(noun, valid_ingredients)
+        overlapping_tool = self._token_entities_overlaps(noun, valid_tools)
+
+        if overlapping_ingredient and overlapping_ingredient['word'] not in self._ignored_objects:
+            ## Create ingredient
+            adjectives = [adjective for adjective in adjectives if adjective not in overlapping_ingredient['word'].split()]
+            return recipes.Ingredient(overlapping_ingredient['word'], adjectives)
+        
+        elif overlapping_tool and overlapping_tool['word'] not in self._ignored_objects:
+            ## Create tool
+            adjectives = [adjective for adjective in adjectives if adjective not in overlapping_tool['word'].split()]
+            return recipes.Tool(overlapping_tool['word'], adjectives)
+
+        elif noun.text in self._additional_objects:
+            ## Create misc object
+            return recipes.Miscellaneous(noun.text, adjectives)
+
+        ## No valid object found
+        return None
+    
+    def process_instructions(self, instructions:List[str]) \
+        -> List[Tuple[
+            List[str],
+            List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
+            List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
+            List[List[Tuple[str, List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]], List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]]]]
+        ]]:
         """
         Calls :func:`process_instruction` on each instruction contained in the
         given list, returning a list of processed instructions.
@@ -137,13 +194,24 @@ class RecipeProcessor():
             to process.
 
         Returns:
-            List[Tuple[List[str], List[Set[str]], List[Set[str]], List[List[Tuple[str, List[str], List[str]]]]]]:
+            List[Tuple[
+                List[str],
+                List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
+                List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
+                List[List[Tuple[str, List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]], List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]]]]
+            ]]:
             a list containing the groups of processed information, a group for each instruction.
         """
 
         return [self.process_instruction(instruction) for instruction in instructions]
 
-    def process_instruction(self, instruction:str) -> Tuple[List[str], List[Set[str]], List[Set[str]], List[List[Tuple[str, List[str], List[str]]]]]:
+    def process_instruction(self, instruction:str) \
+        -> Tuple[
+            List[str],
+            List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
+            List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
+            List[List[Tuple[str, List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]], List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]]]]
+        ]:
         """
         Processes a string representing a *recipe instruction*, splitting it in
         *steps* and subsequent *sentences* in them.
@@ -160,7 +228,12 @@ class RecipeProcessor():
             **instruction** (str): string representing the instruction to process.
 
         Returns:
-            Tuple[List[str], List[Set[str]], List[Set[str]], List[List[Tuple[str, List[str], List[str]]]]]:
+            Tuple[
+                List[str],
+                List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
+                List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
+                List[List[Tuple[str, List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]], List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]]]]
+            ]:
             four list of texts, ingredients, tools and actions.
         """
 
@@ -199,7 +272,7 @@ class RecipeProcessor():
                 while processing_queue:
                     root:spacy.tokens.Token = processing_queue.pop(0)
 
-                    ## Check if verb is a valid action else skip
+                    ## Check if verb is a valid action otherwise skip
                     overlapping_action = self._token_entities_overlaps(root, step_action_entities)
                     if not (overlapping_action or root.lemma_ in self._additional_verbs) or root.lemma_ in self._ignored_verbs:
                         continue
@@ -216,15 +289,16 @@ class RecipeProcessor():
 
                             while objects:
                                 current_object = objects.pop(0)
+                                object = self.process_object(current_object, step_ingredient_entities, step_tool_entities)
 
-                                overlapping_ingredient = self._token_entities_overlaps(current_object, step_ingredient_entities)
-                                overlapping_tool = self._token_entities_overlaps(current_object, step_tool_entities)
-                                if overlapping_ingredient:
-                                    step_ingredients.add(overlapping_ingredient['word'])
-                                    action_primary_objects.append(overlapping_ingredient['word'])
-                                elif overlapping_tool:
-                                    step_tools.add(overlapping_tool['word'])
-                                    action_primary_objects.append(overlapping_tool['word'])
+                                if isinstance(object, recipes.Ingredient):
+                                    step_ingredients.add(object)
+                                    action_primary_objects.append(object)
+                                elif isinstance(object, recipes.Tool):
+                                    step_tools.add(object)
+                                    action_primary_objects.append(object)
+                                elif isinstance(object, recipes.Miscellaneous):
+                                    action_primary_objects.append(object)
 
                                 ## Find chained objects
                                 for sub_child_node in current_object.children:
@@ -239,24 +313,23 @@ class RecipeProcessor():
 
                                     while objects:
                                         current_object = objects.pop(0)
+                                        object = self.process_object(current_object, step_ingredient_entities, step_tool_entities)
 
-                                        overlapping_ingredient = self._token_entities_overlaps(current_object, step_ingredient_entities)
-                                        overlapping_tool = self._token_entities_overlaps(current_object, step_tool_entities)
-                                        if overlapping_ingredient:
-                                            step_ingredients.add(overlapping_ingredient['word'])
-                                            action_secondary_objects.append(overlapping_ingredient['word'])
-                                        elif overlapping_tool:
-                                            step_tools.add(overlapping_tool['word'])
-                                            action_secondary_objects.append(overlapping_tool['word'])
-                                        else:
-                                            action_secondary_objects.append(current_object.text)
+                                        if isinstance(object, recipes.Ingredient):
+                                            step_ingredients.add(object)
+                                            action_secondary_objects.append(object)
+                                        elif isinstance(object, recipes.Tool):
+                                            step_tools.add(object)
+                                            action_secondary_objects.append(object)
+                                        elif isinstance(object, recipes.Miscellaneous):
+                                            action_secondary_objects.append(object)
 
                                         for sub_child_node in current_object.children:
                                             if sub_child_node.dep_ == 'conj':
                                                 objects.append(sub_child_node)
 
                         ## Add connected sentences
-                        elif child_node.dep_ == 'conj' or child_node.dep_ == 'dep':
+                        elif child_node.dep_ in {'conj', 'dep', 'advcl'}:
                             if child_node.pos_ == 'VERB':
                                 processing_queue.append(child_node)
 
