@@ -2,6 +2,7 @@ import networkx as nx
 import pandas as pd
 import pygraphviz
 import re
+import textwrap
 from functools import reduce
 from typing import List, Tuple, Dict, Any
 
@@ -147,7 +148,11 @@ class RecipeGraph:
         
         ## Iterate recipe's steps
         last_subtree_root_index = -1
-        for step_ingredients, step_tools, step_actions in zip(recipe.steps_ingredients, recipe.steps_tools, recipe.steps_actions):            
+        for step_ingredients, step_tools, step_actions in zip(recipe.steps_ingredients, recipe.steps_tools, recipe.steps_actions):
+            ## Check empty step
+            if len(step_actions) == 0:
+                continue
+
             ## Iterate actions in step
             previous_action_index = -1
             for action, primary_objects, secondary_objects in step_actions:
@@ -189,50 +194,56 @@ class RecipeGraph:
 
         return recipe_graph
 
-    def __init__(self, additional_configuration:Dict[str, Any] = None):
+    def __init__(self, additional_configuration:Dict[str, Any] = None, show_full_label:bool = True):
         ## Underlying graph
         self._graph = nx.Graph()
+        self._full_label = show_full_label
 
         ## Graph configuration
         self._graph_configuration = {
             'node_attributes': {
-                'ingredient': {'fillcolor': '#ffe070', 'shape': 'ellipse'},
-                'tool': {'fillcolor': '#c6f7a6', 'shape': 'ellipse'},
-                'action': {'fillcolor': '#bcd9f5', 'shape': 'box'},
-                'misc': {'fillcolor': '#f0f0f0', 'shape': 'circle'},
+                Ingredient: {'style': 'rounded,filled', 'fillcolor': '#ffe070', 'shape': 'ellipse'},
+                Tool: {'style': 'rounded,filled', 'fillcolor': '#c6f7a6', 'shape': 'ellipse'},
+                str: {'style': 'rounded,filled', 'fillcolor': '#bcd9f5', 'shape': 'box'}, # 'action'
+                Miscellaneous: {'style': 'rounded,filled', 'fillcolor': '#f0f0f0', 'shape': 'ellipse'},
             }
         }
 
         if additional_configuration is not None:
             self._graph_configuration = self._graph_configuration | additional_configuration
 
-    def add_ingredient_node(self, ingredient_name:str) -> int:
+    def add_ingredient_node(self, ingredient:Ingredient) -> int:
         node_index = len(self._graph.nodes)
-        return self.add_recipe_node(node_index, ingredient_name, 'ingredient')
+        return self.add_recipe_node(node_index, ingredient)
 
-    def add_tool_node(self, tool_name:str) -> int:
+    def add_tool_node(self, tool:Tool) -> int:
         node_index = len(self._graph.nodes)
-        return self.add_recipe_node(node_index, tool_name, 'tool')
+        return self.add_recipe_node(node_index, tool)
+    
+    def add_misc_node(self, object:Miscellaneous) -> int:
+        node_index = len(self._graph.nodes)
+        return self.add_recipe_node(node_index, object)
 
     def add_action_node(self, action_text:str, primary_objects_nodes:List[int], secondary_objects_nodes:List[str] = None) -> int:
         node_index = len(self._graph.nodes)
-        self.add_recipe_node(node_index, action_text, 'action')
+        self.add_recipe_node(node_index, action_text)
 
         for primary_index in primary_objects_nodes:
             self.add_generic_edge(node_index, primary_index, {'type': 'primary'})
 
         for secondary_index in secondary_objects_nodes:
             self.add_generic_edge(node_index, secondary_index, {'type': 'secondary'})
+            self._graph.nodes[secondary_index]['style'] = 'rounded,filled,dashed'
         
         return node_index
-    
-    def add_misc_node(self, text:str) -> int:
-        node_index = len(self._graph.nodes)
-        return self.add_recipe_node(node_index, text, 'misc')
 
-    def add_recipe_node(self, index:int, label:str, type:str) -> int:
+    def add_recipe_node(self, index:int, object:RecipeObject|str) -> int:
+        if isinstance(object, str):
+            label = object
+        else:
+            label = object.full_object if self._full_label else object.base_object
         node_attributes = {'label': label}
-        node_attributes.update(self._graph_configuration['node_attributes'][type])
+        node_attributes.update(self._graph_configuration['node_attributes'][type(object)])
 
         self._graph.add_node(index, **node_attributes)
         return index
@@ -247,7 +258,7 @@ class RecipeGraph:
         agraph.graph_attr['rankdir'] = 'BT'
 
         for node in agraph.iternodes():
-            node.attr['label'] = f"<{re.sub(' ', '<BR />', node.attr['label'])}>"
+            node.attr['label'] = f"<{'<BR />'.join(textwrap.wrap(node.attr['label'], 10, break_long_words=False))}>"
 
         agraph.layout(prog='dot')
         agraph.draw(filename)
