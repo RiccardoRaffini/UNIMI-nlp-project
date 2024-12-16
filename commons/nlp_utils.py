@@ -97,6 +97,7 @@ class RecipeProcessor():
             return document
         
         self._language_model.add_pipe('custom_sentence_end_semicolon', before='parser')
+        spacy.tokens.Token.set_extension('further_processing', default=True)
 
         ## Additional processing parameters
         self._ignored_prepositions = ignored_prepositions.copy()
@@ -271,6 +272,7 @@ class RecipeProcessor():
 
                 while processing_queue:
                     root:spacy.tokens.Token = processing_queue.pop(0)
+                    skip_adding = False
 
                     ## Check if verb is a valid action otherwise skip
                     overlapping_action = self._token_entities_overlaps(root, step_action_entities)
@@ -329,9 +331,21 @@ class RecipeProcessor():
                                                 objects.append(sub_child_node)
 
                         ## Add connected sentences
-                        elif child_node.dep_ in {'conj', 'dep', 'advcl'}:
+                        elif child_node.dep_ in {'conj', 'dep'} and root._.further_processing:
                             if child_node.pos_ == 'VERB':
                                 processing_queue.append(child_node)
+
+                        ## Handle sub actions
+                        elif child_node.dep_ == 'advcl' and root._.further_processing:
+                            if child_node.pos_ == 'VERB':
+                                processing_queue.insert(0, root)
+                                processing_queue.insert(0, child_node)
+
+                                skip_adding = True
+
+                    if skip_adding:
+                        root._.further_processing = False
+                        continue
 
                     ## Add sentence to step list
                     step_actions.append((action_text, action_primary_objects, action_secondary_objects))
