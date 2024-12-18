@@ -146,7 +146,17 @@ class RecipeProcessor():
         return None
     
     def process_object(self, object_tree:spacy.tokens.Token, valid_ingredients:List[Dict[str, Any]], valid_tools:List[Dict[str, Any]]) \
-        -> Optional[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]:
+        -> Optional[recipes.RecipeObject]:
+        """
+        Processes a generic sequence (tree) of tokens possibly representing a
+        recipe object, using the provided collections of items as reference to
+        find the main object noun and all its adjectives.
+
+        Returns:
+            Optional[recipes.RecipeObject]: the recipe object found or `None`
+            if no recipe object is found.
+        """
+
         ## Find noun and adjectives
         noun = object_tree
         adjectives = []
@@ -182,9 +192,9 @@ class RecipeProcessor():
     def process_instructions(self, instructions:List[str]) \
         -> List[Tuple[
             List[str],
-            List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
-            List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
-            List[List[Tuple[str, List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]], List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]]]]
+            List[Set[recipes.RecipeObject]],
+            List[Set[recipes.RecipeObject]],
+            List[List[Tuple[str, List[recipes.RecipeObject], List[recipes.RecipeObject]]]]
         ]]:
         """
         Calls :func:`process_instruction` on each instruction contained in the
@@ -197,9 +207,9 @@ class RecipeProcessor():
         Returns:
             List[Tuple[
                 List[str],
-                List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
-                List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
-                List[List[Tuple[str, List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]], List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]]]]
+                List[Set[recipes.RecipeObject]],
+                List[Set[recipes.RecipeObject]],
+                List[List[Tuple[str, List[recipes.RecipeObject], List[recipes.RecipeObject]]]]
             ]]:
             a list containing the groups of processed information, a group for each instruction.
         """
@@ -209,9 +219,9 @@ class RecipeProcessor():
     def process_instruction(self, instruction:str) \
         -> Tuple[
             List[str],
-            List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
-            List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
-            List[List[Tuple[str, List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]], List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]]]]
+            List[Set[recipes.RecipeObject]],
+            List[Set[recipes.RecipeObject]],
+            List[List[Tuple[str, List[recipes.RecipeObject], List[recipes.RecipeObject]]]]
         ]:
         """
         Processes a string representing a *recipe instruction*, splitting it in
@@ -231,9 +241,9 @@ class RecipeProcessor():
         Returns:
             Tuple[
                 List[str],
-                List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
-                List[Set[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]],
-                List[List[Tuple[str, List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]], List[Union[recipes.Ingredient, recipes.Tool, recipes.Miscellaneous]]]]]
+                List[Set[recipes.RecipeObject]],
+                List[Set[recipes.RecipeObject]],
+                List[List[Tuple[str, List[recipes.RecipeObject], List[recipes.RecipeObject]]]]
             ]:
             four list of texts, ingredients, tools and actions.
         """

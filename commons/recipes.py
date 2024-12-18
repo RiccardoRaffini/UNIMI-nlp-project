@@ -3,12 +3,13 @@ import pandas as pd
 import pygraphviz
 import re
 import textwrap
+from abc import ABC
 from functools import reduce
 from typing import List, Tuple, Dict, Any
 
 from commons.nlp_utils import RecipeProcessor
 
-class RecipeObject:
+class RecipeObject(ABC):
     def __init__(self, name:str, adjectives:List[str]=[]):
         self._name = name
         self._adjectives = adjectives.copy()
