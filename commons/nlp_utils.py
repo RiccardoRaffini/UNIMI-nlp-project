@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import itertools
 import spacy
 import nltk
 import torch
@@ -10,6 +11,7 @@ import spacy.tokens
 from transformers import pipeline
 from typing import Tuple, List, Any, Optional, Dict, Set, Union
 
+from commons.matrices import AdjacencyMatrix, ActionsIngredientsMatrix, MixedIngredientsMatrix, ActionsToolsMatrix
 import commons.recipes as recipes
 #from commons.recipes import Ingredient, Tool, Miscellaneous
 
@@ -384,3 +386,96 @@ class RecipeProcessor():
         save_path = Path(filename)
         with save_path.open('w', encoding='utf-8') as file:
             file.write(svg_image)
+
+    def process_matrices(self, recipe_graph:recipes.RecipeGraph) -> List[AdjacencyMatrix]:
+        mixing_actions = {'add', 'mix', 'combine', 'stir', 'stirring'}
+
+        ## Define empty matrices
+        actions_ingredients_matrix = ActionsIngredientsMatrix()
+        ingredients_ingredients_matrix = MixedIngredientsMatrix()
+        actions_base_ingredients_matrix = ActionsIngredientsMatrix()
+        base_ingredients_base_ingredients = MixedIngredientsMatrix()
+        group_actions_ingredients = ActionsIngredientsMatrix()
+        group_actions_base_ingredients = ActionsIngredientsMatrix()
+        group_actions_tools = ActionsToolsMatrix()
+        
+        ## DFS graph traversing
+        nodes_stack = [[(recipe_graph.get_root_index(), set())]] # assumes root is an Action
+
+        while nodes_stack:
+            actions_sequence = nodes_stack.pop()
+            current_action = actions_sequence[-1]
+            node_index, action_ingredients = current_action
+
+            ## Extract node information
+            node = recipe_graph.get_node(node_index)
+            action = node['label']
+            is_mixing_action = action in mixing_actions
+            actions_sequence[-1] = (action, is_mixing_action, action_ingredients)
+            children_indices = recipe_graph.get_children_indices(node_index)
+            
+            ## Extract linked ingredients and actions
+            linked_actions = []
+            
+            for child_index in children_indices:
+                child_node = recipe_graph.get_node(child_index)
+
+                if child_node['type'] == 'Action':
+                    linked_actions.append(child_index)
+
+                elif child_node['type'] == 'Ingredient':
+                    ingredient = child_node['label']
+                    action_ingredients.add(ingredient)
+
+                elif child_node['type'] == 'Tool':
+                    ## Add entry in action-tool matrix
+                    tool = child_node['label']
+                    group_actions_tools.add_entry(action, tool, 1) # TODO: change action to base action
+
+            ## Update matrices
+            ### Add action labels # TODO: change to appropriate base/processed
+            actions_ingredients_matrix.label_to_row_index(action)
+            actions_base_ingredients_matrix.label_to_row_index(action)
+            group_actions_ingredients.label_to_row_index(action)
+            group_actions_base_ingredients.label_to_row_index(action)
+            group_actions_tools.label_to_row_index(action)
+
+            ### Add ingredient labels # TODO: change to appropriate base/processed
+            for ingredient in action_ingredients:
+                actions_ingredients_matrix.label_to_column_index(ingredient)
+                ingredients_ingredients_matrix.label_to_index(ingredient)
+                actions_base_ingredients_matrix.label_to_column_index(ingredient)
+                base_ingredients_base_ingredients.label_to_index(ingredient)
+                group_actions_ingredients.label_to_column_index(ingredient)
+                group_actions_base_ingredients.label_to_column_index(ingredient)
+
+            ### Apply all actions to current ingredients
+            for action, is_mixing, ingredients in actions_sequence:
+                for ingredient in action_ingredients:
+                    actions_ingredients_matrix.add_entry(action, ingredient, 1) # TODO: change ingredient to processed ingredient
+                    actions_base_ingredients_matrix.add_entry(action, ingredient, 1) # TODO: change ingredient to base ingredient
+                    group_actions_ingredients.add_entry(action, ingredient, 1) # TODO: change action to base action
+                    group_actions_base_ingredients.add_entry(action, ingredient, 1) # TODO: change action and ingredient to base action and base ingredient
+
+                ### Mix current ingredients with previous ingredients (if necessary)
+                if is_mixing and action_ingredients:
+                    for ingredients_pair in itertools.product(ingredients, action_ingredients):
+                        ingredients_ingredients_matrix.add_entry(ingredients_pair[0], ingredients_pair[1], 1)    # TODO: change ingredients to processed ingredients
+                        base_ingredients_base_ingredients.add_entry(ingredients_pair[0], ingredients_pair[1], 1) # TODO: change ingredients to base ingredients
+
+            ## Add new actions to queue
+            for linked_action in linked_actions:
+                nodes_stack.append(actions_sequence + [(linked_action, set())])
+
+        ## Compile matrices
+        matrices_list:List[AdjacencyMatrix] =  [
+            actions_ingredients_matrix, ingredients_ingredients_matrix,
+            actions_base_ingredients_matrix, base_ingredients_base_ingredients,
+            group_actions_ingredients, group_actions_base_ingredients,
+            group_actions_tools
+        ]
+
+        for matrix in matrices_list:
+            matrix.compile()
+
+        return matrices_list
