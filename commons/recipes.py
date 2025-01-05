@@ -106,9 +106,20 @@ class Recipe:
         self._raw_instructions = instructions.copy()
 
         ## Processed fields
+        ### Instruction
         self._steps_ingredients = None
         self._steps_tools = None
         self._steps_actions = None
+        ### Graph
+        self.recipe_graph = None
+        ### Relation matrices
+        self._actions_ingredients_matrix = None
+        self._ingredients_ingredients_matrix = None
+        self._actions_base_ingredients_matrix = None
+        self._base_ingredients_base_ingredients = None
+        self._group_actions_ingredients = None
+        self._group_actions_base_ingredients = None
+        self._group_actions_tools = None
 
         ## Process new recipe
         self._process_recipe()
@@ -131,8 +142,10 @@ class Recipe:
         the recipe processor assigned to ths class.
         """
 
+        ## Check that processor is set
         assert self.processor is not None, 'cannot process a recipe without a processor'
 
+        ## Process instructions
         processed_instructions = self.processor.process_instructions(self._raw_instructions)
 
         self._steps_ingredients, self._steps_tools, self._steps_actions = reduce(
@@ -140,6 +153,18 @@ class Recipe:
             processed_instructions,
             ([], [], [])
         )
+
+        ## Create recipe graph
+        self.recipe_graph = RecipeGraph.from_recipe(self)
+
+        ## Create recipe matrices
+        self._actions_ingredients_matrix, \
+        self._ingredients_ingredients_matrix, \
+        self._actions_base_ingredients_matrix, \
+        self._base_ingredients_base_ingredients, \
+        self._group_actions_ingredients, \
+        self._group_actions_base_ingredients, \
+        self._group_actions_tools, *_ = self.processor.process_matrices(self.recipe_graph)
 
 class RecipeGraph:
     @classmethod
