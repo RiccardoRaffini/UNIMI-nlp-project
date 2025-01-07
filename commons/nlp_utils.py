@@ -1,19 +1,18 @@
 from __future__ import annotations
 
 import itertools
-import spacy
+import spacy, spacy.tokens
 import nltk
 import torch
 from pathlib import Path
 from spacy.displacy import render
 from spacy.language import Language
-import spacy.tokens
 from transformers import pipeline
 from typing import Tuple, List, Any, Optional, Dict, Set, Union
 
-from commons.matrices import AdjacencyMatrix, ActionsIngredientsMatrix, MixedIngredientsMatrix, ActionsToolsMatrix
 import commons.recipes as recipes
-#from commons.recipes import Ingredient, Tool, Miscellaneous
+from commons.action_groups import groups
+from commons.matrices import AdjacencyMatrix, ActionsIngredientsMatrix, MixedIngredientsMatrix, ActionsToolsMatrix
 
 LANGUAGE_MODEL_NAME = 'en_core_web_trf' # 'en_core_web_trf' 'en_core_web_lg' 'en_core_web_sm' 'it_core_news_lg' 'it_core_news_sm'
 FOOD_MODEL_PATH = 'models/bert-finetuned-food-ner'
@@ -89,6 +88,7 @@ class RecipeProcessor():
         ## Generic language model
         self._language_model_name = language_model_name
         self._language_model = spacy.load(self._language_model_name, disable=['ner', 'textcat'])
+        self._lemmatizer = spacy.load(self._language_model_name, disable=['parser', 'ner', 'textcat'])
         
         @Language.component('custom_sentence_end_semicolon')
         def custom_sentence_end_semicolon(document):
@@ -108,6 +108,7 @@ class RecipeProcessor():
         self._additional_verbs = additional_verbs.copy()
         self._ignored_objects = ignored_objects.copy()
         self._additional_objects = additional_objects.copy()
+        self._action_groups = groups.copy()
 
     def _split_instruction_in_steps(self, instruction:str) -> List[str]:
         """
@@ -177,12 +178,14 @@ class RecipeProcessor():
         if overlapping_ingredient and overlapping_ingredient['word'] not in self._ignored_objects:
             ## Create ingredient
             adjectives = [adjective for adjective in adjectives if adjective not in overlapping_ingredient['word'].split()]
-            return recipes.Ingredient(overlapping_ingredient['word'], adjectives)
+            name = ' '.join([token.lemma_ for token in self._lemmatizer(overlapping_ingredient['word'])])
+            return recipes.Ingredient(name, adjectives)
         
         elif overlapping_tool and overlapping_tool['word'] not in self._ignored_objects:
             ## Create tool
             adjectives = [adjective for adjective in adjectives if adjective not in overlapping_tool['word'].split()]
-            return recipes.Tool(overlapping_tool['word'], adjectives)
+            name = ' '.join([token.lemma_ for token in self._lemmatizer(overlapping_tool['word'])])
+            return recipes.Tool(name, adjectives)
 
         elif noun.text in self._additional_objects:
             ## Create misc object
@@ -196,7 +199,7 @@ class RecipeProcessor():
             List[str],
             List[Set[recipes.RecipeObject]],
             List[Set[recipes.RecipeObject]],
-            List[List[Tuple[str, List[recipes.RecipeObject], List[recipes.RecipeObject]]]]
+            List[List[Tuple[recipes.Action, List[recipes.RecipeObject], List[recipes.RecipeObject]]]]
         ]]:
         """
         Calls :func:`process_instruction` on each instruction contained in the
@@ -211,7 +214,7 @@ class RecipeProcessor():
                 List[str],
                 List[Set[recipes.RecipeObject]],
                 List[Set[recipes.RecipeObject]],
-                List[List[Tuple[str, List[recipes.RecipeObject], List[recipes.RecipeObject]]]]
+                List[List[Tuple[recipe.Action, List[recipes.RecipeObject], List[recipes.RecipeObject]]]]
             ]]:
             a list containing the groups of processed information, a group for each instruction.
         """
@@ -223,7 +226,7 @@ class RecipeProcessor():
             List[str],
             List[Set[recipes.RecipeObject]],
             List[Set[recipes.RecipeObject]],
-            List[List[Tuple[str, List[recipes.RecipeObject], List[recipes.RecipeObject]]]]
+            List[List[Tuple[recipes.Action, List[recipes.RecipeObject], List[recipes.RecipeObject]]]]
         ]:
         """
         Processes a string representing a *recipe instruction*, splitting it in
@@ -245,7 +248,7 @@ class RecipeProcessor():
                 List[str],
                 List[Set[recipes.RecipeObject]],
                 List[Set[recipes.RecipeObject]],
-                List[List[Tuple[str, List[recipes.RecipeObject], List[recipes.RecipeObject]]]]
+                List[List[Tuple[recipes.Action, List[recipes.RecipeObject], List[recipes.RecipeObject]]]]
             ]:
             four list of texts, ingredients, tools and actions.
         """
@@ -292,7 +295,9 @@ class RecipeProcessor():
                         continue
 
                     ## Find sentence components
-                    action_text = overlapping_action['word']
+                    action_text = ' '.join([token.lemma_ for token in self._lemmatizer(overlapping_action['word'])])
+                    action_group = self._action_groups[action_text] if action_text in self._action_groups else None
+                    action = recipes.Action(action_text, action_group)
                     action_primary_objects = []
                     action_secondary_objects = []
 
@@ -360,7 +365,7 @@ class RecipeProcessor():
                         continue
 
                     ## Add sentence to step list
-                    step_actions.append((action_text, action_primary_objects, action_secondary_objects))
+                    step_actions.append((action, action_primary_objects, action_secondary_objects))
 
             ## Add step list to instruction list
             instruction_ingredients.append(step_ingredients)

@@ -5,7 +5,7 @@ import re
 import textwrap
 from abc import ABC
 from functools import reduce
-from typing import List, Tuple, Dict, Any
+from typing import List, Tuple, Dict, Any, Union, Optional
 
 from commons.nlp_utils import RecipeProcessor
 
@@ -75,6 +75,14 @@ class Action:
     def __init__(self, action:str, action_group:str=None):
         self._action = action
         self._action_group = action_group
+
+    @property
+    def action(self) -> str:
+        return self._action
+    
+    @property
+    def group(self) -> Optional[str]:
+        return self._action_group
 
     @property
     def full_action(self) -> str:
@@ -265,11 +273,12 @@ class RecipeGraph:
 
         return recipe_graph
 
-    def __init__(self, additional_configuration:Dict[str, Any] = None, show_full_label:bool = True):
+    def __init__(self, additional_configuration:Dict[str, Any] = None, show_full_label:bool = True, show_action_group:bool = False):
         ## Underlying graph
         self._graph = nx.DiGraph()
         self._root = None
         self._full_label = show_full_label
+        self._action_group = show_action_group
 
         ## Graph configuration
         self._graph_configuration = {
@@ -297,19 +306,23 @@ class RecipeGraph:
 
     def add_ingredient_node(self, ingredient:Ingredient) -> int:
         node_index = len(self._graph.nodes)
-        return self.add_recipe_node(node_index, ingredient)
+        node_text = ingredient.full_object if self._full_label else ingredient.base_object
+        return self.add_recipe_node(node_index, ingredient, node_text)
 
     def add_tool_node(self, tool:Tool) -> int:
         node_index = len(self._graph.nodes)
-        return self.add_recipe_node(node_index, tool)
+        node_text = tool.full_object if self._full_label else tool.base_object
+        return self.add_recipe_node(node_index, tool, node_text)
     
     def add_misc_node(self, object:Miscellaneous) -> int:
         node_index = len(self._graph.nodes)
-        return self.add_recipe_node(node_index, object)
+        node_text = object.full_object if self._full_label else object.base_object
+        return self.add_recipe_node(node_index, object, node_text)
 
-    def add_action_node(self, action_text:str, primary_objects_nodes:List[int], secondary_objects_nodes:List[str] = None) -> int:
+    def add_action_node(self, action:Action, primary_objects_nodes:List[int], secondary_objects_nodes:List[str] = None) -> int:
         node_index = len(self._graph.nodes)
-        self.add_recipe_node(node_index, action_text)
+        node_text = action.full_action if self._action_group else action.action
+        self.add_recipe_node(node_index, action, node_text)
 
         for primary_index in primary_objects_nodes:
             self.add_generic_edge(node_index, primary_index, {'type': 'primary'})
@@ -320,15 +333,9 @@ class RecipeGraph:
         
         return node_index
 
-    def add_recipe_node(self, index:int, object:RecipeObject|str) -> int:
-        if isinstance(object, str):
-            label = object
-            type_ = 'Action'
-        else:
-            label = object.full_object if self._full_label else object.base_object
-            type_ = type(object).__name__
-
-        node_attributes = {'label': label, 'type': type_}
+    def add_recipe_node(self, index:int, object:Union[RecipeObject, Action], label:str) -> int:
+        type_ = type(object).__name__
+        node_attributes = {'label': label, 'type': type_, 'object': object}
         node_attributes.update(self._graph_configuration['node_attributes'][type_])
 
         self._graph.add_node(index, **node_attributes)
