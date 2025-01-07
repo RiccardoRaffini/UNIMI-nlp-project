@@ -32,7 +32,10 @@ class AdjacencyMatrix(ABC):
             row_size = len(self._row_labels)
             column_size = len(self._column_labels)
 
-        data, row_indices, column_indices = zip(*self._data)
+        if self._data:
+            data, row_indices, column_indices = zip(*self._data)
+        else:
+            data, row_indices, column_indices = [], [], []
         self._base_matrix = coo_matrix((data, (row_indices, column_indices)), shape=(row_size, column_size))
 
     def get_sparse_matrix(self) -> coo_matrix:
