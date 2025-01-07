@@ -10,13 +10,25 @@ from typing import List, Tuple, Dict, Any
 from commons.nlp_utils import RecipeProcessor
 
 class RecipeObject(ABC):
-    def __init__(self, name:str, adjectives:List[str]=[]):
+    """
+    An abstract base class that allows to represent objects involved in a
+    cooking recipe, such object are characterzed by a name and eventually a set
+    of adjectives.
+    """
+
+    def __init__(self, name:str, adjectives:List[str]=None):
         self._name = name
-        self._adjectives = adjectives.copy()
+        self._adjectives = []
+        if adjectives is not None:
+            self._adjectives = adjectives.copy()
 
     @property
     def base_object(self) -> str:
         return self._name
+    
+    @property
+    def adjectives(self) -> List[str]:
+        return self._adjectives.copy()
     
     @property
     def full_object(self) -> str:
@@ -32,16 +44,47 @@ class RecipeObject(ABC):
         return self.full_object
     
 class Ingredient(RecipeObject):
-    def __init__(self, name:str, adjectives:List[str]=[]):
+    """
+    A class that allows to represent a cooking ingredient.
+    """
+
+    def __init__(self, name:str, adjectives:List[str]=None):
         super(Ingredient, self).__init__(name, adjectives)
 
 class Tool(RecipeObject):
-    def __init__(self, name:str, adjectives:List[str]=[]):
+    """
+    A class that allows to represent a cooking tool.
+    """
+
+    def __init__(self, name:str, adjectives:List[str]=None):
         super(Tool, self).__init__(name, adjectives)
 
 class Miscellaneous(RecipeObject):
-    def __init__(self, name:str, adjectives:List[str]=[]):
+    """
+    A class that allows to represent a generic culinary object.
+    """
+
+    def __init__(self, name:str, adjectives:List[str]=None):
         super(Miscellaneous, self).__init__(name, adjectives)
+
+class Action:
+    """
+    A class that allows to represent a culinary action.
+    """
+
+    def __init__(self, action:str, action_group:str=None):
+        self._action = action
+        self._action_group = action_group
+
+    @property
+    def full_action(self) -> str:
+        return f'{self._action} ({self._action_group if self._action_group else "n/a"})'
+
+    def __str__(self):
+        return self._action
+    
+    def __repr__(self):
+        return self._action
 
 class Recipe:
     """
