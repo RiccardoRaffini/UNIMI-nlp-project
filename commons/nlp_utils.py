@@ -109,6 +109,7 @@ class RecipeProcessor():
         self._ignored_objects = ignored_objects.copy()
         self._additional_objects = additional_objects.copy()
         self._action_groups = groups.copy()
+        self._mixing_actions = {action for action, group in self._action_groups.items() if group == 'mix'}
 
     def _split_instruction_in_steps(self, instruction:str) -> List[str]:
         """
@@ -393,8 +394,6 @@ class RecipeProcessor():
             file.write(svg_image)
 
     def process_matrices(self, recipe_graph:recipes.RecipeGraph) -> List[AdjacencyMatrix]:
-        mixing_actions = {'add', 'mix', 'combine', 'stir', 'stirring'}
-
         ## Define empty matrices
         actions_ingredients_matrix = ActionsIngredientsMatrix()
         ingredients_ingredients_matrix = MixedIngredientsMatrix()
@@ -414,8 +413,9 @@ class RecipeProcessor():
 
             ## Extract node information
             node = recipe_graph.get_node(node_index)
-            action = node['label']
-            is_mixing_action = action in mixing_actions
+            action:recipes.Action = node['object']
+            action_group = action.group if action.group else action.action
+            is_mixing_action = action.group == 'mix' or action in self._mixing_actions
             actions_sequence[-1] = (action, is_mixing_action, action_ingredients)
             children_indices = recipe_graph.get_children_indices(node_index)
             
@@ -429,44 +429,44 @@ class RecipeProcessor():
                     linked_actions.append(child_index)
 
                 elif child_node['type'] == 'Ingredient':
-                    ingredient = child_node['label']
+                    ingredient = child_node['object']
                     action_ingredients.add(ingredient)
 
                 elif child_node['type'] == 'Tool':
                     ## Add entry in action-tool matrix
-                    tool = child_node['label']
-                    group_actions_tools.add_entry(action, tool, 1) # TODO: change action to base action
+                    tool = child_node['object']
+                    group_actions_tools.add_entry(action_group, tool.full_object, 1)
 
             ## Update matrices
-            ### Add action labels # TODO: change to appropriate base/processed
-            actions_ingredients_matrix.label_to_row_index(action)
-            actions_base_ingredients_matrix.label_to_row_index(action)
-            group_actions_ingredients.label_to_row_index(action)
-            group_actions_base_ingredients.label_to_row_index(action)
-            group_actions_tools.label_to_row_index(action)
+            ### Add action labels
+            actions_ingredients_matrix.label_to_row_index(action.action)
+            actions_base_ingredients_matrix.label_to_row_index(action.action)
+            group_actions_ingredients.label_to_row_index(action_group)
+            group_actions_base_ingredients.label_to_row_index(action_group)
+            group_actions_tools.label_to_row_index(action_group)
 
-            ### Add ingredient labels # TODO: change to appropriate base/processed
+            ### Add ingredient labels
             for ingredient in action_ingredients:
-                actions_ingredients_matrix.label_to_column_index(ingredient)
-                ingredients_ingredients_matrix.label_to_index(ingredient)
-                actions_base_ingredients_matrix.label_to_column_index(ingredient)
-                base_ingredients_base_ingredients.label_to_index(ingredient)
-                group_actions_ingredients.label_to_column_index(ingredient)
-                group_actions_base_ingredients.label_to_column_index(ingredient)
+                actions_ingredients_matrix.label_to_column_index(ingredient.full_object)
+                ingredients_ingredients_matrix.label_to_index(ingredient.full_object)
+                actions_base_ingredients_matrix.label_to_column_index(ingredient.base_object)
+                base_ingredients_base_ingredients.label_to_index(ingredient.base_object)
+                group_actions_ingredients.label_to_column_index(ingredient.full_object)
+                group_actions_base_ingredients.label_to_column_index(ingredient.base_object)
 
             ### Apply all actions to current ingredients
             for action, is_mixing, ingredients in actions_sequence:
                 for ingredient in action_ingredients:
-                    actions_ingredients_matrix.add_entry(action, ingredient, 1) # TODO: change ingredient to processed ingredient
-                    actions_base_ingredients_matrix.add_entry(action, ingredient, 1) # TODO: change ingredient to base ingredient
-                    group_actions_ingredients.add_entry(action, ingredient, 1) # TODO: change action to base action
-                    group_actions_base_ingredients.add_entry(action, ingredient, 1) # TODO: change action and ingredient to base action and base ingredient
+                    actions_ingredients_matrix.add_entry(action.action, ingredient.full_object, 1)
+                    actions_base_ingredients_matrix.add_entry(action.action, ingredient.base_object, 1)
+                    group_actions_ingredients.add_entry(action_group, ingredient.full_object, 1)
+                    group_actions_base_ingredients.add_entry(action_group, ingredient.base_object, 1)
 
                 ### Mix current ingredients with previous ingredients (if necessary)
                 if is_mixing and action_ingredients:
                     for ingredients_pair in itertools.product(ingredients, action_ingredients):
-                        ingredients_ingredients_matrix.add_entry(ingredients_pair[0], ingredients_pair[1], 1)    # TODO: change ingredients to processed ingredients
-                        base_ingredients_base_ingredients.add_entry(ingredients_pair[0], ingredients_pair[1], 1) # TODO: change ingredients to base ingredients
+                        ingredients_ingredients_matrix.add_entry(ingredients_pair[0].full_object, ingredients_pair[1].full_object, 1)
+                        base_ingredients_base_ingredients.add_entry(ingredients_pair[0].base_object, ingredients_pair[1].base_object, 1)
 
             ## Add new actions to queue
             for linked_action in linked_actions:
