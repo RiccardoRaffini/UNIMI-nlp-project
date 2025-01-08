@@ -37,6 +37,42 @@ class RecipeObject(ABC):
         else:
             return self.base_object
     
+    def base_similarity(self, other:'RecipeObject') -> float:
+        """
+        Computes the jaccard similarity (IoU) between the tokens composing the
+        base form of this object and the tokens of the given object base form.
+
+        Args:
+            other (RecipeObject): recipe object with which to measure similarity.
+
+        Returns:
+            float: jaccard similarity of these objects in their base form.
+        """
+
+        self_tokens = set(self.base_object.split())
+        other_tokens = set(other.base_object.split())
+        similarity = len(self_tokens.intersection(other_tokens)) / len(self_tokens.union(other_tokens))
+
+        return similarity
+
+    def full_similarity(self, other:'RecipeObject') -> float:
+        """
+        Computes the jaccard similarity (IoU) between the tokens composing the
+        full form of this object and the tokens of the given object full form.
+
+        Args:
+            other (RecipeObject): recipe object with which to measure similarity.
+
+        Returns:
+            float: jaccard similarity of these objects in their full form.
+        """
+        
+        self_tokens = set(self.full_object.split())
+        other_tokens = set(other.full_object.split())
+        similarity = len(self_tokens.intersection(other_tokens)) / len(self_tokens.union(other_tokens))
+
+        return similarity
+    
     def __str__(self):
         return self.full_object
     
@@ -272,6 +308,44 @@ class RecipeGraph:
         recipe_graph._root = last_subtree_root_index
 
         return recipe_graph
+    
+    @classmethod
+    def simplify_graph(cls, recipe_graph:'RecipeGraph') -> None:
+        previous_node = previous_previous_node = None
+        current_node = recipe_graph.get_node(recipe_graph.get_root_index())
+        
+        while current_node:
+            previous_previous_node = previous_node
+            previous_node = current_node
+            current_node = None
+
+            for child_index in recipe_graph.get_children_indices(previous_node['index']):
+                child_node = recipe_graph.get_node(child_index)
+                if type(child_node['object']) == Action:
+                    current_node = child_node
+                    break
+
+            if current_node and current_node['object'].action == previous_node['object'].action:
+                previous_edges = recipe_graph.get_edges(previous_node['index'])
+                # TODO: handle nodes with more children
+                if len(previous_edges) == 1:
+                    if previous_previous_node is not None:
+                        # remove intermediate node
+                        recipe_graph.remove_edge(previous_previous_node['index'], previous_node['index'])
+                        recipe_graph.remove_edge(previous_node['index'], current_node['index'])
+                        recipe_graph.remove_node(previous_node['index'])
+                        recipe_graph.add_generic_edge(previous_previous_node['index'], current_node['index'], {'type': 'primary'})
+
+                        previous_node = previous_previous_node
+                        previous_previous_node = None
+
+                    else:
+                        # remove root node
+                        recipe_graph.remove_edge(previous_node['index'], current_node['index'])
+                        recipe_graph.remove_node(previous_node['index'])
+                        recipe_graph._root = current_node['index']
+
+                        previous_previous_node = None
 
     def __init__(self, additional_configuration:Dict[str, Any] = None, show_full_label:bool = True, show_action_group:bool = False):
         ## Underlying graph
@@ -335,14 +409,32 @@ class RecipeGraph:
 
     def add_recipe_node(self, index:int, object:Union[RecipeObject, Action], label:str) -> int:
         type_ = type(object).__name__
-        node_attributes = {'label': label, 'type': type_, 'object': object}
+        node_attributes = {'index': index, 'label': label, 'type': type_, 'object': object}
         node_attributes.update(self._graph_configuration['node_attributes'][type_])
 
         self._graph.add_node(index, **node_attributes)
         return index
+    
+    def remove_node(self, index:int) -> None:
+        self._graph.remove_node(index)
 
     def add_generic_edge(self, node_1:int, node_2:int, attributes:Dict[str, Any] = {}) -> None:
         self._graph.add_edge(node_1, node_2, **attributes)
+
+    def remove_edge(self, node_1:int, node_2:int) -> None:
+        self._graph.remove_edge(node_1, node_2)
+
+    def get_edges(self, node_1:int = None, node_2:int = None) -> List[Any]:
+        assert not (node_1 is None and node_2 is None), 'at least one node must be specified'
+
+        if node_1 and node_2:
+            return list(filter(lambda e: e == (node_1, node_2), self._graph.edges))
+
+        elif node_1:
+            return list(filter(lambda e: e[0] == node_1, self._graph.edges))
+
+        elif node_2:
+            return list(filter(lambda e: e[1] == node_2, self._graph.edges))
 
     def to_gviz(self, filename:str) -> None:
         agraph:pygraphviz.AGraph = nx.nx_agraph.to_agraph(self._graph)
