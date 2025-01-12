@@ -374,7 +374,11 @@ class RecipeGraph:
         return self._root
     
     def get_children_indices(self, node_index:int) -> List[int]:
-        _, children_indices = zip(*self._graph.edges(node_index))
+        edges = self._graph.edges(node_index)
+        if not edges:
+            return []
+        
+        _, children_indices = zip(*edges)
 
         return list(children_indices)
 
