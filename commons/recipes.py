@@ -1,12 +1,14 @@
+import itertools
 import networkx as nx
 import pandas as pd
 import pygraphviz
-import re
 import textwrap
 from abc import ABC
 from functools import reduce
 from typing import List, Tuple, Dict, Any, Union, Optional
 
+from commons.action_groups import groups
+from commons.matrices import AdjacencyMatrix, ActionsIngredientsMatrix, MixedIngredientsMatrix, ActionsToolsMatrix
 from commons.nlp_utils import RecipeProcessor
 
 class RecipeObject(ABC):
@@ -192,21 +194,10 @@ class Recipe:
         self._raw_ingredient_quantities = ingredient_quantities.copy()
         self._raw_instructions = instructions.copy()
 
-        ## Processed fields
-        ### Instruction
+        ## Processed instruction steps
         self._steps_ingredients = None
         self._steps_tools = None
         self._steps_actions = None
-        ### Graph
-        self.recipe_graph = None
-        ### Relation matrices
-        self._actions_ingredients_matrix = None
-        self._ingredients_ingredients_matrix = None
-        self._actions_base_ingredients_matrix = None
-        self._base_ingredients_base_ingredients = None
-        self._group_actions_ingredients = None
-        self._group_actions_base_ingredients = None
-        self._group_actions_tools = None
 
         ## Process new recipe
         self._process_recipe()
@@ -240,18 +231,6 @@ class Recipe:
             processed_instructions,
             ([], [], [])
         )
-
-        ## Create recipe graph
-        self.recipe_graph = RecipeGraph.from_recipe(self)
-
-        ## Create recipe matrices
-        self._actions_ingredients_matrix, \
-        self._ingredients_ingredients_matrix, \
-        self._actions_base_ingredients_matrix, \
-        self._base_ingredients_base_ingredients, \
-        self._group_actions_ingredients, \
-        self._group_actions_base_ingredients, \
-        self._group_actions_tools, *_ = self.processor.process_matrices(self.recipe_graph)
 
 class RecipeGraph:
     @classmethod
@@ -458,3 +437,197 @@ class RecipeGraph:
 
     def __repr__(self):
         pass
+
+class RecipeMatrices:
+    """
+    A class that groups all relational matrices relative to a single recipe or
+    a group of recipes, obtainable from their recipe graph.
+    Those matrices express ingredient-ingredient, action-ingredient and
+    action-tool relations.
+
+    The class also provides convenient methods to create the matrices from a
+    :class:`RecipeGraph` instance or directly from a :class:`Recipe` instance.
+    """
+
+    @classmethod
+    def from_recipe(cls, recipe:Recipe, compiled:bool = True) -> 'RecipeMatrices':
+        """
+        Returns a new :class:`RecipeMatrices` instance by processing the information
+        given as a :class:`Recipe`.
+
+        Args:
+            recipe (:class:`Recipe`): recipe to process.
+            compiled (:class:`bool`, optional): whether or not to compile the final
+            matrices. Defaults to True.
+
+        Returns:
+            :class:`RecipeMatrices`: new recipes matrices instance.
+        """
+
+        recipe_graph = RecipeGraph.from_recipe(recipe)
+        recipe_matrices = cls.from_recipe_graph(recipe_graph, compiled)
+
+        return recipe_matrices
+
+    @classmethod
+    def from_recipe_graph(cls, recipe_graph:RecipeGraph, compiled:bool = True) -> 'RecipeMatrices':
+        """
+        Returns a new :class:`RecipeMatrices` instance by processing the information
+        given as a :class:`RecipeGraph`.
+
+        Args:
+            recipe_graph (:class:`RecipeGraph`): recipe graph to process.
+            compiled (:class:`bool`, optional): whether or not to compile the final
+            matrices. Defaults to True.
+
+        Returns:
+            :class:`RecipeMatrices`: new recipe matrices instance.
+        """
+
+        recipe_matrices = cls()
+        recipe_matrices.process_recipe_graph(recipe_graph)
+
+        if compiled:
+            recipe_matrices.compile()
+
+        return recipe_matrices
+
+    def __init__(self):
+        """
+        Initializes a new instance of the :class:`RecipeMatrices` class containing
+        the new empty matrices to handle.
+        """
+
+        ## Action groups
+        self._action_groups = groups.copy()
+        self._mixing_actions = {action for action, group in self._action_groups.items() if group == 'mix'}
+
+        ## Handled matrices
+        self._actions_ingredients_matrix = ActionsIngredientsMatrix()
+        self._ingredients_ingredients_matrix = MixedIngredientsMatrix()
+        self._actions_base_ingredients_matrix = ActionsIngredientsMatrix()
+        self._base_ingredients_base_ingredients = MixedIngredientsMatrix()
+        self._group_actions_ingredients = ActionsIngredientsMatrix()
+        self._group_actions_base_ingredients = ActionsIngredientsMatrix()
+        self._group_actions_tools = ActionsToolsMatrix()
+
+    @property
+    def actions_ingredients(self) -> ActionsIngredientsMatrix:
+        return self._actions_ingredients_matrix
+    
+    @property
+    def ingredients_ingredients(self) -> MixedIngredientsMatrix:
+        return self._ingredients_ingredients_matrix
+    
+    @property
+    def actions_base_ingredients(self) -> ActionsIngredientsMatrix:
+        return self._actions_base_ingredients_matrix
+    
+    @property
+    def base_ingredients_base_ingredients(self) -> MixedIngredientsMatrix:
+        return self._base_ingredients_base_ingredients
+    
+    @property
+    def group_actions_ingredients(self) -> ActionsIngredientsMatrix:
+        return self._group_actions_ingredients
+    
+    @property
+    def group_actions_base_ingredients(self) -> ActionsIngredientsMatrix:
+        return self._group_actions_base_ingredients
+    
+    @property
+    def group_actions_tools(self) -> ActionsToolsMatrix:
+        return self._group_actions_tools
+
+    def process_recipe_graph(self, recipe_graph:RecipeGraph) -> None:
+        """
+        Processes the given recipe graph using the extracted information to
+        update the relational matrices handled by this instance.
+
+        Args:
+            recipe_graph (RecipeGraph): recipe graph to process.
+        """
+
+        ## DFS graph traversing
+        nodes_stack = [[(recipe_graph.get_root_index(), set())]] # assumes root is an Action
+
+        while nodes_stack:
+            actions_sequence = nodes_stack.pop()
+            current_action = actions_sequence[-1]
+            node_index, action_ingredients = current_action
+
+            ## Extract node information
+            node = recipe_graph.get_node(node_index)
+            action:Action = node['object']
+            action_group = action.group if action.group else action.action
+            is_mixing_action = action.group == 'mix' or action in self._mixing_actions
+            actions_sequence[-1] = (action, is_mixing_action, action_ingredients)
+            children_indices = recipe_graph.get_children_indices(node_index)
+            
+            ## Extract linked ingredients and actions
+            linked_actions = []
+            
+            for child_index in children_indices:
+                child_node = recipe_graph.get_node(child_index)
+
+                if child_node['type'] == 'Action':
+                    linked_actions.append(child_index)
+
+                elif child_node['type'] == 'Ingredient':
+                    ingredient = child_node['object']
+                    action_ingredients.add(ingredient)
+
+                elif child_node['type'] == 'Tool':
+                    ## Add entry in action-tool matrix
+                    tool = child_node['object']
+                    self._group_actions_tools.add_entry(action_group, tool.full_object, 1)
+
+            ## Update matrices
+            ### Add action labels
+            self._actions_ingredients_matrix.label_to_row_index(action.action)
+            self._actions_base_ingredients_matrix.label_to_row_index(action.action)
+            self._group_actions_ingredients.label_to_row_index(action_group)
+            self._group_actions_base_ingredients.label_to_row_index(action_group)
+            self._group_actions_tools.label_to_row_index(action_group)
+
+            ### Add ingredient labels
+            for ingredient in action_ingredients:
+                self._actions_ingredients_matrix.label_to_column_index(ingredient.full_object)
+                self._ingredients_ingredients_matrix.label_to_index(ingredient.full_object)
+                self._actions_base_ingredients_matrix.label_to_column_index(ingredient.base_object)
+                self._base_ingredients_base_ingredients.label_to_index(ingredient.base_object)
+                self._group_actions_ingredients.label_to_column_index(ingredient.full_object)
+                self._group_actions_base_ingredients.label_to_column_index(ingredient.base_object)
+
+            ### Apply all actions to current ingredients
+            for action, is_mixing, ingredients in actions_sequence:
+                for ingredient in action_ingredients:
+                    self._actions_ingredients_matrix.add_entry(action.action, ingredient.full_object, 1)
+                    self._actions_base_ingredients_matrix.add_entry(action.action, ingredient.base_object, 1)
+                    self._group_actions_ingredients.add_entry(action_group, ingredient.full_object, 1)
+                    self._group_actions_base_ingredients.add_entry(action_group, ingredient.base_object, 1)
+
+                ### Mix current ingredients with previous ingredients (if necessary)
+                if is_mixing and action_ingredients:
+                    for ingredients_pair in itertools.product(ingredients, action_ingredients):
+                        self._ingredients_ingredients_matrix.add_entry(ingredients_pair[0].full_object, ingredients_pair[1].full_object, 1)
+                        self._base_ingredients_base_ingredients.add_entry(ingredients_pair[0].base_object, ingredients_pair[1].base_object, 1)
+
+            ## Add new actions to queue
+            for linked_action in linked_actions:
+                nodes_stack.append(actions_sequence + [(linked_action, set())])
+
+    def compile(self) -> None:
+        """
+        Compiles all the handled relation matrices. (Note that the compiled collection
+        can still be updated by processing new recipe graphs, but the new values
+        cannot be accessed unless the matrices are compiled again)
+        """
+
+        self._actions_ingredients_matrix.compile()
+        self._ingredients_ingredients_matrix.compile()
+        self._actions_base_ingredients_matrix.compile()
+        self._base_ingredients_base_ingredients.compile()
+        self._group_actions_ingredients.compile()
+        self._group_actions_base_ingredients.compile()
+        self._group_actions_tools.compile()
