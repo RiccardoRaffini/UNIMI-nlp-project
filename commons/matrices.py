@@ -21,7 +21,7 @@ class AdjacencyMatrix(ABC):
             self._column_labels_indices_map:Dict[str, int] = {}
 
         ## Define matrix
-        self._data:List[Tuple[int, int, Any]] = [] # (row_index, col_index, data_value)
+        self._data:List[Tuple[Any, int, int]] = [] # (data_value, row_index, col_index)
 
         self._base_matrix:coo_matrix = None
 
@@ -56,11 +56,23 @@ class AdjacencyMatrix(ABC):
     def add_entry(self, row_index:int, column_index:int, value:Any) -> None:
         self._data.append((value, row_index, column_index))
 
+        if self._symmetric:
+            self._data.append((value, column_index, row_index))
+
     def get_labels(self) -> Union[List[str], Tuple[List[str], List[str]]]:
         if self._symmetric:
             return self._labels.copy()
         else:
             return self._row_labels.copy(), self._column_labels.copy()
+
+    @abstractmethod
+    def save_to_files(self, matrix_filename:str, labels_filename:str) -> None:
+        raise NotImplementedError()
+
+    @classmethod
+    @abstractmethod
+    def load_from_files(cls, matrix_filename:str, labels_filename:str) -> 'AdjacencyMatrix':
+        raise NotImplementedError()
 
 class MixedIngredientsMatrix(AdjacencyMatrix):
     def __init__(self):
@@ -81,6 +93,40 @@ class MixedIngredientsMatrix(AdjacencyMatrix):
         column_index = self.label_to_index(column_label)
 
         super().add_entry(row_index, column_index, value)
+
+    def save_to_files(self, matrix_filename:str, labels_filename:str) -> None:
+        ## Compile matrix and obtain sparse matrix
+        self.compile()
+        matrix = self.get_sparse_matrix()
+
+        ## Write matrix file
+        scipy.sparse.save_npz(matrix_filename, matrix)
+
+        ## Write labels file
+        with open(labels_filename, 'w') as labels_file:
+            json.dump(self._labels_indices_map, labels_file)
+    
+    @classmethod
+    def load_from_files(cls, matrix_filename:str, labels_filename:str) -> 'MixedIngredientsMatrix':
+        ## Create new matrix instance
+        mixed_ingredients_matrix = cls()
+
+        ## Read matrix file
+        matrix:coo_matrix = scipy.sparse.load_npz(matrix_filename)
+        matrix_dok = matrix.todok()
+
+        matrix_data = matrix_dok.values()
+        matrix_indices = matrix_dok.keys()
+        data_list = [(data, ) + indices for data, indices in zip(matrix_data, matrix_indices)]
+        mixed_ingredients_matrix._data = data_list
+
+        ## Read label file
+        with open(labels_filename, 'r') as labels_file:
+            labels_map:Dict[str, int] = json.load(labels_file)
+            mixed_ingredients_matrix._labels_indices_map = labels_map
+            mixed_ingredients_matrix._labels = list(labels_map.values())
+
+        return mixed_ingredients_matrix
 
 class ActionsIngredientsMatrix(AdjacencyMatrix):
     def __init__(self):
@@ -112,6 +158,43 @@ class ActionsIngredientsMatrix(AdjacencyMatrix):
 
         super().add_entry(row_index, column_index, value)
 
+    def save_to_files(self, matrix_filename:str, labels_filename:str) -> None:
+        ## Compile matrix and obtain sparse matrix
+        self.compile()
+        matrix = self.get_sparse_matrix()
+
+        ## Write matrix file
+        scipy.sparse.save_npz(matrix_filename, matrix)
+
+        ## Write labels file
+        with open(labels_filename, 'w') as labels_file:
+            data = {'row': self._row_labels_indices_map, 'column': self._column_labels_indices_map}
+            json.dump(data, labels_file)
+
+    @classmethod
+    def load_from_files(cls, matrix_filename:str, labels_filename:str) -> 'ActionsIngredientsMatrix':
+        ## Create new matrix instance
+        actions_ingredients_matrix = cls()
+
+        ## Read matrix file
+        matrix:coo_matrix = scipy.sparse.load_npz(matrix_filename)
+        matrix_dok = matrix.todok()
+
+        matrix_data = matrix_dok.values()
+        matrix_indices = matrix_dok.keys()
+        data_list = [(data, ) + indices for data, indices in zip(matrix_data, matrix_indices)]
+        actions_ingredients_matrix._data = data_list
+
+        ## Read label file
+        with open(labels_filename, 'r') as labels_file:
+            labels_map:Dict[str, Dict[str, int]] = json.load(labels_file)
+            actions_ingredients_matrix._row_labels_indices_map = labels_map['row']
+            actions_ingredients_matrix._row_labels = list(labels_map['row'].values())
+            actions_ingredients_matrix._column_labels_indices_map = labels_map['column']
+            actions_ingredients_matrix._column_labels = list(labels_map['column'].values())
+
+        return actions_ingredients_matrix
+
 class ActionsToolsMatrix(AdjacencyMatrix):
     def __init__(self):
         super(ActionsToolsMatrix, self).__init__(symmetric=False)
@@ -141,3 +224,41 @@ class ActionsToolsMatrix(AdjacencyMatrix):
         column_index = self.label_to_column_index(column_label)
 
         super().add_entry(row_index, column_index, value)
+
+    def save_to_files(self, matrix_filename:str, labels_filename:str) -> None:
+        ## Compile matrix and obtain sparse matrix
+        self.compile()
+        matrix = self.get_sparse_matrix()
+
+        ## Write matrix file
+        scipy.sparse.save_npz(matrix_filename, matrix)
+
+        ## Write labels file
+        with open(labels_filename, 'w') as labels_file:
+            data = {'row': self._row_labels_indices_map, 'column': self._column_labels_indices_map}
+            json.dump(data, labels_file)
+
+    @classmethod
+    def load_from_files(cls, matrix_filename:str, labels_filename:str) -> 'ActionsToolsMatrix':
+        ## Create new matrix instance
+        actions_tools_matrix = cls()
+
+        ## Read matrix file
+        #with open(matrix_filename, 'r') as matrix_file:
+        matrix:coo_matrix = scipy.sparse.load_npz(matrix_filename)
+        matrix_dok = matrix.todok()
+
+        matrix_data = matrix_dok.values()
+        matrix_indices = matrix_dok.keys()
+        data_list = [(data, ) + indices for data, indices in zip(matrix_data, matrix_indices)]
+        actions_tools_matrix._data = data_list
+
+        ## Read label file
+        with open(labels_filename, 'r') as labels_file:
+            labels_map:Dict[str, Dict[str, int]] = json.load(labels_file)
+            actions_tools_matrix._row_labels_indices_map = labels_map['row']
+            actions_tools_matrix._row_labels = list(labels_map['row'].keys())
+            actions_tools_matrix._column_labels_indices_map = labels_map['column']
+            actions_tools_matrix._column_labels = list(labels_map['column'].keys())
+
+        return actions_tools_matrix

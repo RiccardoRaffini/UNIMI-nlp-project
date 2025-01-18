@@ -1,8 +1,10 @@
 import itertools
 import networkx as nx
+import os
 import pandas as pd
 import pygraphviz
 import textwrap
+import zipfile
 from abc import ABC
 from functools import reduce
 from typing import List, Tuple, Dict, Any, Union, Optional
@@ -503,9 +505,9 @@ class RecipeMatrices:
         self._mixing_actions = {action for action, group in self._action_groups.items() if group == 'mix'}
 
         ## Handled matrices
-        self._actions_ingredients_matrix = ActionsIngredientsMatrix()
-        self._ingredients_ingredients_matrix = MixedIngredientsMatrix()
-        self._actions_base_ingredients_matrix = ActionsIngredientsMatrix()
+        self._actions_ingredients = ActionsIngredientsMatrix()
+        self._ingredients_ingredients = MixedIngredientsMatrix()
+        self._actions_base_ingredients = ActionsIngredientsMatrix()
         self._base_ingredients_base_ingredients = MixedIngredientsMatrix()
         self._group_actions_ingredients = ActionsIngredientsMatrix()
         self._group_actions_base_ingredients = ActionsIngredientsMatrix()
@@ -513,15 +515,15 @@ class RecipeMatrices:
 
     @property
     def actions_ingredients(self) -> ActionsIngredientsMatrix:
-        return self._actions_ingredients_matrix
+        return self._actions_ingredients
     
     @property
     def ingredients_ingredients(self) -> MixedIngredientsMatrix:
-        return self._ingredients_ingredients_matrix
+        return self._ingredients_ingredients
     
     @property
     def actions_base_ingredients(self) -> ActionsIngredientsMatrix:
-        return self._actions_base_ingredients_matrix
+        return self._actions_base_ingredients
     
     @property
     def base_ingredients_base_ingredients(self) -> MixedIngredientsMatrix:
@@ -584,17 +586,17 @@ class RecipeMatrices:
 
             ## Update matrices
             ### Add action labels
-            self._actions_ingredients_matrix.label_to_row_index(action.action)
-            self._actions_base_ingredients_matrix.label_to_row_index(action.action)
+            self._actions_ingredients.label_to_row_index(action.action)
+            self._actions_base_ingredients.label_to_row_index(action.action)
             self._group_actions_ingredients.label_to_row_index(action_group)
             self._group_actions_base_ingredients.label_to_row_index(action_group)
             self._group_actions_tools.label_to_row_index(action_group)
 
             ### Add ingredient labels
             for ingredient in action_ingredients:
-                self._actions_ingredients_matrix.label_to_column_index(ingredient.full_object)
-                self._ingredients_ingredients_matrix.label_to_index(ingredient.full_object)
-                self._actions_base_ingredients_matrix.label_to_column_index(ingredient.base_object)
+                self._actions_ingredients.label_to_column_index(ingredient.full_object)
+                self._ingredients_ingredients.label_to_index(ingredient.full_object)
+                self._actions_base_ingredients.label_to_column_index(ingredient.base_object)
                 self._base_ingredients_base_ingredients.label_to_index(ingredient.base_object)
                 self._group_actions_ingredients.label_to_column_index(ingredient.full_object)
                 self._group_actions_base_ingredients.label_to_column_index(ingredient.base_object)
@@ -602,15 +604,15 @@ class RecipeMatrices:
             ### Apply all actions to current ingredients
             for action, is_mixing, ingredients in actions_sequence:
                 for ingredient in action_ingredients:
-                    self._actions_ingredients_matrix.add_entry(action.action, ingredient.full_object, 1)
-                    self._actions_base_ingredients_matrix.add_entry(action.action, ingredient.base_object, 1)
+                    self._actions_ingredients.add_entry(action.action, ingredient.full_object, 1)
+                    self._actions_base_ingredients.add_entry(action.action, ingredient.base_object, 1)
                     self._group_actions_ingredients.add_entry(action_group, ingredient.full_object, 1)
                     self._group_actions_base_ingredients.add_entry(action_group, ingredient.base_object, 1)
 
                 ### Mix current ingredients with previous ingredients (if necessary)
                 if is_mixing and action_ingredients:
                     for ingredients_pair in itertools.product(ingredients, action_ingredients):
-                        self._ingredients_ingredients_matrix.add_entry(ingredients_pair[0].full_object, ingredients_pair[1].full_object, 1)
+                        self._ingredients_ingredients.add_entry(ingredients_pair[0].full_object, ingredients_pair[1].full_object, 1)
                         self._base_ingredients_base_ingredients.add_entry(ingredients_pair[0].base_object, ingredients_pair[1].base_object, 1)
 
             ## Add new actions to queue
@@ -624,10 +626,78 @@ class RecipeMatrices:
         cannot be accessed unless the matrices are compiled again)
         """
 
-        self._actions_ingredients_matrix.compile()
-        self._ingredients_ingredients_matrix.compile()
-        self._actions_base_ingredients_matrix.compile()
+        self._actions_ingredients.compile()
+        self._ingredients_ingredients.compile()
+        self._actions_base_ingredients.compile()
         self._base_ingredients_base_ingredients.compile()
         self._group_actions_ingredients.compile()
         self._group_actions_base_ingredients.compile()
         self._group_actions_tools.compile()
+
+    def save(self, collection_name:str) -> None:
+        """
+        Saves the relation matrices compising this collection in an archive folder
+        with the given name.
+        (Stored files follow a strict naming convention related to the class
+        definition)
+
+        Args:
+            collection_name (:class:`str`): name to assign to the archive folder.
+        """
+
+        collection_filename = collection_name + '.zip'
+        names_matrices:Dict[str, AdjacencyMatrix] = {
+            'actions_ingredients': self.actions_ingredients,
+            'ingredients_ingredients': self.ingredients_ingredients,
+            'actions_base_ingredients': self.actions_base_ingredients,
+            'base_ingredients_base_ingredients': self.base_ingredients_base_ingredients,
+            'group_actions_ingredients': self.group_actions_ingredients,
+            'group_actions_base_ingredients': self.group_actions_base_ingredients,
+            'group_actions_tools': self.group_actions_tools
+        }
+        
+        with zipfile.ZipFile(collection_filename, 'w', zipfile.ZIP_DEFLATED) as collection_zip:
+            for name, matrix in names_matrices.items():
+                matrix.save_to_files(f'{name}.npz', f'{name}.json')
+                collection_zip.write(f'{name}.npz')
+                collection_zip.write(f'{name}.json')
+                os.remove(f'{name}.npz')
+                os.remove(f'{name}.json')
+
+    @classmethod
+    def load(cls, collection_name:str) -> 'RecipeMatrices':
+        """
+        Returns a new :class:`RecipeMatrices` instance by loading a collection
+        archive storing the information of the handled matrices.
+
+        Args:
+            collection_name (:class:`str`): name of the archive folder.
+
+        Returns:
+            :class:`RecipeMatrices`: new recipes matrices instance.
+        """
+
+        collection_filename = collection_name
+        if not collection_name.endswith('.zip'):
+            collection_filename = collection_name + '.zip'
+
+        matrices_names_types = {
+            'actions_ingredients': ActionsIngredientsMatrix,
+            'ingredients_ingredients': MixedIngredientsMatrix,
+            'actions_base_ingredients': ActionsIngredientsMatrix,
+            'base_ingredients_base_ingredients': MixedIngredientsMatrix,
+            'group_actions_ingredients': ActionsIngredientsMatrix,
+            'group_actions_base_ingredients': ActionsIngredientsMatrix,
+            'group_actions_tools': ActionsToolsMatrix
+        }
+        recipe_matrices = cls()
+
+        with zipfile.ZipFile(collection_filename, 'r') as collection_zip:
+            for matrix_name, matrix_type in matrices_names_types.items():
+                collection_zip.extract(f'{matrix_name}.npz')
+                collection_zip.extract(f'{matrix_name}.json')
+                setattr(recipe_matrices, f'_{matrix_name}', matrix_type.load_from_files(f'{matrix_name}.npz', f'{matrix_name}.json'))
+                os.remove(f'{matrix_name}.npz')
+                os.remove(f'{matrix_name}.json')
+
+        return recipe_matrices
