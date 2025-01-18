@@ -13,6 +13,33 @@ from commons.action_groups import groups
 from commons.matrices import AdjacencyMatrix, ActionsIngredientsMatrix, MixedIngredientsMatrix, ActionsToolsMatrix
 from commons.nlp_utils import RecipeProcessor
 
+class Action:
+    """
+    A class that allows to represent a culinary action.
+    """
+
+    def __init__(self, action:str, action_group:str=None):
+        self._action = action
+        self._action_group = action_group
+
+    @property
+    def action(self) -> str:
+        return self._action
+    
+    @property
+    def group(self) -> Optional[str]:
+        return self._action_group
+
+    @property
+    def full_action(self) -> str:
+        return f'{self._action} ({self._action_group if self._action_group else "n/a"})'
+
+    def __str__(self):
+        return self._action
+    
+    def __repr__(self):
+        return self._action
+
 class RecipeObject(ABC):
     """
     An abstract base class that allows to represent objects involved in a
@@ -88,8 +115,31 @@ class Ingredient(RecipeObject):
     A class that allows to represent a cooking ingredient.
     """
 
-    def __init__(self, name:str, adjectives:List[str]=None):
+    def __init__(self, name:str, adjectives:List[str]=None, actions:List[Action]=None):
         super(Ingredient, self).__init__(name, adjectives)
+
+        self._actions_list = []
+        if actions:
+            self._actions_list = actions.copy()
+        self.use_default_group_names = True
+
+    def add_applied_action(self, action:Action) -> None:
+        self._actions_list.append(action)
+
+    def set_applied_actions(self, actions:List[Action]) -> None:
+        self._actions_list = actions.copy()
+
+    @property
+    def applied_actions(self) -> List[Action]:
+        return self._actions_list.copy()
+    
+    @property
+    def applied_actions_names(self) -> List[str]:
+        return [action.action for action in self._actions_list]
+    
+    @property
+    def applied_actions_groups(self) -> List[str]:
+        return [(action.action if not action.group and self.use_default_group_names else action.group) for action in self._actions_list]
 
 class Tool(RecipeObject):
     """
@@ -106,33 +156,6 @@ class Miscellaneous(RecipeObject):
 
     def __init__(self, name:str, adjectives:List[str]=None):
         super(Miscellaneous, self).__init__(name, adjectives)
-
-class Action:
-    """
-    A class that allows to represent a culinary action.
-    """
-
-    def __init__(self, action:str, action_group:str=None):
-        self._action = action
-        self._action_group = action_group
-
-    @property
-    def action(self) -> str:
-        return self._action
-    
-    @property
-    def group(self) -> Optional[str]:
-        return self._action_group
-
-    @property
-    def full_action(self) -> str:
-        return f'{self._action} ({self._action_group if self._action_group else "n/a"})'
-
-    def __str__(self):
-        return self._action
-    
-    def __repr__(self):
-        return self._action
 
 class Recipe:
     """
@@ -290,43 +313,59 @@ class RecipeGraph:
 
         return recipe_graph
     
-    @classmethod
-    def simplify_graph(cls, recipe_graph:'RecipeGraph') -> None:
+    def simplify_graph(self) -> None:
         previous_node = previous_previous_node = None
-        current_node = recipe_graph.get_node(recipe_graph.get_root_index())
+        current_node = self.get_node(self.get_root_index())
         
         while current_node:
             previous_previous_node = previous_node
             previous_node = current_node
             current_node = None
 
-            for child_index in recipe_graph.get_children_indices(previous_node['index']):
-                child_node = recipe_graph.get_node(child_index)
+            for child_index in self.get_children_indices(previous_node['index']):
+                child_node = self.get_node(child_index)
                 if type(child_node['object']) == Action:
                     current_node = child_node
                     break
 
             if current_node and current_node['object'].action == previous_node['object'].action:
-                previous_edges = recipe_graph.get_edges(previous_node['index'])
+                previous_edges = self.get_edges(previous_node['index'])
                 # TODO: handle nodes with more children
                 if len(previous_edges) == 1:
                     if previous_previous_node is not None:
                         # remove intermediate node
-                        recipe_graph.remove_edge(previous_previous_node['index'], previous_node['index'])
-                        recipe_graph.remove_edge(previous_node['index'], current_node['index'])
-                        recipe_graph.remove_node(previous_node['index'])
-                        recipe_graph.add_generic_edge(previous_previous_node['index'], current_node['index'], {'type': 'primary'})
+                        self.remove_edge(previous_previous_node['index'], previous_node['index'])
+                        self.remove_edge(previous_node['index'], current_node['index'])
+                        self.remove_node(previous_node['index'])
+                        self.add_generic_edge(previous_previous_node['index'], current_node['index'], {'type': 'primary'})
 
                         previous_node = previous_previous_node
                         previous_previous_node = None
 
                     else:
                         # remove root node
-                        recipe_graph.remove_edge(previous_node['index'], current_node['index'])
-                        recipe_graph.remove_node(previous_node['index'])
-                        recipe_graph._root = current_node['index']
+                        self.remove_edge(previous_node['index'], current_node['index'])
+                        self.remove_node(previous_node['index'])
+                        self._root = current_node['index']
 
                         previous_previous_node = None
+
+    def apply_actions_to_ingredients(self) -> None:
+        ## Traverse graph
+        nodes_actions_queue = [(self._root, [])]
+
+        while nodes_actions_queue:
+            node_index, actions = nodes_actions_queue.pop(0)
+            node = self.get_node(node_index)
+
+            ## Apply action to ingredient
+            if type(node['object']) == Ingredient:
+                node['object'].set_applied_actions(actions)
+            
+            ## Extend actions
+            elif type(node['object']) == Action:
+                for child_index in self.get_children_indices(node_index):
+                    nodes_actions_queue.append((child_index, actions + [node['object']]))
 
     def __init__(self, additional_configuration:Dict[str, Any] = None, show_full_label:bool = True, show_action_group:bool = False):
         ## Underlying graph
@@ -347,6 +386,9 @@ class RecipeGraph:
 
         if additional_configuration is not None:
             self._graph_configuration = self._graph_configuration | additional_configuration
+
+    def nodes(self) -> List[int]:
+        return list(self._graph.nodes.keys())
 
     def get_node(self, node_index:int) -> Dict[str, Any]:
         return self._graph.nodes[node_index]
