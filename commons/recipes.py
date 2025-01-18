@@ -604,6 +604,7 @@ class RecipeMatrices:
             ### Apply all actions to current ingredients
             for action, is_mixing, ingredients in actions_sequence:
                 for ingredient in action_ingredients:
+                    action_group = action.group if action.group else action.action
                     self._actions_ingredients.add_entry(action.action, ingredient.full_object, 1)
                     self._actions_base_ingredients.add_entry(action.action, ingredient.base_object, 1)
                     self._group_actions_ingredients.add_entry(action_group, ingredient.full_object, 1)
