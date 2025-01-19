@@ -1,5 +1,7 @@
+import json
 import numpy as np
-from abc import ABC
+import scipy
+from abc import ABC, abstractmethod
 from scipy.sparse import coo_matrix, csr_matrix
 from typing import List, Dict, Tuple, Any, Union
 
@@ -78,10 +80,10 @@ class MixedIngredientsMatrix(AdjacencyMatrix):
     def __init__(self):
         super(MixedIngredientsMatrix, self).__init__(symmetric=True)
 
-    def label_to_index(self, label:str) -> int:
+    def label_to_index(self, label:str, add_not_existing:bool = True) -> int:
         label_index = self._labels_indices_map.get(label, -1)
 
-        if label_index == -1:
+        if label_index == -1 and add_not_existing:
             label_index = len(self._labels_indices_map)
             self._labels.append(label)
             self._labels_indices_map[label] = label_index
@@ -132,20 +134,20 @@ class ActionsIngredientsMatrix(AdjacencyMatrix):
     def __init__(self):
         super(ActionsIngredientsMatrix, self).__init__(symmetric=False)
 
-    def label_to_row_index(self, label:str) -> int:
+    def label_to_row_index(self, label:str, add_not_existing:bool = True) -> int:
         label_index = self._row_labels_indices_map.get(label, -1)
 
-        if label_index == -1:
+        if label_index == -1 and add_not_existing:
             label_index = len(self._row_labels_indices_map)
             self._row_labels.append(label)
             self._row_labels_indices_map[label] = label_index
 
         return label_index
     
-    def label_to_column_index(self, label:str) -> int:
+    def label_to_column_index(self, label:str, add_not_existing:bool = True) -> int:
         label_index = self._column_labels_indices_map.get(label, -1)
 
-        if label_index == -1:
+        if label_index == -1 and add_not_existing:
             label_index = len(self._column_labels_indices_map)
             self._column_labels.append(label)
             self._column_labels_indices_map[label] = label_index
