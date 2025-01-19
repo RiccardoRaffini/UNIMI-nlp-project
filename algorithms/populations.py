@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, Callable, List, Any, Dict
 
+from commons.recipes import Recipe, RecipeGraph, RecipeMatrices
+
 T = TypeVar('T')
 
 class Population(ABC, Generic[T]):
