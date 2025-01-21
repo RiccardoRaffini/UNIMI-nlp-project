@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from copy import deepcopy
 from typing import Generic, TypeVar, Callable, List, Any, Dict
 
 from commons.recipes import Recipe, RecipeGraph, RecipeMatrices
@@ -24,6 +25,10 @@ class Population(ABC, Generic[T]):
         
     @abstractmethod
     def size(self) -> int:
+        raise NotImplementedError()
+    
+    @abstractmethod
+    def copy(self) -> 'Population':
         raise NotImplementedError()
     
     def __len__(self) -> int:
@@ -70,6 +75,9 @@ class RecipeIndividual(RecipeGraph):
     def crossover(self, other:'RecipeIndividual') -> 'RecipeIndividual':
         pass
 
+    def copy(self) -> 'RecipeIndividual':
+        return deepcopy(self)
+
 class RecipePopulation(Population[RecipeIndividual]):
     def __init__(self, population:List[RecipeIndividual] = None) -> None:
         super(Population, self).__init__()
@@ -96,3 +104,9 @@ class RecipePopulation(Population[RecipeIndividual]):
 
     def size(self) -> int:
         return len(self._population)
+
+    def copy(self) -> 'RecipePopulation':
+        individuals_copies = [individual.copy() for individual in self._population]
+        population_copy = type(self)(individuals_copies)
+
+        return population_copy
