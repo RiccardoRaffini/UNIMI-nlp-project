@@ -6,6 +6,7 @@ import pygraphviz
 import textwrap
 import zipfile
 from abc import ABC
+from collections import deque
 from functools import reduce
 from typing import List, Tuple, Dict, Any, Union, Optional
 
@@ -140,6 +141,15 @@ class Ingredient(RecipeObject):
     @property
     def applied_actions_groups(self) -> List[str]:
         return [(action.action if not action.group and self.use_default_group_names else action.group) for action in self._actions_list]
+    
+    @property
+    def full_object(self) -> str:
+        object_ = super().full_object
+
+        if self.applied_actions_names:
+            object_ = f'{" ".join(set(self.applied_actions_names))} {object_}'
+
+        return object_
 
 class Tool(RecipeObject):
     """
@@ -367,6 +377,14 @@ class RecipeGraph:
                 for child_index in self.get_children_indices(node_index):
                     nodes_actions_queue.append((child_index, actions + [node['object']]))
 
+    def remove_actions_from_ingredients(self) -> None:
+        for node_index in self.nodes():
+            node = self.get_node(node_index)
+            node_object = node['object']
+
+            if type(node_object) == Ingredient:
+                node_object.set_applied_actions([])
+
     def __init__(self, additional_configuration:Dict[str, Any] = None, show_full_label:bool = True, show_action_group:bool = False):
         ## Underlying graph
         self._graph = nx.DiGraph()
@@ -592,6 +610,9 @@ class RecipeMatrices:
             recipe_graph (RecipeGraph): recipe graph to process.
         """
 
+        ## Clear actions list of ingredients
+        recipe_graph.remove_actions_from_ingredients()
+
         ## DFS graph traversing
         nodes_stack = [[(recipe_graph.get_root_index(), set())]] # assumes root is an Action
 
@@ -602,10 +623,10 @@ class RecipeMatrices:
 
             ## Extract node information
             node = recipe_graph.get_node(node_index)
-            action:Action = node['object']
-            action_group = action.group if action.group else action.action
-            is_mixing_action = action.group == 'mix' or action in self._mixing_actions
-            actions_sequence[-1] = (action, is_mixing_action, action_ingredients)
+            sequence_action:Action = node['object']
+            action_group = sequence_action.group if sequence_action.group else sequence_action.action
+            is_mixing_action = sequence_action.group == 'mix' or sequence_action in self._mixing_actions
+            actions_sequence[-1] = (sequence_action, is_mixing_action, action_ingredients)
             children_indices = recipe_graph.get_children_indices(node_index)
             
             ## Extract linked ingredients and actions
@@ -628,33 +649,36 @@ class RecipeMatrices:
 
             ## Update matrices
             ### Add action labels
-            self._actions_ingredients.label_to_row_index(action.action)
-            self._actions_base_ingredients.label_to_row_index(action.action)
+            self._actions_ingredients.label_to_row_index(sequence_action.action)
+            self._actions_base_ingredients.label_to_row_index(sequence_action.action)
             self._group_actions_ingredients.label_to_row_index(action_group)
             self._group_actions_base_ingredients.label_to_row_index(action_group)
             self._group_actions_tools.label_to_row_index(action_group)
 
-            ### Add ingredient labels
-            for ingredient in action_ingredients:
-                self._actions_ingredients.label_to_column_index(ingredient.full_object)
-                self._ingredients_ingredients.label_to_index(ingredient.full_object)
-                self._actions_base_ingredients.label_to_column_index(ingredient.base_object)
-                self._base_ingredients_base_ingredients.label_to_index(ingredient.base_object)
-                self._group_actions_ingredients.label_to_column_index(ingredient.full_object)
-                self._group_actions_base_ingredients.label_to_column_index(ingredient.base_object)
-
             ### Apply all actions to current ingredients
-            for action, is_mixing, ingredients in actions_sequence:
+            for sequence_action, is_mixing, sequence_action_ingredients in actions_sequence[::-1]:
                 for ingredient in action_ingredients:
-                    action_group = action.group if action.group else action.action
-                    self._actions_ingredients.add_entry(action.action, ingredient.full_object, 1)
-                    self._actions_base_ingredients.add_entry(action.action, ingredient.base_object, 1)
+                    ## Apply action
+                    ingredient.add_applied_action(sequence_action)
+
+                    ## Add ingredient labels
+                    self._actions_ingredients.label_to_column_index(ingredient.full_object)
+                    self._ingredients_ingredients.label_to_index(ingredient.full_object)
+                    self._actions_base_ingredients.label_to_column_index(ingredient.base_object)
+                    self._base_ingredients_base_ingredients.label_to_index(ingredient.base_object)
+                    self._group_actions_ingredients.label_to_column_index(ingredient.full_object)
+                    self._group_actions_base_ingredients.label_to_column_index(ingredient.base_object)
+
+                    ## Add values to matrices
+                    action_group = sequence_action.group if sequence_action.group else sequence_action.action
+                    self._actions_ingredients.add_entry(sequence_action.action, ingredient.full_object, 1)
+                    self._actions_base_ingredients.add_entry(sequence_action.action, ingredient.base_object, 1)
                     self._group_actions_ingredients.add_entry(action_group, ingredient.full_object, 1)
                     self._group_actions_base_ingredients.add_entry(action_group, ingredient.base_object, 1)
 
                 ### Mix current ingredients with previous ingredients (if necessary)
                 if is_mixing and action_ingredients:
-                    for ingredients_pair in itertools.product(ingredients, action_ingredients):
+                    for ingredients_pair in itertools.product(sequence_action_ingredients, action_ingredients):
                         self._ingredients_ingredients.add_entry(ingredients_pair[0].full_object, ingredients_pair[1].full_object, 1)
                         self._base_ingredients_base_ingredients.add_entry(ingredients_pair[0].base_object, ingredients_pair[1].base_object, 1)
 
