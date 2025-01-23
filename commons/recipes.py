@@ -322,43 +322,44 @@ class RecipeGraph:
         recipe_graph._root = last_subtree_root_index
 
         return recipe_graph
-    
-    def simplify_graph(self) -> None:
-        previous_node = previous_previous_node = None
-        current_node = self.get_node(self.get_root_index())
-        
-        while current_node:
-            previous_previous_node = previous_node
-            previous_node = current_node
-            current_node = None
 
+    def simplify_graph(self) -> None:
+        previous_node = self.get_node(self.get_root_index())
+        current_node = None
+
+        while previous_node:
+            ## Find next action node
+            # TODO: handle multi-actions children
+            current_node = None
             for child_index in self.get_children_indices(previous_node['index']):
                 child_node = self.get_node(child_index)
                 if type(child_node['object']) == Action:
                     current_node = child_node
                     break
 
-            if current_node and current_node['object'].action == previous_node['object'].action:
-                previous_edges = self.get_edges(previous_node['index'])
-                # TODO: handle nodes with more children
-                if len(previous_edges) == 1:
-                    if previous_previous_node is not None:
-                        # remove intermediate node
-                        self.remove_edge(previous_previous_node['index'], previous_node['index'])
-                        self.remove_edge(previous_node['index'], current_node['index'])
-                        self.remove_node(previous_node['index'])
-                        self.add_generic_edge(previous_previous_node['index'], current_node['index'], {'type': 'primary'})
+            ## No next action foun
+            if current_node is None:
+                break
 
-                        previous_node = previous_previous_node
-                        previous_previous_node = None
+            ## Check if current and previus action are equal
+            if current_node['object'].action == previous_node['object'].action:
+                ## Remove edge between same actions
+                actions_edge = self.get_edges(previous_node['index'], current_node['index'])[0]
+                self.remove_edge(*actions_edge)
 
-                    else:
-                        # remove root node
-                        self.remove_edge(previous_node['index'], current_node['index'])
-                        self.remove_node(previous_node['index'])
-                        self._root = current_node['index']
+                for child_index in self.get_children_indices(current_node['index']):
+                    ## Move current node children to parent node
+                    child_edge_attributes = self._graph.edges[current_node['index'], child_index]
+                    self.remove_edge(current_node['index'], child_index)
+                    self.add_generic_edge(previous_node['index'], child_index, child_edge_attributes)
 
-                        previous_previous_node = None
+                ## Remove current node
+                self.remove_node(current_node['index'])
+                current_node = None
+
+            else:
+                previous_node = current_node
+                current_node = None
 
     def apply_actions_to_ingredients(self) -> None:
         ## Traverse graph
