@@ -201,20 +201,20 @@ class ActionsToolsMatrix(AdjacencyMatrix):
     def __init__(self):
         super(ActionsToolsMatrix, self).__init__(symmetric=False)
 
-    def label_to_row_index(self, label:str) -> int:
+    def label_to_row_index(self, label:str, add_not_existing:bool = True) -> int:
         label_index = self._row_labels_indices_map.get(label, -1)
 
-        if label_index == -1:
+        if label_index == -1 and add_not_existing:
             label_index = len(self._row_labels_indices_map)
             self._row_labels.append(label)
             self._row_labels_indices_map[label] = label_index
 
         return label_index
     
-    def label_to_column_index(self, label:str) -> int:
+    def label_to_column_index(self, label:str, add_not_existing:bool = True) -> int:
         label_index = self._column_labels_indices_map.get(label, -1)
 
-        if label_index == -1:
+        if label_index == -1 and add_not_existing:
             label_index = len(self._column_labels_indices_map)
             self._column_labels.append(label)
             self._column_labels_indices_map[label] = label_index
