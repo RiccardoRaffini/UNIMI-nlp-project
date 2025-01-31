@@ -1,4 +1,15 @@
-groups = {
+from typing import Dict, List, Optional
+from collections import defaultdict
+
+def create_inverse_groups(groups:Dict[str, Optional[str]]) -> Dict[str, List[str]]:
+    inverse_groups = defaultdict(lambda: list())
+
+    for action, group in groups.items():
+        inverse_groups[group].append(action)
+
+    return inverse_groups
+
+groups = defaultdict(lambda: None, {
     'heat':'heat',
     'cook':'heat',
     'bake':'heat',
@@ -65,7 +76,7 @@ groups = {
     'bury':None,
     'place':None,
     ## additional verbs
-    'stir': None,
+    'stir': 'mix',
     'blend in': None,
     'remove': None,
     'spoon into': 'mix',
@@ -137,5 +148,8 @@ groups = {
     'cutting': 'prepare',
     'refrigerate': 'cool',
     'whisking': None,
-    'blend together': 'mix'
-}
+    'blend together': 'mix',
+    'trim': 'prepare'
+})
+
+inverse_groups = create_inverse_groups(groups)
