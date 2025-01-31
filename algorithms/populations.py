@@ -56,6 +56,7 @@ class RecipeIndividual(RecipeGraph):
         recipe_individual = cls(recipe_graph._graph_configuration, recipe_graph._full_label, recipe_graph._action_group)
         recipe_individual._graph = recipe_graph._graph.copy()
         recipe_individual._root = recipe_graph._root
+        recipe_individual._indices_count = max(recipe_individual.nodes())+1
 
         return recipe_individual
     

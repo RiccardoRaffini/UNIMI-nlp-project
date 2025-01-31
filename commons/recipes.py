@@ -392,6 +392,7 @@ class RecipeGraph:
         self._root = None
         self._full_label = show_full_label
         self._action_group = show_action_group
+        self._indices_count = 0
 
         ## Graph configuration
         self._graph_configuration = {
@@ -424,32 +425,38 @@ class RecipeGraph:
 
         return list(children_indices)
 
+    def _get_next_index(self) -> int:
+        index = self._indices_count
+        self._indices_count += 1
+        return index
+
     def add_ingredient_node(self, ingredient:Ingredient) -> int:
-        node_index = len(self._graph.nodes)
+        node_index = self._get_next_index()
         node_text = ingredient.full_object if self._full_label else ingredient.base_object
         return self.add_recipe_node(node_index, ingredient, node_text)
 
     def add_tool_node(self, tool:Tool) -> int:
-        node_index = len(self._graph.nodes)
+        node_index = self._get_next_index()
         node_text = tool.full_object if self._full_label else tool.base_object
         return self.add_recipe_node(node_index, tool, node_text)
     
     def add_misc_node(self, object:Miscellaneous) -> int:
-        node_index = len(self._graph.nodes)
+        node_index = self._get_next_index()
         node_text = object.full_object if self._full_label else object.base_object
         return self.add_recipe_node(node_index, object, node_text)
 
     def add_action_node(self, action:Action, primary_objects_nodes:List[int], secondary_objects_nodes:List[str] = None) -> int:
-        node_index = len(self._graph.nodes)
+        node_index = self._get_next_index()
         node_text = action.full_action if self._action_group else action.action
         self.add_recipe_node(node_index, action, node_text)
 
         for primary_index in primary_objects_nodes:
             self.add_generic_edge(node_index, primary_index, {'type': 'primary'})
 
-        for secondary_index in secondary_objects_nodes:
-            self.add_generic_edge(node_index, secondary_index, {'type': 'secondary'})
-            self._graph.nodes[secondary_index]['style'] = 'rounded,filled,dashed'
+        if secondary_objects_nodes:
+            for secondary_index in secondary_objects_nodes:
+                self.add_generic_edge(node_index, secondary_index, {'type': 'secondary'})
+                self._graph.nodes[secondary_index]['style'] = 'rounded,filled,dashed'
         
         return node_index
 
