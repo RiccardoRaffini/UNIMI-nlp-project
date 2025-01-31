@@ -162,11 +162,112 @@ class InsertActionNodeMutation(RecipeNodeMutation):
         new_node_index = individual.add_action_node(action, [node_index])
         individual.add_generic_edge(parent_node_index, new_node_index, {'type': 'primary'})
 
+class ReplaceActionNodeMutation(RecipeNodeMutation):
+    def __init__(self, recipes_matrices:RecipeMatrices, limit_to_action_group:bool = True):
+        super(ReplaceActionNodeMutation, self).__init__(recipes_matrices)
+
+        self._limit_to_action_group = limit_to_action_group
+
+    def is_valid(self, individual:RecipeIndividual, node_index:int) -> bool:
+        ## Check node is an action
+        node = individual.get_node(node_index)
+        if not type(node['object']) is Action:
+            return False
+
+        ## Check parent node existance
+        parent_edges = individual.get_edges(node_2=node_index)
+        return len(parent_edges) > 0
+    
+    def _mutate(self, individual:RecipeIndividual, node_index:int) -> None:
+        ## Find new action
+        if self._limit_to_action_group:
+            ## Get action group
+            node = individual.get_node(node_index)
+            group = node['object'].group
+
+            if group is None:
+                return # no alternative action
+            
+            ## Select actions in the same group
+            possible_actions = [(action, group) for action in inverse_groups[group]]
+        else:
+            ## Select all actions
+            possible_actions = list(groups.items())
+
+        action_group = random.choice(possible_actions)
+        action = Action(*action_group)
+
+        ## Get parent node and remove edge
+        parent_node_index = individual.get_edges(node_2=node_index)[0][0]
+        parent_edge_type = individual._graph.edges[parent_node_index, node_index]['type']
+        individual.remove_edge(parent_node_index, node_index)
+
+        ## Remove children edges
+        children_indices = individual.get_children_indices(node_index)
+        primary_children = []
+        secondary_children = []
+
+        for child_index in children_indices:
+            if individual._graph.edges[node_index, child_index]['type'] == 'primary':
+                primary_children.append(child_index)
+            else: # secondary
+                secondary_children.append(child_index)
+
+            individual.remove_edge(node_index, child_index)
+
+        ## Remove old action node
+        individual.remove_node(node_index)
+
+        ## Add new action node
+        new_node_index = individual.add_action_node(action, primary_children, secondary_children)
+        individual.add_generic_edge(parent_node_index, new_node_index, {'type': parent_edge_type})
+
+class AddIngredientToActionNodeMutation(RecipeNodeMutation):
+    def __init__(self, recipes_matrices:RecipeMatrices, limit_to_mix_actions:bool = True, limit_to_action_group_ingredients:bool = True):
+        super(AddIngredientToActionNodeMutation, self).__init__(recipes_matrices)
+
+        self._limit_to_mix_actions = limit_to_mix_actions
+        self._limit_to_action_group_ingrdients = limit_to_action_group_ingredients
+
+    def is_valid(self, individual:RecipeIndividual, node_index:int) -> bool:
+        ## Check node is an action
+        node = individual.get_node(node_index)
+        if not type(node['object']) is Action:
+            return False
+        
+        return True
+        
+    def _mutate(self, individual:RecipeIndividual, node_index:int) -> None:
+        ## Check node group
+        node = individual.get_node(node_index)
+        group = node['object'].group if node['object'].group else node['object'].action
+
+        if self._limit_to_mix_actions and group != 'mix': 
+            return
+        
+        ## Find new ingredient
+        ingredients_labels = self._recipes_matrices.group_actions_base_ingredients.get_labels()[1]
+        if self._limit_to_action_group_ingrdients:
+            ## Get valid ingredients
+            group_index = self._recipes_matrices.group_actions_base_ingredients.label_to_row_index(group, False)
+            ingredients_indices = self._recipes_matrices.actions_base_ingredients.get_csr_matrix().getrow(group_index).nonzero()[1]
+            possible_ingredients = [ingredients_labels[index] for index in ingredients_indices]
+        else:
+            ## Select all (seen) ingredients
+            possible_ingredients = ingredients_labels
+
+        ingredient_text = random.choice(possible_ingredients)
+        ingredient = Ingredient(ingredient_text)
+
+        ## Add new ingredient
+        new_node_index = individual.add_ingredient_node(ingredient)
+        individual.add_generic_edge(node_index, new_node_index, {'type': 'primary'})
+
 class ReplaceIngredientNodeMutation(RecipeNodeMutation):
-    def __init__(self, recipes_matrices:RecipeMatrices, limit_to_action_ingrdients:bool = True):
+    def __init__(self, recipes_matrices:RecipeMatrices, limit_to_action_ingredients:bool = True):
         super(ReplaceIngredientNodeMutation, self).__init__(recipes_matrices)
 
-        self._limit_to_action_ingrdients = limit_to_action_ingrdients
+        self._limit_to_action_ingrdients = limit_to_action_ingredients
 
     def is_valid(self, individual:RecipeIndividual, node_index:int) -> bool:
         ## Check node is an ingredient
@@ -251,6 +352,47 @@ class InsertActionToIngredientNodeMutation(RecipeNodeMutation):
         individual.remove_edge(parent_node_index, node_index)
         new_node_index = individual.add_action_node(action, [node_index])
         individual.add_generic_edge(parent_node_index, new_node_index, {'type': 'primary'})
+
+class AddToolNodeMutation(RecipeNodeMutation):
+    def __init__(self, recipes_matrices:RecipeMatrices, limit_to_action_tools:bool = True):
+        super(AddToolNodeMutation, self).__init__(recipes_matrices)
+
+        self._limit_to_action_tools = limit_to_action_tools
+
+    def is_valid(self, individual:RecipeIndividual, node_index:int) -> bool:
+        ## Check node is an action
+        node = individual.get_node(node_index)
+        if not type(node['object']) == Action:
+            return False
+        
+        return True
+    
+    def _mutate(self, individual:RecipeIndividual, node_index:int) -> None:
+        ## Find new tool
+        tools_labels = self._recipes_matrices.group_actions_tools.get_labels()[1]
+        possible_tools = None
+        if self._limit_to_action_tools:
+            ## Get node tool
+            parent_node = individual.get_node(node_index)
+            group = parent_node['object'].group if parent_node['object'].group else parent_node['object'].action
+
+            ## Get valid tools
+            group_index = self._recipes_matrices.group_actions_tools.label_to_row_index(group, False)
+            tools_indices = self._recipes_matrices.group_actions_tools.get_csr_matrix().getrow(group_index).nonzero()[1]
+            possible_tools = [tools_labels[index] for index in tools_indices]
+        else:
+            ## Select all (seen) tools
+            possible_tools = tools_labels
+
+        if possible_tools is None:
+            return
+
+        tool_text = random.choice(tools_labels)
+        tool = Tool(tool_text)
+
+        ## Add new tool
+        new_node_index = individual.add_tool_node(tool)
+        individual.add_generic_edge(node_index, new_node_index, {'type': 'secondary'})
 
 class ReplaceToolNodeMutation(RecipeNodeMutation):
     def __init__(self, recipes_matrices:RecipeMatrices, limit_to_action_tools:bool = True, skip_if_not_available:bool = True):
