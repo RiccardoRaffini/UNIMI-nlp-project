@@ -480,13 +480,13 @@ class RecipeGraph:
     def get_edges(self, node_1:int = None, node_2:int = None) -> List[Any]:
         assert not (node_1 is None and node_2 is None), 'at least one node must be specified'
 
-        if node_1 and node_2:
+        if node_1 is not None and node_2 is not None:
             return list(filter(lambda e: e == (node_1, node_2), self._graph.edges))
 
-        elif node_1:
+        elif node_1 is not None:
             return list(filter(lambda e: e[0] == node_1, self._graph.edges))
 
-        elif node_2:
+        elif node_2 is not None:
             return list(filter(lambda e: e[1] == node_2, self._graph.edges))
 
     def to_gviz(self, filename:str) -> None:
