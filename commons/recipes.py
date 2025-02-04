@@ -147,7 +147,7 @@ class Ingredient(RecipeObject):
         object_ = super().full_object
 
         if self.applied_actions_names:
-            object_ = f'{" ".join(set(self.applied_actions_names))} {object_}'
+            object_ = f'{" ".join(sorted(set(self.applied_actions_names)))} {object_}'
 
         return object_
 
@@ -361,9 +361,15 @@ class RecipeGraph:
                 previous_node = current_node
                 current_node = None
 
-    def apply_actions_to_ingredients(self) -> None:
+    def apply_actions_to_ingredients(self, starting_index:int = None) -> None:
+        ## Clear actions
+        self.remove_actions_from_ingredients()
+
         ## Traverse graph
-        nodes_actions_queue = [(self._root, [])]
+        if starting_index is None:
+            nodes_actions_queue = [(self._root, [])]
+        else:
+            nodes_actions_queue = [(starting_index, [])]
 
         while nodes_actions_queue:
             node_index, actions = nodes_actions_queue.pop(0)
@@ -665,10 +671,8 @@ class RecipeMatrices:
 
             ### Apply all actions to current ingredients
             for sequence_action, is_mixing, sequence_action_ingredients in actions_sequence[::-1]:
+                ## Update matrices
                 for ingredient in action_ingredients:
-                    ## Apply action
-                    ingredient.add_applied_action(sequence_action)
-
                     ## Add ingredient labels
                     self._actions_ingredients.label_to_column_index(ingredient.full_object)
                     self._ingredients_ingredients.label_to_index(ingredient.full_object)
@@ -686,9 +690,14 @@ class RecipeMatrices:
 
                 ### Mix current ingredients with previous ingredients (if necessary)
                 if is_mixing and action_ingredients:
+                    sequence_action_ingredients = [Ingredient(ing.base_object, ing.adjectives) for ing in sequence_action_ingredients]
                     for ingredients_pair in itertools.product(sequence_action_ingredients, action_ingredients):
                         self._ingredients_ingredients.add_entry(ingredients_pair[0].full_object, ingredients_pair[1].full_object, 1)
                         self._base_ingredients_base_ingredients.add_entry(ingredients_pair[0].base_object, ingredients_pair[1].base_object, 1)
+
+                ## Apply action
+                for ingredient in action_ingredients:
+                    ingredient.add_applied_action(sequence_action)
 
             ## Add new actions to queue
             for linked_action in linked_actions:
