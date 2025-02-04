@@ -204,8 +204,13 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
         if len(ingredients) == 0:
             return 0
 
+        ## Apply actions to ingredients
+        tree.apply_actions_to_ingredients(starting_index=action_node['index'])
+        for ingredient in ingredients:
+            ingredient._actions_list.remove(action_node['object']) # TODO: should not access private attribute
+
         ## Count valid actions in matrices
-        actions_ingredients = self._recipe_matrices.actions_base_ingredients
+        actions_ingredients = self._recipe_matrices.actions_ingredients
         action = action_node['object']
         action_index = actions_ingredients.label_to_row_index(action.action, False)
         if action_index == -1:
@@ -215,7 +220,7 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
 
         valid_actions_number = 0
         for ingredient in ingredients:
-            ingredient_index = actions_ingredients.label_to_column_index(ingredient.base_object, False)
+            ingredient_index = actions_ingredients.label_to_column_index(ingredient.full_object, False)
 
             if ingredient_index != -1 and actions_ingredients_matrix[action_index, ingredient_index] > 0:
                 valid_actions_number += 1
@@ -227,33 +232,67 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
         return action_node_score
 
     def _mix_node_score(self, tree:RecipeIndividual, mix_node:dict) -> float:
-        ## Find all ingredients in sub tree
+        ## Find all ingredients in each sub trees
         ingredients = []
+        subtrees_ingredients = []
 
-        nodes_queue = [mix_node['index']]
-        while nodes_queue:
-            node_index = nodes_queue.pop(0)
-            node = tree.get_node(node_index)
+        node_ingredients = []
+        subtrees_action_nodes_indices = []
+        for child_index in tree.get_children_indices(mix_node['index']):
+            child_node = tree.get_node(child_index)
 
-            if type(node['object']) == Ingredient:
-                ingredients.append(node['object'])
-            elif type(node['object']) == Action:
-                nodes_queue.extend(tree.get_children_indices(node_index))
+            if type(child_node['object']) == Ingredient:
+                ingredients.append(child_node['object'])
+                node_ingredients.append(child_node['object'])
+
+            elif type(child_node['object']) == Action:
+                subtrees_action_nodes_indices.append(child_node['index'])
+        
+        subtrees_ingredients.append(node_ingredients)
+
+        for subtree_node_index in subtrees_action_nodes_indices:
+            subtree_ingredients = []
+            nodes_queue = [subtree_node_index]
+
+            while nodes_queue:
+                node_index = nodes_queue.pop(0)
+                node = tree.get_node(node_index)
+
+                if type(node['object']) == Ingredient:
+                    ingredients.append(node['object'])
+                    subtree_ingredients.append(node['object'])
+                elif type(node['object']) == Action:
+                    nodes_queue.extend(tree.get_children_indices(node_index))
+
+            subtrees_ingredients.append(subtree_ingredients)
 
         if len(ingredients) == 0:
             return 0
+        
+        ## Apply actions to ingredients
+        tree.apply_actions_to_ingredients(starting_index=mix_node['index'])
+        for ingredient in ingredients:
+            ingredient._actions_list.remove(mix_node['object']) # TODO: should not access private attribute
 
         ## Create ingredient pairs and count valid mixings in matrices
-        ingredients_pairs = itertools.combinations(ingredients, r=2)
-        ingredients_ingredients = self._recipe_matrices.base_ingredients_base_ingredients
+        ingredients_pairs = itertools.combinations(node_ingredients, r=2)
+        if len(subtrees_ingredients) > 1:
+            subtrees_pairs_ingredients_pairs = []
+            for subtrees_ingredients_pair in itertools.combinations(subtrees_ingredients, r=2):
+                pair_ingredients_pairs = itertools.product(subtrees_ingredients_pair[0], subtrees_ingredients_pair[1])
+                subtrees_pairs_ingredients_pairs.append(pair_ingredients_pairs)
+
+            ingredients_pairs = itertools.chain(ingredients_pairs, *subtrees_pairs_ingredients_pairs)
+
+        ingredients_ingredients = self._recipe_matrices.ingredients_ingredients
         ingredients_ingredients_matrix = ingredients_ingredients.get_csr_matrix()
 
         ingredients_pairs_number = 0
         valid_ingredients_pairs_number = 0
         for ingredient_1, ingredient_2 in ingredients_pairs:
             ingredients_pairs_number += 1
-            ingredient_1_index = ingredients_ingredients.label_to_index(ingredient_1.base_object, False)
-            ingredient_2_index = ingredients_ingredients.label_to_index(ingredient_2.base_object, False)
+            ingredient_1_index = ingredients_ingredients.label_to_index(ingredient_1.full_object, False)
+            ingredient_2_index = ingredients_ingredients.label_to_index(ingredient_2.full_object, False)
 
             if ingredient_1_index != -1 and ingredient_2_index != -1 and ingredients_ingredients_matrix[ingredient_1_index, ingredient_2_index] > 0:
                 valid_ingredients_pairs_number += 1
