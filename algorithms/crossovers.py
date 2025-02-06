@@ -81,8 +81,8 @@ class MixNodeCrossover(RecipeCrossover):
         individual_2_split_index = random.choice(individual_2_mix_nodes_indices)
 
         ## Select split branches
-        branch_1_node_index = random.choice(individual_1.get_children_indices(individual_1_split_index)[:1])
-        branch_2_node_index = random.choice(individual_2.get_children_indices(individual_2_split_index)[:1])
+        branch_1_node_index = random.choice(individual_1.get_children_indices(individual_1_split_index))
+        branch_2_node_index = random.choice(individual_2.get_children_indices(individual_2_split_index))
 
         ## Split branches
         individual_1.remove_edge(individual_1_split_index, branch_1_node_index)
