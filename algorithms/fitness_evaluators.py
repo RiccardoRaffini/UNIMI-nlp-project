@@ -48,7 +48,7 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
     def _heat_score(self, ingredient:Ingredient) -> float:
         group_actions_base_ingredients_matrix = self._recipe_matrices.group_actions_base_ingredients
         heat_index = group_actions_base_ingredients_matrix.label_to_row_index('heat', add_not_existing=False)
-        ingredient_index = group_actions_base_ingredients_matrix.label_to_column_index(ingredient.base_object)
+        ingredient_index = group_actions_base_ingredients_matrix.label_to_column_index(ingredient.base_object, add_not_existing=False)
 
         if heat_index != -1 and ingredient_index != -1:
             group_actions_base_ingredients_matrix = group_actions_base_ingredients_matrix.get_sparse_matrix().todok()
@@ -61,7 +61,7 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
     def _prepare_score(self, ingredient:Ingredient) -> float:
         group_actions_base_ingredients_matrix = self._recipe_matrices.group_actions_base_ingredients
         prepare_index = group_actions_base_ingredients_matrix.label_to_row_index('prepare', add_not_existing=False)
-        ingredient_index = group_actions_base_ingredients_matrix.label_to_column_index(ingredient.base_object)
+        ingredient_index = group_actions_base_ingredients_matrix.label_to_column_index(ingredient.base_object, add_not_existing=False)
 
         if prepare_index != -1 and ingredient_index != -1:
             group_actions_base_ingredients_matrix = group_actions_base_ingredients_matrix.get_sparse_matrix().todok()
