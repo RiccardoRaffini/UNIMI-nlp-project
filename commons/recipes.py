@@ -357,6 +357,12 @@ class RecipeGraph:
                 self.remove_node(current_node['index'])
                 current_node = None
 
+            ## Remove empty action nodes
+            elif len(self.get_children_indices(current_node['index'])) == 0:
+                self.remove_edge(previous_node['index'], current_node['index'])
+                self.remove_node(current_node['index'])
+                current_node = None
+
             else:
                 previous_node = current_node
                 current_node = None
