@@ -126,7 +126,7 @@ class MixedIngredientsMatrix(AdjacencyMatrix):
         with open(labels_filename, 'r') as labels_file:
             labels_map:Dict[str, int] = json.load(labels_file)
             mixed_ingredients_matrix._labels_indices_map = labels_map
-            mixed_ingredients_matrix._labels = list(labels_map.values())
+            mixed_ingredients_matrix._labels = list(labels_map.keys())
 
         return mixed_ingredients_matrix
 
@@ -191,9 +191,9 @@ class ActionsIngredientsMatrix(AdjacencyMatrix):
         with open(labels_filename, 'r') as labels_file:
             labels_map:Dict[str, Dict[str, int]] = json.load(labels_file)
             actions_ingredients_matrix._row_labels_indices_map = labels_map['row']
-            actions_ingredients_matrix._row_labels = list(labels_map['row'].values())
+            actions_ingredients_matrix._row_labels = list(labels_map['row'].keys())
             actions_ingredients_matrix._column_labels_indices_map = labels_map['column']
-            actions_ingredients_matrix._column_labels = list(labels_map['column'].values())
+            actions_ingredients_matrix._column_labels = list(labels_map['column'].keys())
 
         return actions_ingredients_matrix
 
