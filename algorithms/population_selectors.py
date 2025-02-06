@@ -13,6 +13,10 @@ class PopulationSelector(ABC, Generic[T]):
     def select(self, population:Population[T], individuals_number:int = 1) -> Population[T]:
         raise NotImplementedError()
     
+    def __call__(self, population:Population[T], individuals_number:int = 1) -> Population[T]:
+        selected_population = self.select(population, individuals_number)
+        return selected_population
+    
 class RouletteWheelSelector(PopulationSelector[T]):
     def __init__(self, fitness_evaluator:FitnessEvaluator[T], fitness_scaling_factor:float = 1.0) -> None:
         super(PopulationSelector, self).__init__()
@@ -29,7 +33,7 @@ class RouletteWheelSelector(PopulationSelector[T]):
         individual_relative_probabilities = [individual_absolute_fitness / fintess_sum for individual_absolute_fitness in individuals_absolute_fitness]
 
         ## Select individuals
-        selected_indicies = np.random.choice(population.size(), individuals_number, replace=False, p=individual_relative_probabilities)
+        selected_indicies = np.random.choice(population.size(), individuals_number, replace=True, p=individual_relative_probabilities)
         selected_individuals = [population.individual_at(index) for index in selected_indicies]
         selected_population = type(population)(selected_individuals)
 
