@@ -397,8 +397,9 @@ class RecipeGraph:
 
             if type(node_object) == Ingredient:
                 node_object.set_applied_actions([])
+                node['label'] = node_object.full_object if self._full_label else node_object.base_object
 
-    def __init__(self, additional_configuration:Dict[str, Any] = None, show_full_label:bool = True, show_action_group:bool = False):
+    def __init__(self, additional_configuration:Dict[str, Any] = None, show_full_label:bool = False, show_action_group:bool = False):
         ## Underlying graph
         self._graph = nx.DiGraph()
         self._root = None
