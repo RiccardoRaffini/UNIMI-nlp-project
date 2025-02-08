@@ -17,6 +17,27 @@ class PopulationSelector(ABC, Generic[T]):
         selected_population = self.select(population, individuals_number)
         return selected_population
     
+class RandomSelector(PopulationSelector[T]):
+    def __init__(self, with_replacement:bool = False):
+        super(RandomSelector, self).__init__()
+
+        self._with_replacement = with_replacement
+
+    def select(self, population:Population[T], individuals_number:int = 1) -> Population[T]:
+        ## Select random indices
+        if self._with_replacement:
+            selected_indices = random.choices(range(population.size()), k=individuals_number)
+        else:
+            selected_indices = random.sample(range(population.size()), k=individuals_number)
+
+        ## Select individuals
+        selected_population = type(population)()
+        for selected_index in selected_indices:
+            selected_indivvidual = population.individual_at(selected_index)
+            selected_population.add_individual(selected_indivvidual)
+
+        return selected_population
+
 class RouletteWheelSelector(PopulationSelector[T]):
     def __init__(self, fitness_evaluator:FitnessEvaluator[T], fitness_scaling_factor:float = 1.0) -> None:
         super(PopulationSelector, self).__init__()
