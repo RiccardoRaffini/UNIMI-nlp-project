@@ -51,8 +51,8 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
         ingredient_index = group_actions_base_ingredients_matrix.label_to_column_index(ingredient.base_object, add_not_existing=False)
 
         if heat_index != -1 and ingredient_index != -1:
-            group_actions_base_ingredients_matrix = group_actions_base_ingredients_matrix.get_sparse_matrix().todok()
-            heat_score = group_actions_base_ingredients_matrix[heat_index, ingredient_index]
+            heat_row = group_actions_base_ingredients_matrix = group_actions_base_ingredients_matrix.get_csr_matrix().getrow(heat_index)
+            heat_score = heat_row[0, ingredient_index]
         else:
             heat_score = 0
 
@@ -64,8 +64,8 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
         ingredient_index = group_actions_base_ingredients_matrix.label_to_column_index(ingredient.base_object, add_not_existing=False)
 
         if prepare_index != -1 and ingredient_index != -1:
-            group_actions_base_ingredients_matrix = group_actions_base_ingredients_matrix.get_sparse_matrix().todok()
-            prepare_score = group_actions_base_ingredients_matrix[prepare_index, ingredient_index]
+            prepare_row = group_actions_base_ingredients_matrix = group_actions_base_ingredients_matrix.get_csr_matrix().getrow(prepare_index)
+            prepare_score = prepare_row[0, ingredient_index]
         else:
             prepare_score = 0
 
@@ -216,13 +216,13 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
         if action_index == -1:
             return 0
 
-        actions_ingredients_matrix = actions_ingredients.get_csr_matrix()
+        action_row = actions_ingredients.get_csr_matrix().getrow(action_index)
 
         valid_actions_number = 0
         for ingredient in ingredients:
             ingredient_index = actions_ingredients.label_to_column_index(ingredient.full_object, False)
 
-            if ingredient_index != -1 and actions_ingredients_matrix[action_index, ingredient_index] > 0:
+            if ingredient_index != -1 and action_row[0, ingredient_index] > 0:
                 valid_actions_number += 1
 
         ## Compute final action node score
