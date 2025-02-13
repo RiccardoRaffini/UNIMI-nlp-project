@@ -1,11 +1,8 @@
-import pandas as pd
-import random
 from abc import ABC, abstractmethod
 from copy import deepcopy
-from typing import Generic, TypeVar, Callable, List, Any, Dict, Tuple
-from tqdm import tqdm
+from typing import Generic, TypeVar, Callable, List, Any, Dict
 
-from commons.recipes import Recipe, RecipeGraph, RecipeMatrices
+from commons.recipes import Recipe, RecipeGraph
 
 T = TypeVar('T')
 
@@ -70,14 +67,8 @@ class RecipeIndividual(RecipeGraph):
 
         return recipe_individual
 
-    def __init__(self, additional_configuration:Dict[str, Any] = None, show_full_label:bool = True, show_action_group:bool = False):
+    def __init__(self, additional_configuration:Dict[str, Any] = None, show_full_label:bool = False, show_action_group:bool = False):
         super(RecipeIndividual, self).__init__(additional_configuration, show_full_label, show_action_group)
-
-    def mutate(self) -> 'RecipeIndividual':
-        pass
-
-    def crossover(self, other:'RecipeIndividual') -> 'RecipeIndividual':
-        pass
 
     def copy(self) -> 'RecipeIndividual':
         return deepcopy(self)
@@ -114,20 +105,3 @@ class RecipePopulation(Population[RecipeIndividual]):
         population_copy = type(self)(individuals_copies)
 
         return population_copy
-
-def random_recipes_population(recipe_universe:pd.DataFrame, individuals_number:int) -> Tuple[RecipePopulation, List[int]]:
-    recipes_population = RecipePopulation()
-    recipes_indices = []
-
-    for _ in tqdm(range(individuals_number)):
-        recipe_index = random.randint(0, len(recipe_universe)-1)
-        recipes_indices.append(recipe_index)
-
-        recipe = recipe_universe.iloc[recipe_index]
-        recipe = Recipe.from_dataframe_row(recipe)
-        recipe_graph = RecipeGraph.from_recipe(recipe)
-        recipe_graph.simplify_graph()
-        recipe_individual = RecipeIndividual.from_recipe_graph(recipe_graph)
-        recipes_population.add_individual(recipe_individual)
-
-    return recipes_population, recipes_indices
