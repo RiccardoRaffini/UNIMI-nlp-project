@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, List
 
 from algorithms.populations import RecipeIndividual
+from commons.action_groups import groups
 from commons.recipes import RecipeMatrices, Ingredient, Action
 
 T = TypeVar('T')
@@ -45,27 +46,35 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
 
         return individual_tree_score
     
-    def _heat_score(self, ingredient:Ingredient) -> float:
+    def _heat_score(self, ingredient:Ingredient, normalized:bool = True) -> float:
         group_actions_base_ingredients_matrix = self._recipe_matrices.group_actions_base_ingredients
         heat_index = group_actions_base_ingredients_matrix.label_to_row_index('heat', add_not_existing=False)
         ingredient_index = group_actions_base_ingredients_matrix.label_to_column_index(ingredient.base_object, add_not_existing=False)
 
         if heat_index != -1 and ingredient_index != -1:
-            heat_row = group_actions_base_ingredients_matrix = group_actions_base_ingredients_matrix.get_csr_matrix().getrow(heat_index)
-            heat_score = heat_row[0, ingredient_index]
+            actions_labels = group_actions_base_ingredients_matrix.get_labels()[0]
+            ingredient_column = group_actions_base_ingredients_matrix.get_csr_matrix().getcol(ingredient_index)
+            seen_actions_indices = ingredient_column.nonzero()[0]
+
+            heat_actions_count = sum(1 for action_index in seen_actions_indices if groups[actions_labels[action_index]] == 'heat')
+            heat_score = heat_actions_count / len(seen_actions_indices) if normalized else heat_actions_count
         else:
             heat_score = 0
 
         return heat_score
 
-    def _prepare_score(self, ingredient:Ingredient) -> float:
+    def _prepare_score(self, ingredient:Ingredient, normalized:bool = True) -> float:
         group_actions_base_ingredients_matrix = self._recipe_matrices.group_actions_base_ingredients
         prepare_index = group_actions_base_ingredients_matrix.label_to_row_index('prepare', add_not_existing=False)
         ingredient_index = group_actions_base_ingredients_matrix.label_to_column_index(ingredient.base_object, add_not_existing=False)
 
         if prepare_index != -1 and ingredient_index != -1:
-            prepare_row = group_actions_base_ingredients_matrix = group_actions_base_ingredients_matrix.get_csr_matrix().getrow(prepare_index)
-            prepare_score = prepare_row[0, ingredient_index]
+            actions_labels = group_actions_base_ingredients_matrix.get_labels()[0]
+            ingredient_column = group_actions_base_ingredients_matrix.get_csr_matrix().getcol(ingredient_index)
+            seen_actions_indices = ingredient_column.nonzero()[0]
+
+            prepare_actions_count = sum(1 for action_index in seen_actions_indices if groups[actions_labels[action_index]] == 'prepare')
+            prepare_score = prepare_actions_count / len(seen_actions_indices) if normalized else prepare_actions_count
         else:
             prepare_score = 0
 
