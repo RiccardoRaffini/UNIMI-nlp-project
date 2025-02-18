@@ -10,8 +10,8 @@ from collections import deque
 from functools import reduce
 from typing import List, Tuple, Dict, Any, Union, Optional
 
+from algorithms.matrices import AdjacencyMatrix, ActionsIngredientsMatrix, MixedIngredientsMatrix, ActionsToolsMatrix
 from commons.action_groups import groups
-from commons.matrices import AdjacencyMatrix, ActionsIngredientsMatrix, MixedIngredientsMatrix, ActionsToolsMatrix
 from commons.nlp_utils import RecipeProcessor
 
 class Action:
@@ -666,7 +666,7 @@ class RecipeMatrices:
                 elif child_node['type'] == 'Tool':
                     ## Add entry in action-tool matrix
                     tool = child_node['object']
-                    self._group_actions_tools.add_entry(action_group, tool.full_object, 1)
+                    self._group_actions_tools.add_entry(action_group, tool.full_object)
 
             ## Update matrices
             ### Add action labels
@@ -690,17 +690,17 @@ class RecipeMatrices:
 
                     ## Add values to matrices
                     action_group = sequence_action.group if sequence_action.group else sequence_action.action
-                    self._actions_ingredients.add_entry(sequence_action.action, ingredient.full_object, 1)
-                    self._actions_base_ingredients.add_entry(sequence_action.action, ingredient.base_object, 1)
-                    self._group_actions_ingredients.add_entry(action_group, ingredient.full_object, 1)
-                    self._group_actions_base_ingredients.add_entry(action_group, ingredient.base_object, 1)
+                    self._actions_ingredients.add_entry(sequence_action.action, ingredient.full_object)
+                    self._actions_base_ingredients.add_entry(sequence_action.action, ingredient.base_object)
+                    self._group_actions_ingredients.add_entry(action_group, ingredient.full_object)
+                    self._group_actions_base_ingredients.add_entry(action_group, ingredient.base_object)
 
                 ### Mix current ingredients with previous ingredients (if necessary)
                 if is_mixing and action_ingredients:
                     sequence_action_ingredients = [Ingredient(ing.base_object, ing.adjectives) for ing in sequence_action_ingredients]
                     for ingredients_pair in itertools.product(sequence_action_ingredients, action_ingredients):
-                        self._ingredients_ingredients.add_entry(ingredients_pair[0].full_object, ingredients_pair[1].full_object, 1)
-                        self._base_ingredients_base_ingredients.add_entry(ingredients_pair[0].base_object, ingredients_pair[1].base_object, 1)
+                        self._ingredients_ingredients.add_entry(ingredients_pair[0].full_object, ingredients_pair[1].full_object)
+                        self._base_ingredients_base_ingredients.add_entry(ingredients_pair[0].base_object, ingredients_pair[1].base_object)
 
                 ## Apply action
                 for ingredient in action_ingredients:

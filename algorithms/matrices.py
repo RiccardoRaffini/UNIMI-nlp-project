@@ -3,7 +3,7 @@ import numpy as np
 import scipy
 from abc import ABC, abstractmethod
 from scipy.sparse import coo_matrix, csr_matrix
-from typing import List, Dict, Tuple, Any, Union
+from typing import List, Dict, Tuple, Any, Union, Set
 
 class AdjacencyMatrix(ABC):
     def __init__(self, symmetric:bool) -> None:
@@ -23,7 +23,7 @@ class AdjacencyMatrix(ABC):
             self._column_labels_indices_map:Dict[str, int] = {}
 
         ## Define matrix
-        self._data:List[Tuple[Any, int, int]] = [] # (data_value, row_index, col_index)
+        self._data:Set[Tuple[1, int, int]] = set() # (row_index, col_index)
 
         self._base_matrix:coo_matrix = None
 
@@ -55,11 +55,11 @@ class AdjacencyMatrix(ABC):
 
         return self._base_matrix.toarray()
 
-    def add_entry(self, row_index:int, column_index:int, value:Any) -> None:
-        self._data.append((value, row_index, column_index))
+    def add_entry(self, row_index:int, column_index:int) -> None:
+        self._data.add((1, row_index, column_index))
 
         if self._symmetric:
-            self._data.append((value, column_index, row_index))
+            self._data.add((1, column_index, row_index))
 
     def get_labels(self) -> Union[List[str], Tuple[List[str], List[str]]]:
         if self._symmetric:
@@ -90,11 +90,11 @@ class MixedIngredientsMatrix(AdjacencyMatrix):
 
         return label_index
     
-    def add_entry(self, row_label:str, column_label:str, value:Any):
+    def add_entry(self, row_label:str, column_label:str):
         row_index = self.label_to_index(row_label)
         column_index = self.label_to_index(column_label)
 
-        super().add_entry(row_index, column_index, value)
+        super().add_entry(row_index, column_index)
 
     def save_to_files(self, matrix_filename:str, labels_filename:str) -> None:
         ## Compile matrix and obtain sparse matrix
@@ -119,7 +119,7 @@ class MixedIngredientsMatrix(AdjacencyMatrix):
 
         matrix_data = matrix_dok.values()
         matrix_indices = matrix_dok.keys()
-        data_list = [(data, ) + indices for data, indices in zip(matrix_data, matrix_indices)]
+        data_list = set((data, ) + indices for data, indices in zip(matrix_data, matrix_indices))
         mixed_ingredients_matrix._data = data_list
 
         ## Read label file
@@ -154,11 +154,11 @@ class ActionsIngredientsMatrix(AdjacencyMatrix):
 
         return label_index
     
-    def add_entry(self, row_label:str, column_label:str, value:Any):
+    def add_entry(self, row_label:str, column_label:str):
         row_index = self.label_to_row_index(row_label)
         column_index = self.label_to_column_index(column_label)
 
-        super().add_entry(row_index, column_index, value)
+        super().add_entry(row_index, column_index)
 
     def save_to_files(self, matrix_filename:str, labels_filename:str) -> None:
         ## Compile matrix and obtain sparse matrix
@@ -184,7 +184,7 @@ class ActionsIngredientsMatrix(AdjacencyMatrix):
 
         matrix_data = matrix_dok.values()
         matrix_indices = matrix_dok.keys()
-        data_list = [(data, ) + indices for data, indices in zip(matrix_data, matrix_indices)]
+        data_list = set((data, ) + indices for data, indices in zip(matrix_data, matrix_indices))
         actions_ingredients_matrix._data = data_list
 
         ## Read label file
@@ -221,11 +221,11 @@ class ActionsToolsMatrix(AdjacencyMatrix):
 
         return label_index
     
-    def add_entry(self, row_label:str, column_label:str, value:Any):
+    def add_entry(self, row_label:str, column_label:str):
         row_index = self.label_to_row_index(row_label)
         column_index = self.label_to_column_index(column_label)
 
-        super().add_entry(row_index, column_index, value)
+        super().add_entry(row_index, column_index)
 
     def save_to_files(self, matrix_filename:str, labels_filename:str) -> None:
         ## Compile matrix and obtain sparse matrix
@@ -252,7 +252,7 @@ class ActionsToolsMatrix(AdjacencyMatrix):
 
         matrix_data = matrix_dok.values()
         matrix_indices = matrix_dok.keys()
-        data_list = [(data, ) + indices for data, indices in zip(matrix_data, matrix_indices)]
+        data_list = set((data, ) + indices for data, indices in zip(matrix_data, matrix_indices))
         actions_tools_matrix._data = data_list
 
         ## Read label file
