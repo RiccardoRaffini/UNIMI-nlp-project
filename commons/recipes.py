@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import itertools
 import networkx as nx
 import os
@@ -10,9 +12,9 @@ from collections import deque
 from functools import reduce
 from typing import List, Tuple, Dict, Any, Union, Optional
 
+import commons.nlp_utils as nlputils
 from algorithms.matrices import AdjacencyMatrix, ActionsIngredientsMatrix, MixedIngredientsMatrix, ActionsToolsMatrix
 from commons.action_groups import groups
-from commons.nlp_utils import RecipeProcessor
 
 class Action:
     """
@@ -179,10 +181,10 @@ class Recipe:
     follow an appropriate naming convention.
     """
 
-    processor:RecipeProcessor = None
+    processor:nlputils.RecipeProcessor = None
 
     @classmethod
-    def set_recipe_processor(cls, processor:RecipeProcessor) -> None:
+    def set_recipe_processor(cls, processor:nlputils.RecipeProcessor) -> None:
         """
         Sets a new recipe processor to use during recipes initialization.
 
