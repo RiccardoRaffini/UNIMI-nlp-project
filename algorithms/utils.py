@@ -4,9 +4,9 @@ import random
 from tqdm import tqdm
 from typing import Callable, List, Tuple
 
+from algorithms.matrices import MixedIngredientsMatrix, ActionsIngredientsMatrix
 from algorithms.populations import RecipeIndividual, RecipePopulation
 from commons.action_groups import inverse_groups, groups
-from commons.matrices import MixedIngredientsMatrix, ActionsIngredientsMatrix
 from commons.recipes import Recipe, RecipeGraph, RecipeMatrices, Ingredient, Action
 
 def k_likely_mix_ingredients(mix_ingredients_matrix:MixedIngredientsMatrix, ingredient:str, k:int = 10) -> List[str]:
@@ -16,7 +16,7 @@ def k_likely_mix_ingredients(mix_ingredients_matrix:MixedIngredientsMatrix, ingr
         return None
     
     ingredient_row = mix_ingredients_matrix.get_csr_matrix().getrow(ingredient_index)
-    ingredient_row = ingredient_row[0, ingredient_row.nonzero()[1]]
+    #ingredient_row = ingredient_row[0, ingredient_row.nonzero()[1]]
     ingredient_row = mix_ingredients_matrix.get_full_matrix()[ingredient_index]
     top_k_indices = np.argpartition(ingredient_row, -k)[-k:]
     
@@ -26,18 +26,42 @@ def k_likely_mix_ingredients(mix_ingredients_matrix:MixedIngredientsMatrix, ingr
 
     return top_k_ingredients
 
-def prepare_ingredient(group_actions_ingredients_matrix:ActionsIngredientsMatrix, ingredient:str, threshold:float = 0.5, epsilon:float = 0.01) -> bool:
-    ingredient_index = group_actions_ingredients_matrix.label_to_column_index(ingredient, False)
-    prepare_index = group_actions_ingredients_matrix.label_to_row_index('prepare', False)
-    heat_index = group_actions_ingredients_matrix.label_to_row_index('heat', False)
-    
-    if ingredient_index == -1 or prepare_index == -1 or heat_index == -1:
-        prepare_heat_ratio = 0
-    else:
-        prepare_value = group_actions_ingredients_matrix.get_csr_matrix().getrow(prepare_index)[0, ingredient_index]
-        heat_value = group_actions_ingredients_matrix.get_csr_matrix().getrow(heat_index)[0, ingredient_index]
-        prepare_heat_ratio = prepare_value / heat_value if heat_value else 0
+def prepare_score(group_actions_base_ingredients_matrix:ActionsIngredientsMatrix, ingredient:str, normalized:bool = True) -> float:
+    prepare_index = group_actions_base_ingredients_matrix.label_to_row_index('prepare', add_not_existing=False)
+    ingredient_index = group_actions_base_ingredients_matrix.label_to_column_index(ingredient, add_not_existing=False)
 
+    if prepare_index != -1 and ingredient_index != -1:
+        actions_labels = group_actions_base_ingredients_matrix.get_labels()[0]
+        ingredient_column = group_actions_base_ingredients_matrix.get_csr_matrix().getcol(ingredient_index)
+        seen_actions_indices = ingredient_column.nonzero()[0]
+
+        prepare_actions_count = sum(1 for action_index in seen_actions_indices if groups[actions_labels[action_index]] == 'prepare')
+        prepare_score = prepare_actions_count / len(seen_actions_indices) if normalized else prepare_actions_count
+    else:
+        prepare_score = 0
+
+    return prepare_score
+
+def heat_score(group_actions_base_ingredients_matrix:ActionsIngredientsMatrix, ingredient:str, normalized:bool = True) -> float:
+    heat_index = group_actions_base_ingredients_matrix.label_to_row_index('heat', add_not_existing=False)
+    ingredient_index = group_actions_base_ingredients_matrix.label_to_column_index(ingredient, add_not_existing=False)
+
+    if heat_index != -1 and ingredient_index != -1:
+        actions_labels = group_actions_base_ingredients_matrix.get_labels()[0]
+        ingredient_column = group_actions_base_ingredients_matrix.get_csr_matrix().getcol(ingredient_index)
+        seen_actions_indices = ingredient_column.nonzero()[0]
+
+        heat_actions_count = sum(1 for action_index in seen_actions_indices if groups[actions_labels[action_index]] == 'heat')
+        heat_score = heat_actions_count / len(seen_actions_indices) if normalized else heat_actions_count
+    else:
+        heat_score = 0
+
+    return heat_score
+
+def prepare_ingredient(group_actions_ingredients_matrix:ActionsIngredientsMatrix, ingredient:str, threshold:float = 0.5, epsilon:float = 0.01) -> bool:
+    prepare_value = prepare_score(group_actions_ingredients_matrix, ingredient)
+    heat_value = heat_score(group_actions_ingredients_matrix, ingredient)
+    prepare_heat_ratio = prepare_value / heat_value if heat_value else 0
     random_value = np.random.normal(0, epsilon)
 
     if prepare_heat_ratio + random_value < threshold:
@@ -46,17 +70,9 @@ def prepare_ingredient(group_actions_ingredients_matrix:ActionsIngredientsMatrix
     return True
 
 def heat_ingredient(group_actions_ingredients_matrix:ActionsIngredientsMatrix, ingredient:str, threshold:float = 0.5, epsilon:float = 0.01) -> bool:
-    ingredient_index = group_actions_ingredients_matrix.label_to_column_index(ingredient, False)
-    prepare_index = group_actions_ingredients_matrix.label_to_row_index('prepare', False)
-    heat_index = group_actions_ingredients_matrix.label_to_row_index('heat', False)
-    
-    if ingredient_index == -1 or prepare_index == -1 or heat_index == -1:
-        prepare_heat_ratio = 0
-    else:
-        prepare_value = group_actions_ingredients_matrix.get_csr_matrix().getrow(prepare_index)[0, ingredient_index]
-        heat_value = group_actions_ingredients_matrix.get_csr_matrix().getrow(heat_index)[0, ingredient_index]
-        prepare_heat_ratio = prepare_value / heat_value if heat_value else 0
-
+    prepare_value = prepare_score(group_actions_ingredients_matrix, ingredient)
+    heat_value = heat_score(group_actions_ingredients_matrix, ingredient)
+    prepare_heat_ratio = prepare_value / heat_value if heat_value else 0
     random_value = np.random.normal(0, epsilon)
 
     if 1 - prepare_heat_ratio + random_value < threshold:
@@ -68,7 +84,7 @@ def generate_recipe_individual(
     recipe_matrices:RecipeMatrices,
     required_ingredients:List[str], additional_ingredients:List[str] = None,
     ingredients_number:int = 3,
-    min_addition_size:int = 0, max_addition_size:int = 4
+    min_addition_size:int = 0, max_addition_size:int = 4, addition_pool_size:int = 20
     ) -> RecipeIndividual:
     ## Constrains checks
     assert len(required_ingredients) > 0, 'at least one main ingredient must be specified for individual generation'
@@ -79,7 +95,7 @@ def generate_recipe_individual(
         additional_ingredients = []
 
     for ingredient in required_ingredients + additional_ingredients:
-        possible_ingredients = k_likely_mix_ingredients(recipe_matrices.base_ingredients_base_ingredients, ingredient, k=max_addition_size)
+        possible_ingredients = k_likely_mix_ingredients(recipe_matrices.base_ingredients_base_ingredients, ingredient, k=addition_pool_size)
         mixing_ingredients[ingredient] = possible_ingredients
 
     ## Extract random mixing ingredients
