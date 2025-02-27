@@ -100,8 +100,8 @@ def generate_recipe_individual(
 
     ## Extract random mixing ingredients
     for ingredient, possible_mixing_ingredients in mixing_ingredients.items():
-        ingredients_number = random.randint(min_addition_size, max_addition_size+1)
-        selected_ingredients = set(random.choices(possible_mixing_ingredients, k=ingredients_number))
+        add_ingredients_number = random.randint(min_addition_size, max_addition_size+1)
+        selected_ingredients = set(random.choices(possible_mixing_ingredients, k=add_ingredients_number))
         selected_ingredients.discard(ingredient)
         mixing_ingredients[ingredient] = selected_ingredients
 
@@ -189,7 +189,7 @@ def generate_recipes_population(
     ) -> RecipePopulation:
     recipe_population = RecipePopulation()
 
-    for _ in range(individuals_number):
+    for _ in tqdm(range(individuals_number), 'Recipes generation'):
         recipe_individual = generate_recipe_individual(recipe_matrices, required_ingredients, additional_ingredients, ingredients_number, min_addition_size, max_addition_size)
         recipe_population.add_individual(recipe_individual)
 
