@@ -7,6 +7,7 @@ from argparse import ArgumentParser
 from tqdm import tqdm
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
+from commons.text import TokensSequenceToText
 from llms.tokenizer import RECIPES_ADDITIONAL_TOKENS
 
 arguments_parser = ArgumentParser()
@@ -108,7 +109,12 @@ def main():
     print(text_output)
 
     ## Output processing
-    # ...
+    print('Processed output:')
+    output_processor = TokensSequenceToText()
+    ingredients = output_processor.ingredients(text_output)
+    instructions = output_processor.instructions(text_output)
+    markdown = output_processor.markdown(text_output)
+    print(markdown)
 
 if __name__ == '__main__':
     main()
