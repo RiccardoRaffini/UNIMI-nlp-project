@@ -218,4 +218,4 @@ class ElitismSelector(PopulationSelector[T]):
             selected_population.add_individual(selected_individual)
             selected_scores.append(population_scores[i])
 
-        return selected_population
+        return selected_population, selected_scores
