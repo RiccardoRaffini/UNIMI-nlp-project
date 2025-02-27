@@ -1,3 +1,4 @@
+from functools import cache
 import itertools
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, List
@@ -13,6 +14,7 @@ class FitnessEvaluator(ABC, Generic[T]):
     def evaluate(self, individual:T) -> float:
         raise NotImplementedError()
     
+    @cache
     def __call__(self, individual:T) -> float:
         evaluation = self.evaluate(individual)
         return evaluation

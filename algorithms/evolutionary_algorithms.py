@@ -1,7 +1,7 @@
 import random
 from abc import ABC, abstractmethod
 from tqdm import tqdm
-from typing import Generic, TypeVar, Callable, List, Any, Union, Iterable, Dict
+from typing import Generic, TypeVar, Callable, List, Any, Union, Iterable, Dict, Tuple
 
 from algorithms.crossovers import Crossover, RecipeCrossover
 from algorithms.fitness_evaluators import FitnessEvaluator
@@ -29,7 +29,8 @@ class EvolutionaryAlgorithm(ABC, Generic[T]):
 
         epochs_data = dict()
         
-        for epoch in tqdm(range(evolution_epochs)):
+        for epoch in tqdm(range(evolution_epochs), 'Algorithm epochs'):
+            print(f'>Epoch {epoch}')
             epoch_data = dict()
             epoch_data['initial_population_size'] = self._population.size()
 
@@ -50,11 +51,9 @@ class EvolutionaryAlgorithm(ABC, Generic[T]):
             epoch_data['new_population_scores'] = next_population_score
 
             ## Select final population
-            self._population = self.select_population(next_population, self._population_size)
+            print('Individuals selection')
+            self._population, final_population_score = self.select_population(next_population, self._population_size, next_population_score)
             epoch_data['final_population_size'] = self._population.size()
-
-            ## Compute final population score
-            final_population_score = self.evaluate(self._population)
             epoch_data['final_population_score'] = final_population_score
 
             ## Update epochs data
@@ -83,16 +82,16 @@ class EvolutionaryAlgorithm(ABC, Generic[T]):
 
     def evaluate(self, population:Population[T]) -> List[float]:
         population_evaluations = []
-        for individual in population:
+        for individual in tqdm(population, 'Individuals evaluation'):
             individual_evaluation = self._fitness_evaluator(individual)
             population_evaluations.append(individual_evaluation)
 
         return population_evaluations
 
-    def select_population(self, population:Population[T], individuals_number:int) -> Population[T]:
-        selected_population = self._population_selector(population, individuals_number)
+    def select_population(self, population:Population[T], individuals_number:int, population_scores:List[float] = None) -> Tuple[Population[T], List[float]]:
+        selected_population, selected_scores = self._population_selector(population, individuals_number, population_scores)
 
-        return selected_population
+        return selected_population, selected_scores
 
 ## ==========
 
@@ -125,7 +124,7 @@ class RecipeEvolutionaryAlgorithm(EvolutionaryAlgorithm):
         ## Select application method
         if self._mutation_probabilities is None:
             ## Iterate individual in population
-            for individual in population:
+            for individual in tqdm(population, 'Individuals mutation'):
                 ## Apply all mutations
                 for mutation, node_selector in zip(self._mutation_methods, self._mutation_nodes_selectors):
                     node_index = node_selector(individual)
@@ -134,7 +133,7 @@ class RecipeEvolutionaryAlgorithm(EvolutionaryAlgorithm):
         
         else:
             ## Iterate individuals in population
-            for individual in population:
+            for individual in tqdm(population, 'Individuals mutation'):
                 ## Select mutation to apply
                 selected_index = random.choices(range(len(self._mutation_methods)), weights=self._mutation_probabilities)[0]
                 mutation = self._mutation_methods[selected_index]
@@ -154,10 +153,10 @@ class RecipeEvolutionaryAlgorithm(EvolutionaryAlgorithm):
         ## Select application method
         if self._crossover_probabilities is None:
             ## Iterate individuals pairs
-            for _ in range(population.size() // 2):
+            for _ in tqdm(range(population.size() // 2), 'Individuals crossover'):
                 ## Apply all crossovers
                 for crossover, individuals_selector in zip(self._crossover_methods, self._crossover_individuals_selector):
-                    individuals = individuals_selector(population, 2)
+                    individuals, _ = individuals_selector(population, 2)
                     individual_1 = individuals.individual_at(0)
                     individual_2 = individuals.individual_at(1)
 
@@ -166,14 +165,14 @@ class RecipeEvolutionaryAlgorithm(EvolutionaryAlgorithm):
 
         else:
             ## Iterate individuals pairs
-            for _ in range(population.size() // 2):
+            for _ in tqdm(range(population.size() // 2), 'Individuals crossover'):
                 ## Select crossover to apply
                 selected_index = random.choices(range(len(self._crossover_methods)), weights=self._crossover_probabilities)[0]
                 crossover = self._crossover_methods[selected_index]
                 individuals_selector = self._crossover_individuals_selector[selected_index]
 
                 ## Apply selected crossover
-                individuals = individuals_selector(population, 2)
+                individuals, _ = individuals_selector(population, 2)
                 individual_1 = individuals.individual_at(0)
                 individual_2 = individuals.individual_at(1)
 

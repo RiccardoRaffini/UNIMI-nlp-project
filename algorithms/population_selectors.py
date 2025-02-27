@@ -1,7 +1,7 @@
 import numpy as np
 import random
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, Callable, List, Any, Union, Iterable
+from typing import Generic, TypeVar, Callable, List, Any, Union, Iterable, Tuple
 
 from algorithms.populations import Population
 from algorithms.fitness_evaluators import FitnessEvaluator
@@ -10,12 +10,12 @@ T = TypeVar('T')
 
 class PopulationSelector(ABC, Generic[T]):
     @abstractmethod
-    def select(self, population:Population[T], individuals_number:int = 1) -> Population[T]:
+    def select(self, population:Population[T], individuals_number:int = 1, population_scores:List[float] = None) -> Tuple[Population[T], List[float]]:
         raise NotImplementedError()
     
-    def __call__(self, population:Population[T], individuals_number:int = 1) -> Population[T]:
-        selected_population = self.select(population, individuals_number)
-        return selected_population
+    def __call__(self, population:Population[T], individuals_number:int = 1, population_scores:List[float] = None) -> Tuple[Population[T], List[float]]:
+        selected_population, selected_scores = self.select(population, individuals_number, population_scores)
+        return selected_population, selected_scores
     
 class RandomSelector(PopulationSelector[T]):
     def __init__(self, with_replacement:bool = False):
@@ -23,7 +23,7 @@ class RandomSelector(PopulationSelector[T]):
 
         self._with_replacement = with_replacement
 
-    def select(self, population:Population[T], individuals_number:int = 1) -> Population[T]:
+    def select(self, population:Population[T], individuals_number:int = 1, population_scores:List[float] = None) -> Tuple[Population[T], List[float]]:
         ## Select random indices
         if self._with_replacement:
             selected_indices = random.choices(range(population.size()), k=individuals_number)
@@ -33,10 +33,16 @@ class RandomSelector(PopulationSelector[T]):
         ## Select individuals
         selected_population = type(population)()
         for selected_index in selected_indices:
-            selected_indivvidual = population.individual_at(selected_index)
-            selected_population.add_individual(selected_indivvidual)
+            selected_individual = population.individual_at(selected_index)
+            selected_population.add_individual(selected_individual)
 
-        return selected_population
+        ## Select individuals fitness
+        if population_scores is not None:
+            selected_scores = [population_scores[index] for index in selected_indices]
+        else:
+            selected_scores = None
+
+        return selected_population, selected_scores
 
 class RouletteWheelSelector(PopulationSelector[T]):
     def __init__(self, fitness_evaluator:FitnessEvaluator[T], fitness_scaling_factor:float = 1.0) -> None:
@@ -45,20 +51,26 @@ class RouletteWheelSelector(PopulationSelector[T]):
         self._fitness_evaluator = fitness_evaluator
         self._fitness_scaling_factor = fitness_scaling_factor
 
-    def select(self, population:Population[T], individuals_number:int = 1)  -> Population[T]:
-        ## Compute absolute fitness of indovduals
-        individuals_absolute_fitness = [self._fitness_scaling_factor * self._fitness_evaluator.evaluate(individual) for individual in population]
+    def select(self, population:Population[T], individuals_number:int = 1, population_scores:List[float] = None) -> Tuple[Population[T], List[float]]:
+        ## Compute absolute fitness of indivduals
+        if population_scores is None:
+            population_scores = [self._fitness_evaluator.evaluate(individual) for individual in population]
+
+        individuals_absolute_fitness = [self._fitness_scaling_factor * fitness_score for fitness_score in population_scores]
 
         ## Transform into relative fitness (probability)
         fintess_sum = sum(individuals_absolute_fitness)
         individual_relative_probabilities = [individual_absolute_fitness / fintess_sum for individual_absolute_fitness in individuals_absolute_fitness]
 
         ## Select individuals
-        selected_indicies = np.random.choice(population.size(), individuals_number, replace=True, p=individual_relative_probabilities)
-        selected_individuals = [population.individual_at(index) for index in selected_indicies]
+        selected_indices = np.random.choice(population.size(), individuals_number, replace=True, p=individual_relative_probabilities)
+        selected_individuals = [population.individual_at(index) for index in selected_indices]
         selected_population = type(population)(selected_individuals)
 
-        return selected_population
+        ## Select individuals fitness
+        selected_scores = [population_scores[index] for index in selected_indices]
+
+        return selected_population, selected_scores
     
 class ExpectedValueSelector(PopulationSelector[T]):
     def __init__(self, fitness_evaluator:FitnessEvaluator[T], fitness_scaling_factor:float = 1.0, markers_number:int = 1) -> None:
@@ -69,9 +81,12 @@ class ExpectedValueSelector(PopulationSelector[T]):
         self._markers_number = markers_number
         self._markers_distance = 1 / self._markers_number
 
-    def select(self, population:Population[T], individuals_number:int = 1) -> Population[T]:
-        ## Compute absolute fitness of indovduals
-        individuals_absolute_fitness = [self._fitness_scaling_factor * self._fitness_evaluator.evaluate(individual) for individual in population]
+    def select(self, population:Population[T], individuals_number:int = 1, population_scores:List[float] = None) -> Tuple[Population[T], List[float]]:
+        ## Compute absolute fitness of individuals
+        if population_scores is None:
+            population_scores = [self._fitness_evaluator.evaluate(individual) for individual in population]
+        
+        individuals_absolute_fitness = [self._fitness_scaling_factor * fitness_score for fitness_score in population_scores]
 
         ## Transform into relative fitness (probability)
         fintess_sum = sum(individuals_absolute_fitness)
@@ -79,6 +94,7 @@ class ExpectedValueSelector(PopulationSelector[T]):
 
         ## Select individuals
         selected_population = type(population)()
+        selected_scores = []
         
         while selected_population.size() < individuals_number:
             selected_position = random.uniform(0.0, self._markers_distance)
@@ -95,11 +111,12 @@ class ExpectedValueSelector(PopulationSelector[T]):
                     current_individual_index += 1
 
                 selected_population.add_individual(population.individual_at(current_individual_index-1))
+                selected_scores.append(population_scores[current_individual_index-1])
 
                 if selected_population.size() == individuals_number:
                     break
 
-        return selected_population
+        return selected_population, selected_scores
     
 class RankBasedSelector(PopulationSelector[T]):
     def __init__(self, fitness_evaluator:FitnessEvaluator[T]) -> None:
@@ -107,12 +124,16 @@ class RankBasedSelector(PopulationSelector[T]):
 
         self._fitness_evaluator = fitness_evaluator
 
-    def select(self, population:Population[T], individuals_number:int = 1) -> Population[T]:
+    def select(self, population:Population[T], individuals_number:int = 1, population_scores:List[float] = None) -> Tuple[Population[T], List[float]]:
         ## Sort individuals by fitness
+        if population_scores is None:
+            population_scores = [self._fitness_evaluator.evaluate(individual) for individual in population]
+
+        indices_individuals = sorted(enumerate(population), key=lambda index_individual: population_scores[index_individual[0]])
         new_population = type(population)()
-        new_population.expand(population)
+        for _, individual in indices_individuals:
+            new_population.add_individual(individual)
         population = new_population
-        population.sort(self._fitness_evaluator)
 
         ## Assign ranks to individuals
         individuals_ranks = list(range(1, population.size()+1))
@@ -122,11 +143,14 @@ class RankBasedSelector(PopulationSelector[T]):
         individual_relative_probabilities = [individual_rank / ranks_sum for individual_rank in individuals_ranks]
 
         ## Select individuals as in roulette wheel selector
-        selected_indicies = np.random.choice(population.size(), individuals_number, replace=False, p=individual_relative_probabilities)
-        selected_individuals = [population.individual_at(index) for index in selected_indicies]
+        selected_indices = np.random.choice(population.size(), individuals_number, replace=False, p=individual_relative_probabilities)
+        selected_individuals = [population.individual_at(index) for index in selected_indices]
         selected_population = type(population)(selected_individuals)
 
-        return selected_population
+        ## Select individuals fitness
+        selected_scores = [population_scores[index] for index in selected_indices]
+
+        return selected_population, selected_scores
     
 class TournamentSelector(PopulationSelector[T]):
     def __init__(self, fitness_evaluator:FitnessEvaluator[T], tournament_size:int, with_replacement:bool = True) -> None:
@@ -136,26 +160,33 @@ class TournamentSelector(PopulationSelector[T]):
         self._tournament_size = tournament_size
         self._with_replacement = with_replacement
 
-    def _perform_tournament(self, individuals:List[T]) -> T:
+    def _perform_tournament(self, individuals:List[T], scores:List[float]) -> Tuple[T, float]:
         selected_individuals = random.choices(individuals, k=self._tournament_size)
         selected_individuals.sort(key=self._fitness_evaluator, reverse=True)
         best_individual = selected_individuals[0]
 
         return best_individual
 
-    def select(self, population:Population[T], individuals_number:int = 1) -> Population[T]:
+    def select(self, population:Population[T], individuals_number:int = 1, population_scores:List[float] = None) -> Tuple[Population[T], List[float]]:
         ## Perform tournaments
         selected_population = type(population)()
+        selected_scores = []
+
         individuals = [individual for individual in population]
+        if population_scores is None:
+            population_scores = [self._fitness_evaluator.evaluate(individual) for individual in population]
 
         for _ in range(individuals_number):
-            selected_individual = self._perform_tournament(individuals)
+            selected_individual, selected_score = self._perform_tournament(individuals, population_scores)
             selected_population.add_individual(selected_individual)
+            selected_scores.append(selected_score)
 
             if not self._with_replacement:
-                individuals.remove(selected_individual)
+                individual_index = individuals.index(selected_individual)
+                del individuals[individual_index]
+                del population_scores[individual_index]
 
-        return selected_population
+        return selected_population, selected_scores
     
 class ElitismSelector(PopulationSelector[T]):
     def __init__(self, fitness_evaluator:FitnessEvaluator[T]) -> None:
@@ -163,22 +194,28 @@ class ElitismSelector(PopulationSelector[T]):
 
         self._fitness_evaluator = fitness_evaluator
 
-    def select(self, population:Population[T], individuals_number:int = 1) -> Population[T]:
+    def select(self, population:Population[T], individuals_number:int = 1, population_scores:List[float] = None) -> Tuple[Population[T], List[float]]:
         ## Sort individuals by fitness
+        if population_scores is None:
+            population_scores = [self._fitness_evaluator.evaluate(individual) for individual in population]
+
+        indices_individuals = sorted(enumerate(population), key=lambda index_individual: population_scores[index_individual[0]], reverse=True)
+        population_scores.sort(reverse=True)
         new_population = type(population)()
-        new_population.expand(population)
+        for _, individual in indices_individuals:
+            new_population.add_individual(individual)
         population = new_population
-        population.sort(key=self._fitness_evaluator, reverse=True)
 
         ## Select best individuals
         if individuals_number >= population.size():
             return population
 
         selected_population = type(population)()
-        population_iterator = iter(population)
+        selected_scores = []
 
-        for _ in range(individuals_number):
-            selected_individual = next(population_iterator)
+        for i in range(individuals_number):
+            selected_individual = population.individual_at(i)
             selected_population.add_individual(selected_individual)
+            selected_scores.append(population_scores[i])
 
         return selected_population
