@@ -18,7 +18,7 @@ class EvolutionaryAlgorithm(ABC, Generic[T]):
         self._population:Population[T] = configuration.get('population', None)
         self._population_size:int = self._population.size() if self._population else None
         self._fitness_evaluator:FitnessEvaluator = configuration.get('fitness evaluator', None)
-        self._population_selector:PopulationSelector = configuration.get('population selector')
+        self._population_selector:PopulationSelector = configuration.get('population selector', None)
 
         ## Configuration checks
         assert self._fitness_evaluator is not None, 'a fitness evaluator must be assigned to this algorithm'
@@ -102,7 +102,7 @@ class RecipeEvolutionaryAlgorithm(EvolutionaryAlgorithm):
         ## Crossover configuration
         self._crossover_methods:List[RecipeCrossover] = configuration.get('crossover methods', []).copy()
         self._crossover_probabilities:List[float] = configuration.get('crossover probabilities', None)
-        self._crossover_individuals_selector:List[PopulationSelector] = configuration.get('crossover individuals selector', None)
+        self._crossover_individuals_selectors:List[PopulationSelector] = configuration.get('crossover individuals selector', []).copy()
 
         ## Mutation configuration
         self._mutation_methods:List[RecipeNodeMutation] = configuration.get('mutation methods', []).copy()
@@ -112,12 +112,16 @@ class RecipeEvolutionaryAlgorithm(EvolutionaryAlgorithm):
         ## Configuration checks
         if self._crossover_probabilities is not None:
             assert len(self._crossover_methods) == len(self._crossover_probabilities), 'each crossover method must have exactly one probability value associated to it'
-        assert self._crossover_individuals_selector is not None, 'an individual selector for crossover individuals must be specfied'
+        assert len(self._crossover_methods) == len(self._crossover_individuals_selectors), 'each crossover method must have exactly one node selctor associated to it'
         if self._mutation_probabilities is not None:
             assert len(self._mutation_methods) == len(self._mutation_probabilities), 'each mutation method must have exactly one probability value associated to it'
         assert len(self._mutation_methods) == len(self._mutation_nodes_selectors), 'each mutation method must have exactly one node selctor associated to it'
 
     def mutation(self, population:RecipePopulation) -> RecipePopulation:
+        ## Skip if no mutation is available
+        if len(self._mutation_methods) == 0:
+            return RecipePopulation()
+
         ## Create individuals copies
         mutated_individuals = population.copy()
 
@@ -147,6 +151,10 @@ class RecipeEvolutionaryAlgorithm(EvolutionaryAlgorithm):
         return mutated_individuals
     
     def crossover(self, population:RecipePopulation) -> RecipePopulation:
+        ## Skip if no crossover is available
+        if len(self._crossover_methods) == 0:
+            return RecipePopulation()
+
         ## Create individuals copies
         crossover_individuals = population.copy()
 
@@ -155,7 +163,7 @@ class RecipeEvolutionaryAlgorithm(EvolutionaryAlgorithm):
             ## Iterate individuals pairs
             for _ in tqdm(range(population.size() // 2), 'Individuals crossover'):
                 ## Apply all crossovers
-                for crossover, individuals_selector in zip(self._crossover_methods, self._crossover_individuals_selector):
+                for crossover, individuals_selector in zip(self._crossover_methods, self._crossover_individuals_selectors):
                     individuals, _ = individuals_selector(population, 2)
                     individual_1 = individuals.individual_at(0)
                     individual_2 = individuals.individual_at(1)
@@ -169,7 +177,7 @@ class RecipeEvolutionaryAlgorithm(EvolutionaryAlgorithm):
                 ## Select crossover to apply
                 selected_index = random.choices(range(len(self._crossover_methods)), weights=self._crossover_probabilities)[0]
                 crossover = self._crossover_methods[selected_index]
-                individuals_selector = self._crossover_individuals_selector[selected_index]
+                individuals_selector = self._crossover_individuals_selectors[selected_index]
 
                 ## Apply selected crossover
                 individuals, _ = individuals_selector(population, 2)
