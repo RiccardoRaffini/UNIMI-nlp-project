@@ -1,6 +1,7 @@
+import random
 import re
 from abc import ABC, abstractmethod
-from typing import Tuple, List, TypeVar, Generic
+from typing import Tuple, List, TypeVar, Generic, Any
 
 from commons.recipes import RecipeGraph, Ingredient, Action, Tool
 
@@ -51,55 +52,69 @@ class RecipeGraphToText(RawOutputToText):
     def instructions(self, raw_output:RecipeGraph) -> List[str]:
         instructions_sequence = []
 
-        def dfs_graph(node_index):
-            objects = {'primary': [], 'secondary': [], 'tools': []}
+        def dfs_instructions(node_index:int) -> Tuple[Any, List[str]]:
+            node = raw_output.get_node(node_index)['object']
+            children_indices = raw_output.get_children_indices(node_index)
+            children_number = len(children_indices)
+            instructions = []
 
-            for child_index in raw_output.get_children_indices(node_index):
-                child_node = dfs_graph(child_index)
+            children_objects = {'primary': [], 'secondary': [], 'tools': []}
+            for child_index in children_indices:
                 edge_type = raw_output._graph.edges[node_index, child_index]['type']
+                child_node, child_instructions = dfs_instructions(child_index)
 
                 if type(child_node) == Tool:
-                    objects['tools'].append(child_node.base_object)
+                    children_objects['tools'].append(child_node.base_object)
                 elif type(child_node) == Action:
-                    #objects[edge_type].append('result of previous instruction')
                     pass
                 else:
-                    objects[edge_type].append(child_node.base_object)
+                    children_objects[edge_type].append(child_node.base_object)
 
-            node = raw_output.get_node(node_index)['object']
+                instructions.extend(child_instructions)
+
             if type(node) == Action:
-                if not objects['primary'] and not objects['secondary'] and not objects['tools'] and instructions_sequence:
-                    instructions_sequence[-1] += f'; {node.action} it'
+                if not children_objects['primary'] and not children_objects['secondary'] and not children_objects['tools'] and instructions:
+                    if children_number > 1:
+                        objects = random.choice(['them', 'the results of previous steps'])
+                        instructions.append(f'{node.action} {objects}')
+                    elif children_number == 1:
+                        link = random.choice([';', ' and', ' then', ' and then'])
+                        instructions[-1] += f'{link} {node.action} it'
 
                 else:
-                    if len(objects['primary']) > 1:
-                        primary_text = ', '.join(objects['primary'][:-1]) + f' and {objects["primary"][-1]}'
-                    else:
-                        primary_text = ', '.join(objects['primary'])
+                    primary_text = ''
+                    if len(children_objects['primary']) > 1:
+                        primary_text = ', '.join(children_objects['primary'][:-1]) + f' and {children_objects["primary"][-1]}'
+                    elif len(children_objects['primary']) == 1:
+                        weights = [0.3, 0.3, 0.19, 0.01, 0.2]
+                        if children_objects["primary"][0] in {'a', 'e', 'i', 'o', 'u'}:
+                            weights = [0.3, 0.3, 0.05, 0.3, 0.05]
+                        prefix_text = random.choices(['', 'the ', 'a ', 'an ', 'some '], weights)[0]
+
+                        primary_text = f'{prefix_text}{children_objects["primary"][0]}'
 
                     secondary_text = ''
-                    if len(objects['secondary']) > 0:
+                    if len(children_objects['secondary']) > 0:
                         prefix_text = 'it with ' if not primary_text else ' with '
-                        secondary_text = prefix_text + ', '.join(objects['secondary'])
+                        secondary_text = prefix_text + ', '.join(children_objects['secondary'])
 
                     tools_text = ''
-                    if len(objects['tools']) > 0:
+                    if len(children_objects['tools']) > 0:
                         if not primary_text and not secondary_text:
                             prefix_text = 'it using ' if instructions_sequence else ''
                         else:
                             prefix_text = ' using '
 
-                        tools_text = prefix_text + ', '.join(objects['tools'])
+                        tools_text = prefix_text + ', '.join(children_objects['tools'])
 
-                    instruction_text = f'{node.action} {primary_text}{secondary_text}{tools_text}'
-                    instructions_sequence.append(instruction_text)
+                    instruction = f'{node.action} {primary_text}{secondary_text}{tools_text}'
+                    instructions.append(instruction)
 
-            return node
+            return node, instructions
 
-        dfs_graph(raw_output._root)
-        instructions = instructions_sequence[::-1]
+        _, instructions_sequence = dfs_instructions(raw_output._root)
 
-        return instructions
+        return instructions_sequence
 
 class TokensSequenceToText(RawOutputToText):
     def ingredients(self, raw_output:str) -> List[str]:
