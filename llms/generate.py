@@ -92,7 +92,7 @@ def main():
 
     ## Tokenize user input
     processed_recipe_prompt = '<START_RECIPE> <INPUT_START> ' + \
-        raw_recipe_prompt.replace(',', ' <NEXT_INPUT> ') + \
+        raw_recipe_prompt.replace(',', ' <INPUT_NEXT> ') + \
         ' <INPUT_END>'
     input_tokens = model_tokenizer.encode(processed_recipe_prompt)
 
