@@ -6,6 +6,7 @@ from typing import Generic, TypeVar, List
 from algorithms.populations import RecipeIndividual
 from commons.action_groups import groups
 from commons.recipes import RecipeMatrices, Ingredient, Action
+from commons.utils import argument_cache
 
 T = TypeVar('T')
 
@@ -48,6 +49,7 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
 
         return individual_tree_score
     
+    @argument_cache(1, lambda i: i.base_object)
     def _heat_score(self, ingredient:Ingredient, normalized:bool = True) -> float:
         group_actions_base_ingredients_matrix = self._recipe_matrices.group_actions_base_ingredients
         heat_index = group_actions_base_ingredients_matrix.label_to_row_index('heat', add_not_existing=False)
@@ -65,6 +67,7 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
 
         return heat_score
 
+    @argument_cache(1, lambda i: i.base_object)
     def _prepare_score(self, ingredient:Ingredient, normalized:bool = True) -> float:
         group_actions_base_ingredients_matrix = self._recipe_matrices.group_actions_base_ingredients
         prepare_index = group_actions_base_ingredients_matrix.label_to_row_index('prepare', add_not_existing=False)
@@ -82,6 +85,7 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
 
         return prepare_score
 
+    @argument_cache(1, lambda i: i.base_object)
     def _binary_heat_score(self, ingredient:Ingredient, heated:bool) -> int:
         preparation_score = self._prepare_score(ingredient)
         heat_score = self._heat_score(ingredient)
@@ -96,6 +100,7 @@ class RecipeScoreEvaluator(FitnessEvaluator[RecipeIndividual]):
 
         return binary_heat_score
 
+    @argument_cache(1, lambda i: i.base_object)
     def _binary_prepare_score(self, ingredient:Ingredient, prepared:bool) -> int:
         preparation_score = self._prepare_score(ingredient)
         heat_score = self._heat_score(ingredient)

@@ -1,7 +1,7 @@
 import pandas as pd
 import random
 import re
-from typing import List, Tuple
+from typing import List, Tuple, Callable, Any
 
 def field_string_to_list(string:str) -> List[str]:
     string = string.replace('\\"', '')
@@ -130,3 +130,17 @@ def dataframe_information(dataframe:pd.DataFrame) -> str:
     f'Random sample:\n{dataframe.iloc[random.randint(0, len(dataframe)-1)]}'
 
     return information
+
+def argument_cache(argument_index:int, argument_processor:Callable[[Any], Any] = lambda a: a):
+    def cache(function):
+        cache._cache = dict()
+
+        def inner(*args):
+            argument_identifier = argument_processor(args[argument_index])
+            if argument_identifier not in cache._cache:
+                cache._cache[argument_identifier] = function(*args)
+            
+            return cache._cache[argument_identifier]
+
+        return inner
+    return cache
