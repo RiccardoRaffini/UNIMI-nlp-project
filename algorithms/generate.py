@@ -123,7 +123,7 @@ def main():
         additional_ingredients=None,
         ingredients_number=len(recipe_ingredients),
         min_addition_size=0,
-        max_addition_size=4
+        max_addition_size=0
     )
 
     if arguments.save_initial_population:
@@ -152,6 +152,8 @@ def main():
     last_epoch_fitness = epochs_data[arguments.epochs - 1]['final_population_score']
     best_individual_index = np.argmax(last_epoch_fitness)
     best_individual:RecipeIndividual = final_recipe_population.individual_at(best_individual_index)
+    best_individual.simplify_graph()
+    os.makedirs(f'{arguments.output_directory}', exist_ok=True)
     best_individual.to_gviz(f'{arguments.output_directory}/best_recipe.png')
 
     ## Print best individual
