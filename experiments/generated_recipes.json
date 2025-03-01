@@ -1,0 +1,6152 @@
+[
+	{
+		"reference": {
+			"index": 0,
+			"ingredients": [
+				"fresh basil",
+				"parmesan cheese",
+				"romano cheese",
+				"extra virgin olive oil",
+				"garlic cloves",
+				"pine nuts",
+				"cream cheese",
+				"butter",
+				"milk",
+				"garlic powder"
+			],
+			"instructions": [
+				"Combine basil, 3/4 cup Parmesan cheese, oil, garlic cloves and pine nuts into a food processor or blender. Pulse until blended. Refrigerate at least 1 hour.",
+				"In large saucepan, over medium heat, combine cream cheese, remaining Parmesan, butter, garlic powder and milk, stirring constantly until smooth.",
+				"Stir pesto into alfredo sauce and toss with cooked pasta.",
+				"Enjoy!"
+			]
+		},
+		"model": {
+			"ingredients": [
+				"fresh basil",
+				"parmesan cheese",
+				"romano cheese",
+				"extra virgin olive oil",
+				"garlic cloves",
+				"pine nuts",
+				"cream cheese",
+				"butter",
+				"milk",
+				"garlic powder"
+			],
+			"instructions": [
+				"PREHEAT oven to 375\u00b0F",
+				"Place all ingredients in a food processor and blend to a uniform consistency.",
+				"ASSEMBLE.",
+				"Roll out one cookie dough and roll out as thin as possible to fit a 9X13 inch baking pan. (Reserve 1/4 of the dough for topping).",
+				"Trim edges and cut dough into 12 strips about the size of a walnut.",
+				"Dip each strip in the cream cheese filling, dredge well and place in pan.",
+				"Sprinkle with the reserved crumbled cookie dough, pressing lightly to adhere.",
+				"BAKE 30 to 35 minutes or until lightly browned.",
+				"Cool completely.",
+				"GARNISH with fresh basil leaves or chives."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"milk",
+				"pine nuts",
+				"garlic powder",
+				"cream cheese",
+				"extra virgin olive oil",
+				"romano cheese",
+				"parmesan cheese",
+				"fresh basil",
+				"grate citrus peel",
+				"butter",
+				"garlic cloves"
+			],
+			"instructions": [
+				"process the fresh basil",
+				"dice a parmesan cheese",
+				"filling romano cheese",
+				"steam garlic cloves",
+				"toast a pine nuts",
+				"cut some cream cheese",
+				"cut off butter",
+				"prepare some milk",
+				"beat some garlic powder and stuff it",
+				"blend together the grate citrus peel",
+				"cook stir extra virgin olive oil and marinate it",
+				"whisk together the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 1,
+			"ingredients": [
+				"escarole",
+				"chicken broth",
+				"carrots",
+				"beef",
+				"eggs",
+				"onion",
+				"parmigiano-reggiano cheese",
+				"salt",
+				"pepper",
+				"spaghetti",
+				"egg",
+				"parmigiano-reggiano cheese"
+			],
+			"instructions": [
+				"Trim the escarole and discard any bruised leaves. Cut off the stem ends. Seperate the leaves and wash well in cool water, especially the center of the leaves where soil collects. Stack the leaves and cut them crosswise into 1 inch strips. You should have about 4 cups.",
+				"In a large pot, combine the escarole, broth, carrots. Bring to a simmer and cook until the escarole is almost tender, about 30 minutes.",
+				"Meanwhile, mix together the ingredients for the meatballs. Shape the mixture into tiny meatballs, less than 1 inch in diameter.",
+				"When the escarole is cooked, stir in the pasta and return the soup to a simmer. Drop the meatballs into the soup. Cook over low heat, stirring gently, until the meatballs and pasta are cooked, about 20 minutes. Taste for seasoning. At this point I drizzle in one mixed egg and stir. It makes pretty egg flower strings throughout the soup.",
+				"Top with grated Parmesan and serve hot."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"escarole",
+				"chicken broth",
+				"carrots",
+				"beef",
+				"eggs",
+				"onion",
+				"parmigiano-reggiano cheese",
+				"salt",
+				"pepper",
+				"spaghetti",
+				"egg",
+				"parmigiano-reggiano cheese"
+			],
+			"instructions": [
+				"Prepare your escarole; place in a small bowl and set aside.",
+				"Scramble eggs; cool slightly.",
+				"Saut\u00e9 onion in a frying pan; set aside.",
+				"In a large bowl, beat eggs and scramble.",
+				"Add escarole; add broth, carrots, and beef; mix well.",
+				"Fold in noodles, cheese, salt, pepper, and spaghetti; mix well.",
+				"Pour into an ungreased 11x7 inch baking dish; cover and bake in a 325 degree oven for 35 minutes."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"spaghetti",
+				"carrot",
+				"salt",
+				"escarole",
+				"egg",
+				"chicken broth",
+				"beef",
+				"onion",
+				"pepper",
+				"parmigiano-reggiano cheese"
+			],
+			"instructions": [
+				"bring escarole and then form it",
+				"make a chicken broth",
+				"beat together a carrot",
+				"crumple some beef",
+				"process some egg",
+				"cut up a onion",
+				"steam parmigiano-reggiano cheese",
+				"cut up some pepper",
+				"poach some parmigiano-reggiano cheese",
+				"brush some spaghetti",
+				"spoon into the results of previous steps",
+				"shape the egg",
+				"make some salt and then macerate it",
+				"pour in them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 2,
+			"ingredients": [
+				"chicken breasts",
+				"low sodium chicken broth",
+				"mayonnaise",
+				"sour cream",
+				"red apple",
+				"celery ribs",
+				"green seedless grapes",
+				"cantaloupe",
+				"pecan pieces"
+			],
+			"instructions": [
+				"Place chicken breasts in a pan and cover with chicken stock and water, if needed, to poach. Simmer on low heat for 8 minutes or until chicken is cooked. Remove from heat and allow to cool.(This you can do ahead of time, if needed).",
+				"Slice chicken and set aside.",
+				"Combine mayonnaise and sour cream.",
+				"Add apple, lemon juice, celery grapes and cantaloupe.",
+				"Mix gently and thoroughly.",
+				"Add chicken slices and toss.",
+				"Top with almond pieces or toasted pecans.",
+				"Serve with hot biscuits and a nice Chablis."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"chicken breasts",
+				"low sodium chicken broth",
+				"mayonnaise",
+				"sour cream",
+				"red apple",
+				"celery ribs",
+				"green seedless grapes",
+				"cantaloupe",
+				"pecan pieces"
+			],
+			"instructions": [
+				"Cut chicken breasts into small cubes.",
+				"Combine the broth, mayonnaise, sour cream, apple, celery, grapes, cantaloupe, and nuts in a bowl and mix until combined.",
+				"Cover and chill for at least 1 hour.",
+				"Pour chicken mixture over salad, serve with tortilla chips, crackers or other fresh vegetables."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"chicken breasts",
+				"celery ribs",
+				"cantaloupe",
+				"mayonnaise",
+				"# # d cabbage",
+				"red apple",
+				"pecan pieces",
+				"sour cream",
+				"slice squid",
+				"green seedless grapes",
+				"low sodium chicken broth"
+			],
+			"instructions": [
+				"parboil the chicken breasts",
+				"simmer the low sodium chicken broth",
+				"squeeze a mayonnaise",
+				"fill a sour cream",
+				"steam red apple",
+				"curdle a celery ribs",
+				"grill green seedless grapes",
+				"bake in pecan pieces",
+				"roll cantaloupe and whisking it",
+				"blend together # # d cabbage and slice squid"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 3,
+			"ingredients": [
+				"pork sausage",
+				"onion",
+				"green bell pepper",
+				"garlic cloves",
+				"all-purpose flour",
+				"salt",
+				"fresh ground pepper",
+				"whole kernel corn",
+				"red bell pepper",
+				"fresh parsley",
+				"parsley sprig"
+			],
+			"instructions": [
+				"Brown first 4 ingredients in a large soup pot, stirring until sausage crumbles.",
+				"Add flour, and cook, stirring constantly, about 1 minute.",
+				"Gradually add milk and next 6 ingredients; cook chowder over medium heat, stirring occasionally, 10 to 20 minutes or until thoroughly heated and thickened.",
+				"Garnish, if desired."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"pork sausage",
+				"onion",
+				"green bell pepper",
+				"garlic cloves",
+				"all-purpose flour",
+				"salt",
+				"fresh ground pepper",
+				"whole kernel corn",
+				"red bell pepper",
+				"fresh parsley",
+				"parsley sprig"
+			],
+			"instructions": [
+				"In a skillet, cook sausage and onion over medium heat until sausage is no longer pink. Drain well.",
+				"Stir in bell pepper, Italian seasoning and garlic; cook and stir 1 minute. Sprinkle with flour.",
+				"Gradually stir in the stock, corn and tomato soup. Cook and stir until thickened and bubbly. Stir in red bell pepper and parsley; heat through. Serve topped with parsley sprigs."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"whole kernel corn",
+				"salt",
+				"fresh ground pepper",
+				"pork sausage",
+				"parsley sprig",
+				"onion",
+				"fresh parsley",
+				"green bell pepper",
+				"all-purpose flour",
+				"wiener slice",
+				"red bell pepper",
+				"garlic cloves"
+			],
+			"instructions": [
+				"slice the onion",
+				"rinse the green bell pepper",
+				"heat through garlic cloves",
+				"coat a all-purpose flour",
+				"wash some salt",
+				"bake in a fresh ground pepper",
+				"braise the whole kernel corn",
+				"cut the fresh parsley",
+				"thaw some parsley sprig",
+				"butter red bell pepper and then toss together it",
+				"stir in some wiener slice",
+				"butter the pork sausage",
+				"put them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 4,
+			"ingredients": [
+				"ginger ale",
+				"liquid smoke",
+				"barbecue sauce"
+			],
+			"instructions": [
+				"Place loin in crock pot.",
+				"Open ginger ale can and pour over loin.",
+				"Dash Liquid Smoke to taste over loin.",
+				"Fashion an aluminum foil cover over loin.",
+				"Place crock lid on and cook on low, 6-8 hours.",
+				"Open crock and shred loin with two forks.",
+				"Let sit in juices, taste.",
+				"Add more Liquid smoke, now, if needed.",
+				"Portion onto buns.",
+				"Add sauce of choice.",
+				"Add Slaw (You NC folks).",
+				"Enjoy!"
+			]
+		},
+		"model": {
+			"ingredients": [
+				"ginger ale",
+				"liquid smoke",
+				"barbecue sauce"
+			],
+			"instructions": [
+				"Combine all in a cocktail shaker.",
+				"Shake well and pour into a chilled cocktail glass.",
+				"Garnish with a slice of lime."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"ginger ale",
+				"liquid smoke",
+				"barbecue sauce"
+			],
+			"instructions": [
+				"drizzle some liquid smoke; drain it and divide it",
+				"prepare a ginger ale",
+				"chop up some barbecue sauce",
+				"whisk in them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 5,
+			"ingredients": [
+				"onion",
+				"carrots",
+				"parsnips",
+				"zucchini",
+				"broccoli",
+				"chili powder"
+			],
+			"instructions": [
+				"Chop up vegetables.",
+				"Dry fry onions.",
+				"Add chili powder and toss with wooden spoon.",
+				"Add stock and bring to a boil.",
+				"Add vegetables, cover, and cook 20 minutes.",
+				"Place mixture in blender and puree.",
+				"Reheat, if necessary, and add salt and pepper."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"onion",
+				"carrots",
+				"parsnips",
+				"zucchini",
+				"broccoli",
+				"chili powder"
+			],
+			"instructions": [
+				"Heat vegetable stock in saucepan and place the onion, carrots and parsnips in.",
+				"Mix spices with the stock.",
+				"Let simmer for 15 minutes.",
+				"Add peppers and mushrooms, stir again.",
+				"Bring to a boil and reduce to a simmer for 15 minutes.",
+				"The vegetables will be soft but tender when finished.",
+				"Let simmer a further 5 minutes to mellow out flavours and remove from heat."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"carrot",
+				"broccoli",
+				"chili powder",
+				"onion",
+				"ground spice",
+				"parsnip",
+				"zucchini"
+			],
+			"instructions": [
+				"stuff the onion",
+				"cut parsnip",
+				"wash the zucchini",
+				"chop up broccoli",
+				"open the chili powder",
+				"toss a ground spice",
+				"form some carrot",
+				"add them",
+				"add them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 6,
+			"ingredients": [
+				"frozen hash brown potatoes",
+				"butter",
+				"salt",
+				"ground black pepper",
+				"onion",
+				"cheddar cheese"
+			],
+			"instructions": [
+				"Preheat oven to 350 degrees F (175 degrees C). Spray one 9x13 inch pan with non-stick cooking spray. (probable need a larger pan, I doubled this recipe).",
+				"In a large bowl, combine the potatoes, butter, salt, pepper, onions, soup and cheese. Gently mix and pour into prepared pan or dish. Bake uncovered for 40 minutes."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"frozen hash brown potatoes",
+				"butter",
+				"salt",
+				"ground black pepper",
+				"onion",
+				"cheddar cheese"
+			],
+			"instructions": [
+				"Heat oven to 350\u00b0F.",
+				"Drain potatoes and pat dry.",
+				"Melt butter in a 10 inch skillet over medium heat.",
+				"Add onion, potatoes, salt, and pepper.",
+				"Cook and stir over medium-high heat 5 minutes or until potatoes are tender.",
+				"Remove from heat.",
+				"Stir in cheese.",
+				"Transfer mixture to a 2 quart casserole dish.",
+				"Cover and bake 20 minutes or until heated through."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"ground black pepper",
+				"salt",
+				"onion",
+				"butter",
+				"frozen hash brown potatoes",
+				"cheddar cheese"
+			],
+			"instructions": [
+				"drizzle some frozen hash brown potatoes and then form it then preheat it",
+				"peel butter",
+				"wreath some onion then crush it",
+				"oil cheddar cheese",
+				"slice the salt",
+				"grease a ground black pepper",
+				"whisk in the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 7,
+			"ingredients": [
+				"green beans",
+				"extra virgin olive oil",
+				"water",
+				"salt",
+				"liquid smoke",
+				"salt",
+				"pepper"
+			],
+			"instructions": [
+				"Place olive oil in the bottom of a medium to large saucepan.",
+				"Put green beans in pan, then sprinkle 1 teaspoon salt over the beans.",
+				"Pour in water.",
+				"Bring the pot to a boil over high heat, then reduce heat to medium low, cover partially,  and simmer for 45-60 minutes, or until the water is almost completely gone, stirring occasionally.",
+				"This is approximate, so check every so often, you may need to add a little more water to get beans cooked to desired doneness.",
+				"Add salt and pepper to taste and serve.",
+				"Note: My sister loves to add Greek seasoning and a few dashes of liquid smoke to this. I hope you enjoy this as much as I do!"
+			]
+		},
+		"model": {
+			"ingredients": [
+				"green beans",
+				"extra virgin olive oil",
+				"water",
+				"salt",
+				"liquid smoke",
+				"salt",
+				"pepper"
+			],
+			"instructions": [
+				"Peel and devein green beans, leaving the green part whole.",
+				"In a large pan, place green beans in water and add salt and bring to a boil.",
+				"Reduce heat and simmer for 30 minutes.",
+				"Check and stir frequently.",
+				"After 15 minutes, add water a quarter of a turn at a time to make a sauce that is thick.",
+				"Reduce heat again and simmer for an additional 10 minutes, stirring frequently.",
+				"Add more water if too thick.",
+				"Pour over cooked green beans to heat, and serve hot."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"water",
+				"extra virgin olive oil",
+				"pepper",
+				"green beans",
+				"liquid smoke"
+			],
+			"instructions": [
+				"grill a green beans",
+				"coat the extra virgin olive oil",
+				"wipe water",
+				"break the liquid smoke",
+				"crush a salt",
+				"mash pepper",
+				"break the salt",
+				"toss together them",
+				"blend together them; preheat it",
+				"put the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 8,
+			"ingredients": [
+				"yogurt",
+				"salsa",
+				"fresh lime juice",
+				"salt",
+				"pepper"
+			],
+			"instructions": [
+				"Combine all ingredients in blender.",
+				"Puree until well blended."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"yogurt",
+				"salsa",
+				"fresh lime juice",
+				"salt",
+				"pepper"
+			],
+			"instructions": [
+				"Stir all ingredients together in a bowl and serve with tortilla chips, raw veggies, tortilla chips, sour cream or whatever else you have on hand.",
+				"We love this for tacos, on sourdough bread, tacos, burritos or whatever else we fancy our guests with.",
+				"You can add or subtract ingredients depending on how you like it."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"yogurt",
+				"sweeet potato",
+				"pepper",
+				"salsa",
+				"fresh lime juice"
+			],
+			"instructions": [
+				"grind some salt",
+				"peel some pepper",
+				"toss the fresh lime juice and then cut in it and whip it",
+				"beat together some salsa; chop up it",
+				"cut up some yogurt and whisk in it",
+				"mixing the sweeet potato and expose it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 9,
+			"ingredients": [
+				"cream cheese",
+				"peanuts",
+				"celery",
+				"onion",
+				"salt",
+				"fresh ground black pepper",
+				"lettuce",
+				"tomatoes",
+				"Tabasco sauce"
+			],
+			"instructions": [
+				"Blend cream cheese, peanuts, celery, onion, salt, pepper and Tabasco sauce.",
+				"Scoop out centers of tomatoes and fill with the cheese mixture.",
+				"Chill until cold.",
+				"Serve on lettuce leaves."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"cream cheese",
+				"peanuts",
+				"celery",
+				"onion",
+				"salt",
+				"fresh ground black pepper",
+				"lettuce",
+				"tomatoes",
+				"Tabasco sauce"
+			],
+			"instructions": [
+				"In a mixing bowl, beat cream cheese until smooth.",
+				"Add the next 9 ingredients and beat until smooth.",
+				"Serve with toasted slaw or veggies.",
+				"Top with grilled chips or crudites.",
+				"NOTE:  The noodles are just the shell pasta.  You can use a julienned or precooked pork/chicken as you like.",
+				"Recipe Source:  Time to prepare for prep time listed."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"tomato",
+				"celery",
+				"salt",
+				"peanut",
+				"fresh ground black pepper",
+				"Tabasco sauce",
+				"onion",
+				"chili ' n lime sauce",
+				"lettuce",
+				"onion & pepper mixture",
+				"cream cheese"
+			],
+			"instructions": [
+				"make cream cheese",
+				"cut the peanut",
+				"fill the celery",
+				"peel onion",
+				"rinse a salt",
+				"brown fresh ground black pepper",
+				"chop the tomato",
+				"boil the Tabasco sauce",
+				"pour in onion & pepper mixture, lettuce and chili ' n lime sauce"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 10,
+			"ingredients": [
+				"self-raising flour",
+				"caster sugar",
+				"butter",
+				"sweetened condensed milk",
+				"passion fruit pulp"
+			],
+			"instructions": [
+				"Preheat oven to moderate, 180\u00b0C Lightly grease a 20 x 30cm slice pan. Line base and sides with baking paper.",
+				"In a large bowl, combine flour, coconut and sugar. Add butter, stirring until combined.",
+				"Press mixture firmly into prepared pan. Bake for 12-15 minutes, until golden. Cool slightly.",
+				"Meanwhile, in a medium bowl, combine condensed milk, juice and passionfruit. Pour over base and bake for a further 10-12 minutes, until set.",
+				"Cool in pan then chill until required. Serve cut into squares. Store, chilled, in an airtight container."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"self-raising flour",
+				"caster sugar",
+				"butter",
+				"sweetened condensed milk",
+				"passion fruit pulp"
+			],
+			"instructions": [
+				"Sift together 1/2 cup flour and the sugar.",
+				"Cut in the butter with a pastry cutter until it resembles small peas.",
+				"Add the mixture to the flour mixture and stir with a fork until the dough holds together.",
+				"Do not over-mix.",
+				"Press the dough into a greased 20cm x 12cm x 2 inch loaf pan.",
+				"Bake in a pre-heated oven at 200\u00b0C for 20-25 minutes or until golden and cooked.",
+				"Turn out of the pan and cool on wire rack.",
+				"While the loaf is baking, combine the sweetened condensed milk, 1 cup of the juice, the juice of one cherry and the passion fruit pulp in a saucepan.",
+				"Cook over a gentle heat for 1-2 minutes or until the mixture is just starting to bubble.",
+				"Pour over the cooled loaf and turn out on to a wire rack to cool completely.",
+				"Serve with a thick cream cheese frosting."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"peach preserve",
+				"self-raising flour",
+				"passion fruit pulp",
+				"caster sugar",
+				"sweetened condensed milk",
+				"butter"
+			],
+			"instructions": [
+				"make butter",
+				"wipe sweetened condensed milk",
+				"warm the passion fruit pulp",
+				"butter a caster sugar",
+				"add in some peach preserve",
+				"toss together some self-raising flour"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 11,
+			"ingredients": [
+				"pancetta",
+				"extra virgin olive oil",
+				"Brussels sprouts",
+				"fresh ground black pepper",
+				"butter",
+				"salt"
+			],
+			"instructions": [
+				"In a heavy 10 inch saute pan, set over medium low heat, slowly cook pancetta in 1 tablespoons olive oil until golden and crisp all over.  About 15 minutes.  With slotted spoon, transfer pancetta to a plate lined with a paper towel, leaving fat in pan.  You should have about 2 Tbsps. of fat remaining, if not add remaining 1 tablespoons oil to pan.  Have ready 1/2 cup water.",
+				"Put the pan over medium high heat and arrange the sprouts cut side down in a single layer.  Cook undisturbed until nicely browned, 2 to 3 minutes.  When the sprouts are browned, add water to the pan, cover immediately and simmer until the sprouts are tender.  If water evaporates before sroupts are tender, add more water, 1/4 cup at a time.  With a slotted spoon, transfer sprouts to a bowl.  Return pan to medium high heat, and if any water remains, let it boil off.",
+				"Add balsamic vinegar and a few grinds of pepper.  Boil vinegar until it's reduced to about 2 Tbsps., and looks syrupy.  About 2 minutes.  Reduce heat to low, and add butter, and stir until it's melted. Return sprouts and pancetta to the pan and swirl and shake the pan until the sprouts are evenly coated.  Season with salt and more pepper, and serve."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"pancetta",
+				"extra virgin olive oil",
+				"Brussels sprouts",
+				"fresh ground black pepper",
+				"butter",
+				"salt"
+			],
+			"instructions": [
+				"Preheat the oven to 375 degrees.",
+				"Slice the pancetta thin on a bias to avoid a sheen.",
+				"Brush the pancetta with a little olive oil and season with pepper.",
+				"Arrange the Brussels sprouts on a large rimmed baking sheet and bake for 5 minutes.",
+				"In a small bowl, mash the Brussels sprouts, mix with the pancetta, and season with salt and pepper to taste.",
+				"Place the tray on a baking sheet and cook for 5 minutes, stirring once, until golden brown.",
+				"Drizzle the butter over the vegetables, toss lightly to combine, and serve hot."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"Brussels sprouts",
+				"fresh ground black pepper",
+				"extra virgin olive oil",
+				"butter",
+				"ginge3r",
+				"pancetta"
+			],
+			"instructions": [
+				"thaw the pancetta",
+				"coat some extra virgin olive oil",
+				"fill some salt",
+				"roll the butter",
+				"preheat the Brussels sprouts and then cut off it",
+				"toss ginge3r and fresh ground black pepper",
+				"mixing the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 12,
+			"ingredients": [
+				"sweetcorn",
+				"flour",
+				"green curry paste",
+				"fish sauce",
+				"sugar",
+				"water",
+				"fish sauce",
+				"red chile",
+				"green chili",
+				"lime juice",
+				"vinegar"
+			],
+			"instructions": [
+				"Place half the sweetcorn in a blender and whiz until smooth.",
+				"Scrape into a bowl, add the remaining ingredients and beat until you have a thick batter.",
+				"Heat enough oil in a frying pan for shallow frying.",
+				"Use a teaspoon to put spoonfuls of batter in the oil and fry until golden.",
+				"This will take no more than 30 seconds on each side.",
+				"Drain on paper towel.",
+				"Don't make the fritters too big or they won't cook through.",
+				"Mix the ingredients for the dipping sauce together and serve immediately."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"sweetcorn",
+				"flour",
+				"green curry paste",
+				"fish sauce",
+				"sugar",
+				"water",
+				"fish sauce",
+				"red chile",
+				"green chili",
+				"lime juice",
+				"vinegar"
+			],
+			"instructions": [
+				"Prepare corn (2 cups) as directed on package. Rinse well and pat dry with paper towels.",
+				"Heat vegetable oil in a wok or deep skillet over medium heat until shimmering but not smoking.",
+				"Lightly dredge or pat corn (reserve 1/2 cup for garnish) in flour.",
+				"Cook corn in oil for 2 to 3 minutes, constantly shaking the wok and moving the corn around until it is golden brown on all sides and crisp-tender.",
+				"Remove corn from wok, drain and set aside.",
+				"Heat the lime oil in the wok or skillet over medium heat.",
+				"Add curry paste and stir well.",
+				"Stir in chicken stock, fish sauce, sugar, water and fish sauce; bring to a boil.",
+				"Cook for 2 minutes, stirring constantly.",
+				"Add chillies, green chilli and lime juice.",
+				"Return corn to the wok and toss to coat with sauce.",
+				"Serve over steamed rice with reserved corn."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"vinegar",
+				"green chili",
+				"water",
+				"flour",
+				"lime juice",
+				"red chile",
+				"sugar",
+				"bamboo mixture",
+				"shave coconut",
+				"fish sauce",
+				"sweetcorn",
+				"green curry paste"
+			],
+			"instructions": [
+				"grease a sweetcorn",
+				"thaw flour",
+				"coat green curry paste",
+				"process sugar",
+				"stir down some water and then make it and fill it",
+				"oil some fish sauce",
+				"wash green chili",
+				"brush lime juice",
+				"cut the vinegar",
+				"wipe the red chile",
+				"beat the fish sauce",
+				"combine the shave coconut",
+				"add bamboo mixture",
+				"stir in the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 13,
+			"ingredients": [
+				"whole wheat flour",
+				"brown sugar",
+				"soymilk lite",
+				"canola oil",
+				"baking powder",
+				"baking soda",
+				"banana",
+				"vanilla extract",
+				"walnuts"
+			],
+			"instructions": [
+				"Preheat oven to 430 degrees.",
+				"Pour all ingredients into a bowl, and mix thouroughly (sometimes it helps to mash the banana in a seperate container before adding to bowl). Also, if you prefer your muffins sweeter, add around 5 or 6 artificial sweetner packets to the batter.",
+				"Cook for around 10 minutes."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"whole wheat flour",
+				"brown sugar",
+				"soymilk lite",
+				"canola oil",
+				"baking powder",
+				"baking soda",
+				"banana",
+				"vanilla extract",
+				"walnuts"
+			],
+			"instructions": [
+				"Preheat oven to 350.",
+				"Spray a 9 x 13 pan with cooking spray.",
+				"Place flour in bowl, mix in brown sugar, soy milk, oil, banana, baking powder, and soda.",
+				"Mix with spoon until all is incorporated.",
+				"Stir in remaining ingredients.",
+				"Drop by tablespoon onto pan.",
+				"Bake for 20 minutes or until golden brown on top."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"baking soda",
+				"baking powder",
+				"vanilla extract",
+				"ground meat - soup mixture",
+				"whole wheat flour",
+				"canola oil",
+				"banana",
+				"soymilk lite",
+				"brown sugar",
+				"walnut"
+			],
+			"instructions": [
+				"macerate the whole wheat flour",
+				"grind the brown sugar",
+				"fry a soymilk lite",
+				"beat canola oil",
+				"dice some baking powder",
+				"chop up some banana",
+				"divide vanilla extract",
+				"simmer baking soda and pour it",
+				"process walnut",
+				"toss together some ground meat - soup mixture"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 14,
+			"ingredients": [
+				"red bell peppers",
+				"yellow bell pepper",
+				"fresh mushrooms",
+				"frozen asparagus cuts",
+				"low-fat alfredo sauce",
+				"parmesan cheese",
+				"fresh ground pepper"
+			],
+			"instructions": [
+				"Spray a large skillet with cooking spray. Saut\u00e9 steak over medium-high heat for about 3-5 minutes per side, or until it is cooked to your liking (keeping in mind that steak will continue to cook slightly once removed from the heat). Keeping skillet hot, transfer steak to a cutting board and allow to rest for about 10 minutes (this allows the juices to settle into the meat so they are not lost in cutting). Cut steak across the grain into thin slices.",
+				"Add peppers and mushrooms to hot skillet. Saut\u00e9 until tender (3-5 minutes).",
+				"Add slices steak, cooked pasta, asparagus and alfredo sauce to cooked peppers and mushrooms. Cook until evenly heated (approx. 2-3 minutes), stirring constantly, taking care not to boil it.",
+				"Season with pepper. Top each serving with parmesan (if using)."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"red bell peppers",
+				"yellow bell pepper",
+				"fresh mushrooms",
+				"frozen asparagus cuts",
+				"low-fat alfredo sauce",
+				"parmesan cheese",
+				"fresh ground pepper"
+			],
+			"instructions": [
+				"Preheat oven to 350\u00b0F.",
+				"Place bell pepper slices in a baking pan with the tips pointing up.",
+				"Drizzle with 1 tbsp oil; arrange in single layer over peppers.",
+				"Bake for 12 to 15 minutes or until peppers are crisp tender.",
+				"Cool slightly, cut into 1-inch squares.",
+				"Sprinkle with remaining 2 tbsp oil and mushrooms; continue baking for 2 to 3 minutes or until mushrooms are tender.",
+				"Add asparagus, almonds, 1/4 cup Alfredo sauce, and cheese; continue to cook 3 to 4 minutes or until asparagus is crisp tender and sauce has thickened.",
+				"Spoon mushrooms over peppers.",
+				"Sprinkle with pepper.",
+				"Bake for 10 minutes."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"yellow bell pepper",
+				"fresh ground pepper",
+				"frozen asparagus cuts",
+				"low-fat alfredo sauce",
+				"red bell peppers",
+				"fresh mushrooms",
+				"iced tea mix",
+				"parmesan cheese"
+			],
+			"instructions": [
+				"warm some red bell peppers",
+				"crush yellow bell pepper",
+				"braise the fresh mushrooms",
+				"coat frozen asparagus cuts",
+				"grill the fresh ground pepper",
+				"put iced tea mix",
+				"grate parmesan cheese",
+				"grill a low-fat alfredo sauce",
+				"spoon into them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 15,
+			"ingredients": [
+				"pecan pieces",
+				"butter",
+				"cream cheese",
+				"light brown sugar",
+				"eggs",
+				"heavy cream",
+				"all-purpose flour",
+				"salt",
+				"cinnamon",
+				"vanilla",
+				"pumpkin puree",
+				"Bourbon"
+			],
+			"instructions": [
+				"Preheat oven to 350 degrees.",
+				"Combine the crumbs, pecans and butter together.",
+				"Mix well and press into a 12 inch spring form pan.",
+				"In a food processor mix cream cheese until smooth.",
+				"Add brown sugar and blend.",
+				"Add the eggs, ONE AT A TIME, and thoroughly incorporate.",
+				"Add the heavy cream, flour, salt, cinnamon and vanilla and blend until smooth.",
+				"Add pumpkin and continue mixing until smooth.",
+				"Pour into pan, place pan into a waterbath and bake for 1 hour and 15 minutes.",
+				"While cake is baking,combine whipped cream and bourbon together.",
+				"Allow cake to cool COMPLETELY before removing spring form.",
+				"Cut and garnish with spiked cream."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"pecan pieces",
+				"butter",
+				"cream cheese",
+				"light brown sugar",
+				"eggs",
+				"heavy cream",
+				"all-purpose flour",
+				"salt",
+				"cinnamon",
+				"vanilla",
+				"pumpkin puree",
+				"Bourbon"
+			],
+			"instructions": [
+				"Set oven to 350 degrees.",
+				"Generously grease and flour an 8-inch springform pan.",
+				"Set oven rack to second-lowest position.",
+				"Set oven to broiler.",
+				"Melt the butter and cream cheese in a medium-sized bowl in the microwave.",
+				"Add the brown sugar and blend until combined.",
+				"Add in the eggs, one at a time, mixing well after each egg.",
+				"Add in 1/4 cup cream, flour, salt, cinnamon, and vanilla; mix well.",
+				"Add in the pumpkin puree; mix until combined.",
+				"Add in bourbon, stir to combine.",
+				"Transfer the batter to the prepared pan and smooth it out with a rubber spatula.",
+				"Sprinkle the top with the pecan pieces.",
+				"Bake for about 1 hour, or until the center is set.",
+				"Let cool in the pan, for about 10 minutes.",
+				"Loosen the cake from the pan with a knife and turn the cake out onto a serving platter.",
+				"Cut into squares and serve.",
+				"Delicious!"
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"egg",
+				"vanilla",
+				"pumpkin puree",
+				"Bourbon",
+				"all-purpose flour",
+				"cinnamon",
+				"light brown sugar",
+				"pecan pieces",
+				"butter",
+				"heavy cream",
+				"cream cheese"
+			],
+			"instructions": [
+				"boil pecan pieces",
+				"slice the butter",
+				"process some cream cheese",
+				"debone a egg",
+				"brush a heavy cream",
+				"bake in all-purpose flour",
+				"chop the salt",
+				"cut a vanilla",
+				"roast Bourbon",
+				"beat together the cinnamon",
+				"mix in pumpkin puree and light brown sugar and deglazing it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 16,
+			"ingredients": [
+				"unsalted butter",
+				"sugar",
+				"eggs",
+				"vanilla extract",
+				"salt",
+				"all-purpose flour",
+				"baking powder",
+				"mini marshmallows",
+				"bittersweet chocolate chips"
+			],
+			"instructions": [
+				"Preheat oven to 375 degrees.",
+				"Lighly butter a 8 square baking pan.",
+				"Place chopped chocolate in a microwave safe bowl. Microwave on high for 1 minute. Stop, stir and microwave for an additional 30 minutes. Stir and set aside to cool slightly.",
+				"Beat butter and sugar until fluffy.",
+				"Add eggs, one at a time, beating after each addition.",
+				"Stir in melted chocolate, vanilla and salt; mix well.",
+				"Fold in flour and baking powder.",
+				"Pour batter into prepared pan, spread evenly and bake until a toothpick inserted in center comes out clean, about 30 minutes.",
+				"While brownies are still warm, sprinkle marshmallows and chocolate chips on top.",
+				"Return to oven for 2 minutes to melt toppings."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"unsalted butter",
+				"sugar",
+				"eggs",
+				"vanilla extract",
+				"salt",
+				"all-purpose flour",
+				"baking powder",
+				"mini marshmallows",
+				"bittersweet chocolate chips"
+			],
+			"instructions": [
+				"Heat oven to 350 degrees.",
+				"Grease and flour two 9-inch round cake pans (4 or 5 inches deep).",
+				"In large bowl of electric mixer, beat butter and sugar until light and fluffy.",
+				"Add eggs and vanilla and beat to combine.",
+				"Reduce speed to low and add flour, baking powder, cocoa and salt.",
+				"Beat until combined.",
+				"Beat in mini marshmallows and chocolate chips.",
+				"Pour batter into prepared pans and bake for 30-35 minutes or until toothpick comes out clean.",
+				"Cool on racks for 10 minutes.",
+				"Remove from pans to racks and cool completely.",
+				"Frost if desired."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"mini marshmallows",
+				"salt",
+				"egg",
+				"vanilla extract",
+				"bittersweet chocolate chips",
+				"sugar",
+				"kaffir lime leave mixture",
+				"all-purpose flour",
+				"baking powder",
+				"unsalted butter"
+			],
+			"instructions": [
+				"saute unsalted butter",
+				"knead a sugar",
+				"cut the vanilla extract",
+				"grind salt",
+				"process some baking powder",
+				"cook stir a mini marshmallows",
+				"brown a bittersweet chocolate chips",
+				"spoon into all-purpose flour, egg and kaffir lime leave mixture"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 17,
+			"ingredients": [
+				"hamburger",
+				"egg",
+				"oregano",
+				"parmesan cheese"
+			],
+			"instructions": [
+				"Preheat oven to 350 degrees.",
+				"Combine everything in bowl and mix well.",
+				"Make into 1-2 balls and place on pan.",
+				"Bake 20 - 25 minutes or until done.",
+				"Serve with spaghetti and sauce."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"hamburger",
+				"egg",
+				"oregano",
+				"parmesan cheese"
+			],
+			"instructions": [
+				"Mix meatball ingredients well.",
+				"Then pour into a greased 13x9 baking dish.",
+				"Top with remaining parmesan cheese.",
+				"Bake in 350 oven for 30 minutes or until lightly browned."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"egg",
+				"hamburger",
+				"oregano",
+				"gutte skin",
+				"parmesan cheese"
+			],
+			"instructions": [
+				"cut in the oregano",
+				"transfer a hamburger",
+				"chop parmesan cheese then steep it",
+				"put the gutte skin",
+				"toss egg",
+				"add in them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 18,
+			"ingredients": [
+				"onion",
+				"garlic cloves",
+				"diced tomatoes",
+				"carrots",
+				"celery",
+				"ketchup",
+				"zucchini",
+				"green pepper",
+				"peas",
+				"green beans",
+				"fresh Italian parsley"
+			],
+			"instructions": [
+				"Brown Italian turkey sausage, onion, and garlic until meat is cooked through and no longer pink.",
+				"Drain meat well.",
+				"Add the beef broth, undrained tomatoes, carrots, celery, ketchup, and Italian Seasoning.",
+				"Bring to a boil.",
+				"Reduce heat and simmer for 20 minutes until vegetables are tender.",
+				"Add zucchini, green pepper and (canned beans or peas, if using) and cook for 5 minutes more.",
+				"Stir in tortellini and Italian parsley.",
+				"Cook until tortellini is tender (5-7 minutes).",
+				"Salt and pepper to taste.",
+				"Serve and ENJOY!"
+			]
+		},
+		"model": {
+			"ingredients": [
+				"onion",
+				"garlic cloves",
+				"diced tomatoes",
+				"carrots",
+				"celery",
+				"ketchup",
+				"zucchini",
+				"green pepper",
+				"peas",
+				"green beans",
+				"fresh Italian parsley"
+			],
+			"instructions": [
+				"Chop onion and garlic into small dice and set aside.",
+				"Heat oil in large pan and fry onion and garlic until soft but not brown.",
+				"Add the tomatoes, carrots, celery, ketchup, red pepper, salt, and pepper to taste, and simmer for 15-20 minutes.",
+				"Add the peas, green beans, and olives to the pot and cook another 5 minutes.",
+				"Add the chicken stock.",
+				"Cover and simmer for 30 minutes.",
+				"Season to taste with salt and pepper.",
+				"To serve, spoon sauce over rice and sprinkle with parsley."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"tomatoe paste",
+				"celery",
+				"carrot",
+				"diced tomatoes",
+				"green pepper",
+				"pea",
+				"ketchup",
+				"onion",
+				"green beans",
+				"fresh Italian parsley",
+				"garlic cloves",
+				"zucchini"
+			],
+			"instructions": [
+				"thaw onion",
+				"dice some celery",
+				"prepare a green pepper",
+				"process some pea",
+				"coat green beans",
+				"poach a fresh Italian parsley",
+				"grind ketchup then cutting it",
+				"divide a carrot",
+				"add in garlic cloves, tomatoe paste and zucchini",
+				"boil some diced tomatoes; macerate it",
+				"spoon into the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 19,
+			"ingredients": [
+				"granulated sugar",
+				"powdered sugar",
+				"butter",
+				"pure vanilla extract",
+				"all-purpose flour",
+				"baking soda",
+				"cream of tartar"
+			],
+			"instructions": [
+				"Preheat oven to 375\u00b0F.",
+				"In a mixing bowl, cream together sugar, powdered sugar, oil, butter, and vanilla extract.",
+				"Add flour, baking soda and cream of tartar.",
+				"Mix well.",
+				"Take teaspoonfuls of dough & roll into balls.",
+				"Place on cookie sheet and press to about the size of a nickel.",
+				"Bake for 10-12 minutes."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"granulated sugar",
+				"powdered sugar",
+				"butter",
+				"pure vanilla extract",
+				"all-purpose flour",
+				"baking soda",
+				"cream of tartar"
+			],
+			"instructions": [
+				"Preheat oven to 350 degrees F.",
+				"Line a 12 cup muffin tin with paper liners.",
+				"Set aside.",
+				"In a mixing bowl, beat the granulated sugar and butter until smooth.",
+				"Beat in vanilla and extract.",
+				"Combine the flour, soda and cream of tartar.",
+				"Add to sugar mixture.",
+				"Combine just until blended.",
+				"Divide dough in half.",
+				"Divide one portion on each lined pan.",
+				"Top with chocolate topping.",
+				"Bake until bottoms are golden brown, about 20-25 minutes.",
+				"Cool on a wire rack.",
+				"Invert onto a platter.",
+				"Serve warm."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"baking soda",
+				"cream of tartar",
+				"powdered sugar",
+				"all-purpose flour",
+				"granulated sugar",
+				"butter",
+				"pure vanilla extract"
+			],
+			"instructions": [
+				"fry the powdered sugar",
+				"fill the butter",
+				"toast the pure vanilla extract",
+				"cook the baking soda",
+				"fill a cream of tartar",
+				"process the granulated sugar",
+				"drizzle the all-purpose flour",
+				"stir the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 20,
+			"ingredients": [
+				"cherries",
+				"mascarpone cheese",
+				"brown sugar",
+				"vanilla extract",
+				"puff pastry sheet",
+				"all-purpose flour",
+				"unsalted butter",
+				"dark chocolate",
+				"heavy cream"
+			],
+			"instructions": [
+				"In a saucepan, cook cherries over medium heat for 6-7 minutes until reduced and cherries have popped.  Set aside.",
+				"Cut 1 sheet puff pastry in 9 equal squares.  Spray a 12 muffin tin with nonstick cooking spray.  Press each square of puff pastry in 1 muffin compartment.  Press dough up sides.",
+				"Combine mascarpone cheese, 1 tablespoon brown sugar and vanilla in bowl.  Spoon mixture evenly between 9 puff pastry cups.",
+				"Top mascarpone cheese mixture with cherries.",
+				"In a small bowl, combine flour, 2 tablespoons brown sugar and butter until combined and crumbly.  Top cherries with mixture evenly among cups.",
+				"Bake at 400 degrees for 15 minutes.  Remove from oven and let cool until room temperature.",
+				"Place chocolate in a bowl.  Heat heavy cream and A1 sauce in a saucepan over medium heat until hot and almost boiling.  Pour over chocolate.  Whisk until melted and combined.",
+				"To serve:  Drizzle ganache on plate.  Top with tartlet and top with more ganache.  Enjoy!"
+			]
+		},
+		"model": {
+			"ingredients": [
+				"cherries",
+				"mascarpone cheese",
+				"brown sugar",
+				"vanilla extract",
+				"puff pastry sheet",
+				"all-purpose flour",
+				"unsalted butter",
+				"dark chocolate",
+				"heavy cream"
+			],
+			"instructions": [
+				"DIPPING THE PASTRY:",
+				"Line a baking sheet with parchment paper or lightly grease it lightly.",
+				"Preheat oven to 350\u00b0F.",
+				"Arrange the peaches in a single layer on the prepared pan.",
+				"Beat the mascarpone cheese, brown sugar and vanilla in a medium bowl until smooth.",
+				"Gradually beat in the flour, 1 tablespoon at a time, stirring well after each addition.",
+				"Spoon the filling into the peach halves.",
+				"Bake until puffed and golden brown, 30 to 35 minutes.",
+				"Transfer to a wire rack and let cool until completely cooled.",
+				"PREPARE THE CHOCOLATE SAUCE:",
+				"In a small bowl, combine the mascarpone cheese, 1 tablespoon chocolate and the heavy cream.",
+				"Stir until smooth.",
+				"Meanwhile, on a large plate, place the chilled pastry sheets and 1 tablespoon chocolate.",
+				"Cut the squares of pastry into 1/2-inch-thick slices.",
+				"Roll one portion of the pastry into a 15-inch square, then roll up the pastry and wrap securely in plastic wrap.",
+				"Repeat with remaining portions of pastry, chocolate and parcels, but ending with the plastic wrap.",
+				"Place the plastic wrap on top of the pastry, trimming off any excess.",
+				"Trim the edges slightly, then cut off any excess pastry, leaving a 1/2-inch border around the filling.",
+				"Place the filled parcels on the lined baking sheet.",
+				"Refrigerate for at least 30 minutes, or up to 24 hours.",
+				"SANDWICHES:",
+				"Transfer the trimmings to a large zip-top plastic bag and freeze until solid.",
+				"To serve, cut the trimmings into 1/4-inch squares.",
+				"Store in an airtight container for up to a week in the freezer.",
+				"TO PREPARE THE HONEY CREAM:",
+				"To make the honey mustard, stir 1/2 teaspoon brown sugar and 1/4 teaspoon white sugar together in a small bowl until smooth.",
+				"Brush honey mustard over the pastry, then sprinkle with the almonds and sprinkle with the remaining sugar.",
+				"Bake in the preheated oven for 12 to 15 minutes, until lightly golden.",
+				"Serves 2 as a main course, 2 as an appetizer or 4 as an side.",
+				"TIPS AND TECHNIQUES:",
+				"You can also drizzle the caramel syrup in the pie if you like.",
+				"Put the chilled pastry squares on a plate and spoon the caramel sauce on top of them."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"cherry",
+				"dark chocolate",
+				"vanilla extract",
+				"mascarpone cheese",
+				"all-purpose flour",
+				"brown sugar",
+				"heavy cream",
+				"puff pastry sheet",
+				"unsalted butter"
+			],
+			"instructions": [
+				"debone some cherry",
+				"beat together the mascarpone cheese",
+				"knead brown sugar",
+				"filling vanilla extract",
+				"thaw some puff pastry sheet",
+				"preheat unsalted butter",
+				"break dark chocolate",
+				"crush heavy cream",
+				"add in some all-purpose flour",
+				"toss the results of previous steps",
+				"mix the results of previous steps and leave to stand it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 21,
+			"ingredients": [
+				"scallion",
+				"butter",
+				"tomatoes",
+				"heavy cream",
+				"salt",
+				"pepper",
+				"dry pasta",
+				"parmesan cheese"
+			],
+			"instructions": [
+				"To prepare the artichokes, peel the stems, break off any tough outer leaves, and cut off the tip to remove the spines. Chop them finely as they are done, and drop them in a bowl of water acidulated with the lemon juice.",
+				"In a large skillet cook the scallion in the butter over low-medium heat, stirring until softened. Drain the artichokes, add them to the skillet, and cook them over medium heat for 5-7 minutes or until tender. Stir often.",
+				"Add the tomatoes and cook over moderate heat, stirring, for 1 minute. Add the cream and salt and pepper to taste. Bring the sauce to a boil and simmer, covered, for one minute. Turn off the heat.",
+				"In a large pot of boiling salted water cook the pasta al dente.",
+				"Just before the pasta is done turn on the heat under the sauce to low. Drain the pasta well and add it to the skillet. Toss the pasta and sauce together.",
+				"Serve the hot pasta with grated parmesan, a piacere (if desired)."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"scallion",
+				"butter",
+				"tomatoes",
+				"heavy cream",
+				"salt",
+				"pepper",
+				"dry pasta",
+				"parmesan cheese"
+			],
+			"instructions": [
+				"Peel and dice scallions and cook in butter in a saucepan over medium heat until softened, about 8 minutes.",
+				"Add tomatoes and cream, bring to a boil, reduce heat to low, cover and simmer gently until the scallions are just tender, about 10 minutes.",
+				"Whisk in salt, pepper and hot sauce and continue to simmer until the sauce thickens slightly, 5 minutes.",
+				"Season with more pepper if desired.",
+				"Season with a little more hot sauce, serve with toasted bread.",
+				"Can be prepared 1 day ahead.",
+				"Bring a large pot of water to a boil, add pasta and cook until al dente; drain.",
+				"Combine scallions mixture and remaining sauce, toss to coat and serve."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"tomato",
+				"salt",
+				"dry pasta",
+				"pepper",
+				"parmesan cheese",
+				"butter",
+				"heavy cream",
+				"scallion"
+			],
+			"instructions": [
+				"mash a scallion",
+				"butter some butter",
+				"cutting heavy cream",
+				"process salt",
+				"crack pepper",
+				"warm the dry pasta",
+				"beat parmesan cheese",
+				"shred a tomato; sprinkle it",
+				"stir the results of previous steps",
+				"toss in them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 22,
+			"ingredients": [
+				"pasta shells",
+				"ground beef",
+				"water",
+				"tomato sauce",
+				"diced green chilies",
+				"monterey jack cheese"
+			],
+			"instructions": [
+				"Brown ground beef. Drain.",
+				"Combine picante sauce, water, and tomato sauce.",
+				"Stir 1/2 cup sauce, chilies, 1/2 cup cheese and 1/2 can durkee onions into ground beef. Mix well. Pour half of remaining sauce mixture on bottom of 8 x 12 baking dish.",
+				"Stuff cooked shells with meat mixture.",
+				"Arange shells in baking dish.",
+				"Pour remaining sauce over shells.",
+				"Bake covered at 350 degrees for 30 minute.",
+				"Top with remaining cheese and onions; bake uncovered 5 minute."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"pasta shells",
+				"ground beef",
+				"water",
+				"tomato sauce",
+				"diced green chilies",
+				"monterey jack cheese"
+			],
+			"instructions": [
+				"Cook pasta according to package directions.",
+				"Brown beef; drain.",
+				"In a 2-quart casserole dish, combine 1/4 cup beef sauce with water and taco seasoning mix.",
+				"Add drained pasta and green chilies; mix well.",
+				"Cover and bake at 350 degrees for 30 minutes.",
+				"In a 10-inch skillet, cook the ground beef and refried beans over medium heat for 2-3 minutes, until meat is no longer pink.",
+				"Stir in tomato sauce and chili.",
+				"Pour into prepared casserole dish.",
+				"Bake uncovered for 10-15 minutes longer, or until heated through.",
+				"Sprinkle with Monterey Jack cheese."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"ground beef",
+				"pasta shells",
+				"tomato sauce",
+				"water",
+				"masala spice mix",
+				"diced green chilies",
+				"monterey jack cheese"
+			],
+			"instructions": [
+				"heat through pasta shells",
+				"stuff the water",
+				"bake diced green chilies",
+				"cut the monterey jack cheese",
+				"cutting some ground beef",
+				"prepare some tomato sauce",
+				"combine masala spice mix",
+				"toss in the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 23,
+			"ingredients": [
+				"all-purpose flour",
+				"baking powder",
+				"baking soda",
+				"salt",
+				"pepper",
+				"eggs",
+				"buttermilk",
+				"bacon grease",
+				"flour",
+				"milk",
+				"salt",
+				"black pepper",
+				"garlic powder"
+			],
+			"instructions": [
+				"Heat about 1/2 inch to an inch peanut oil in a large skillet over medium to medium-high heat.",
+				"Season the steaks w/Paula Dean's House Seasoning. In a large bowl, mix the flour, baking powder, baking soda, salt, and pepper. In another bowl, beat the eggs and the buttermilk. Dredge each steak in the flour first, then the buttermilk mixture, and then the flour again. Add each steak to the skillet for frying.",
+				"Fry each steak on one side about 7-8 minutes, or until golden brown. Turn and do the same on the other, about 5-6 minutes. (Keep an eye so it doesn't burn).",
+				"Set the steaks aside on paper towels and cover them so they don't cool off too fast. Drain the skillet's peanut oil and add the bacon grease. Heat the bacon grease over medium heat, then mix in the flour and stir until it's bubbly. Add the milk little by little, stirring constantly, until desired amount and consistency is reached (can increase heat to thicken faster). Season w/salt and pepper (I usually add atleast 2 teaspoons of salt and 1/2 teaspoon pepper, because that's how we like it)."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"all-purpose flour",
+				"baking powder",
+				"baking soda",
+				"salt",
+				"pepper",
+				"eggs",
+				"buttermilk",
+				"bacon grease",
+				"flour",
+				"milk",
+				"salt",
+				"black pepper",
+				"garlic powder"
+			],
+			"instructions": [
+				"In a medium bowl, whisk together the flour, baking powder, baking soda, salt and pepper until blended; set aside.",
+				"In a medium mixing bowl, whisk together the eggs, buttermilk, oil and bacon grease; set aside.",
+				"In another mixing bowl, whisk together the flour mixture, milk, salt, black pepper, garlic powder and hot sauce; set aside.",
+				"Stir the crumb mixture into the dry ingredients just until moistened.",
+				"Scoop 2-inches of batter onto a hot greased griddle; cook until bubbles form on top; turn and cook the other side until golden brown.",
+				"Drain on paper towels.",
+				"Serve immediately with your favorite sauce!"
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"milk",
+				"salt",
+				"baking soda",
+				"buttermilk",
+				"garlic powder",
+				"egg",
+				"flour",
+				"black pepper",
+				"pepper",
+				"bacon grease",
+				"all-purpose flour",
+				"baking powder"
+			],
+			"instructions": [
+				"rip off baking powder and grind it",
+				"melt some baking soda",
+				"process a salt",
+				"form a pepper",
+				"chop egg",
+				"cut in buttermilk",
+				"cut up some bacon grease",
+				"crush a flour",
+				"beat the salt",
+				"oil the black pepper",
+				"break garlic powder then cool it and then warm through it",
+				"curdle all-purpose flour",
+				"squeeze some milk; slice it",
+				"add the results of previous steps",
+				"stir in the results of previous steps",
+				"mix them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 24,
+			"ingredients": [
+				"all-purpose flour",
+				"sugar",
+				"icing sugar",
+				"tea bags",
+				"salt",
+				"vanilla",
+				"butter"
+			],
+			"instructions": [
+				"Heat oven to 375 F.",
+				"Pulse all dry ingredients in food processor until tea leaves are pulverised.",
+				"Add vanilla, 1 teaspoon of water and the butter.",
+				"Pulse till dough is formed, divide dough in half.",
+				"Place each half on a sheet of plastic wrap.",
+				"Roll into 12 ins  log, about 2 ins in diameter.",
+				"Wrap and chill for 30 minutes.",
+				"Slice each log into discs, 1/2 inch thick.",
+				"Place on parchment lined baking trays 2 ins apart.",
+				"Bake till edges are just brown, 12 - 15 minutes.",
+				"Cool on sheets for 5 minutes then move to wire racks."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"all-purpose flour",
+				"sugar",
+				"icing sugar",
+				"tea bags",
+				"salt",
+				"vanilla",
+				"butter"
+			],
+			"instructions": [
+				"Preheat oven to 325 degrees F.",
+				"Prepare and bake cake mix according to package directions.",
+				"Lightly grease (or spray) a 9x13 inch baking pan.",
+				"Pour the hot mixture into prepared pan, spreading evenly.",
+				"Sprinkle the reserved sugar over the hot cake mix and press down firmly.",
+				"Bake for 20-25 minutes or until the top is lightly golden and a cake tester inserted into the middle comes out clean.",
+				"Cool completely on a wire rack before cutting into squares.",
+				"The serving recipe suggests cutting the cake into squares in half.",
+				"Enjoy!"
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"tea bags",
+				"icing sugar",
+				"sugar",
+				"butter",
+				"all-purpose flour",
+				"vanilla"
+			],
+			"instructions": [
+				"bake in all-purpose flour",
+				"process salt",
+				"cut vanilla",
+				"shape a butter",
+				"chop the sugar and pour over it",
+				"put tea bags and icing sugar"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 25,
+			"ingredients": [
+				"chicken wings",
+				"brown sugar",
+				"margarine",
+				"vinegar",
+				"black pepper",
+				"chili powder",
+				"paprika",
+				"dried rosemary",
+				"garlic"
+			],
+			"instructions": [
+				"Combine all ingredients for marinade, reserve some marinade for basting.",
+				"Put wings and marinade in a resealable bag, refrigerate several hours.",
+				"Grill over medium coals basting with reserved marinade until done.",
+				"When wings are slightly browned and carmelized wrap in foil and leave on the grill for another 30 minutes or until ready to serve."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"chicken wings",
+				"brown sugar",
+				"margarine",
+				"vinegar",
+				"black pepper",
+				"chili powder",
+				"paprika",
+				"dried rosemary",
+				"garlic"
+			],
+			"instructions": [
+				"Prepare Sauce:",
+				"Heat oil in a small skillet.",
+				"Mix sugar, butter, vinegar, chili powder, paprika, rosemary and garlic; pour over wings in pan.",
+				"Bake at 350\u00b0F degrees for 30 minutes.",
+				"During last 10 minutes of baking, lift wings and turn every 10 minutes.",
+				"If all of the wings are browned before 30 minutes, turn them over, remove and check again for tenderness."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"vinegar",
+				"chili powder",
+				"dried rosemary",
+				"black pepper",
+				"chicken wings",
+				"garlic",
+				"paprika",
+				"brown sugar",
+				"margarine"
+			],
+			"instructions": [
+				"cutting brown sugar",
+				"cut in some margarine",
+				"oil some chili powder",
+				"open paprika",
+				"warm through the dried rosemary",
+				"filling the garlic",
+				"fill the vinegar and then spread it and add it",
+				"parboil the chicken wings",
+				"brush black pepper",
+				"stir in the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 26,
+			"ingredients": [
+				"frozen cherries",
+				"white sugar",
+				"lemon juice",
+				"flour",
+				"pecans",
+				"walnuts",
+				"butter",
+				"margarine",
+				"brown sugar",
+				"cinnamon",
+				"allspice"
+			],
+			"instructions": [
+				"Preheat oven to 350\u00b0F.",
+				"Combine cherries, white sugar and lemon juice in a 1-quart baking dish (I use a corning ware casserole dish).",
+				"Combine all remaining ingredients in a bowl.",
+				"Sprinkle mixture over cherries.",
+				"Bake for 15-20 minutes or until top is brown and cherries are bubbly."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"frozen cherries",
+				"white sugar",
+				"lemon juice",
+				"flour",
+				"pecans",
+				"walnuts",
+				"butter",
+				"margarine",
+				"brown sugar",
+				"cinnamon",
+				"allspice"
+			],
+			"instructions": [
+				"combine cherries, white sugar, lemon juice and flour.",
+				"microwave on high for 30 seconds.",
+				"add to a baggie and add nuts and butter.",
+				"add cinnamon and allspice.",
+				"microwave on high for 2 minutes.",
+				"pour over frozen cherries.",
+				"in greased muffin tins, level with a knife.",
+				"bake at 350 for 25 minutes."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"margarine",
+				"frozen cherries",
+				"lemon juice",
+				"pecan",
+				"flour",
+				"white sugar",
+				"cinnamon",
+				"allspice",
+				"brown sugar",
+				"butter",
+				"walnut"
+			],
+			"instructions": [
+				"brush a lemon juice",
+				"grease flour",
+				"fill the walnut",
+				"grate butter",
+				"open the margarine",
+				"debone the brown sugar",
+				"grind the cinnamon",
+				"process a allspice",
+				"cut up pecan",
+				"whisk in some frozen cherries",
+				"put them",
+				"prepare some white sugar",
+				"put them; coook it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 27,
+			"ingredients": [
+				"eggs",
+				"sugar",
+				"vanilla",
+				"nutmeg",
+				"cinnamon",
+				"butter",
+				"milk",
+				"pecans",
+				"coconut",
+				"powdered sugar",
+				"butter",
+				"vanilla extract"
+			],
+			"instructions": [
+				"Preheat oven to 350 degrees.",
+				"Add sugar, vanilla and spices to eggs (mixed with egg whites from sauce) and beat.",
+				"Add milk and butter, beat again.",
+				"Stir in pineapple, coconut and pecans.",
+				"Place bread in a large buttered baking pan and pour beaten mixture over top.",
+				"Let stand for 15 minutes.",
+				"Bake until the center becomes firm.",
+				"SAUCE: Cream butter and sugar over medium heat until all butter is absorbed.",
+				"Remove from heat and blend in egg yolk and vanilla.",
+				"Pour in Whiskey while stirring constantly.",
+				"Sauce will thicken as it cools.",
+				"Serve over warm bread pudding."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"eggs",
+				"sugar",
+				"vanilla",
+				"nutmeg",
+				"cinnamon",
+				"butter",
+				"milk",
+				"pecans",
+				"coconut",
+				"powdered sugar",
+				"butter",
+				"vanilla extract"
+			],
+			"instructions": [
+				"Preheat oven to 350\u00b0F.",
+				"Bring sugar, eggs, vanilla and nutmeg to a boil, stirring constantly.",
+				"Boil without stirring, for about 10 minutes, or until slightly thickened, stirring constantly.",
+				"Remove from heat.",
+				"Stir in 1/2 cup butter and pour into a 9-inch square pan.",
+				"Blend well.",
+				"Sprinkle with nuts.",
+				"Beat cream cheese until smooth.",
+				"Add powdered sugar and butter.",
+				"Continue to beat until fluffy.",
+				"Sprinkle over nuts.",
+				"Bake for 35 minutes or until top is golden brown and toothpick inserted in center comes out clean.",
+				"Let cool completely in pan on a rack.",
+				"Store in refrigerator."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"milk",
+				"egg",
+				"pecan",
+				"vanilla extract",
+				"sugar",
+				"butter",
+				"coconut",
+				"powdered sugar",
+				"cinnamon",
+				"nutmeg",
+				"vanilla"
+			],
+			"instructions": [
+				"prepare the egg",
+				"chop some vanilla",
+				"rinse the nutmeg",
+				"form a milk",
+				"crack pecan",
+				"fill coconut",
+				"open butter and beat together it",
+				"oil the vanilla extract",
+				"chop up a cinnamon; preheat it",
+				"cut butter",
+				"combine sugar and powdered sugar",
+				"pour in the results of previous steps",
+				"add them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 28,
+			"ingredients": [
+				"onion",
+				"garlic cloves",
+				"sausage",
+				"olive oil",
+				"quinoa",
+				"chicken broth",
+				"mustard seeds",
+				"peas",
+				"salt",
+				"fresh ground pepper",
+				"fresh parsley"
+			],
+			"instructions": [
+				"Saut\u00e9 the onion, garlic and sausage in the olive oil over medium-high heat, until onions are limp and the sausage has rendered its fat and is turning a bit crispy. Add the well drained quinoa and saut\u00e9 briefly until it is lightly browned. Add the mustard seeds and saut\u00e9 for a minute or two, to bring out the flavor.",
+				"Add the broth and bring to a boil. Lower the heat, add the salt, pepper, herbs de provence, and put on a lid. Let it cook for 10 to 12 minutes, until the water has been completely absorbed and the quinoa is no longer hard. Add the fresh herbs and green peas. Taste, and adjust the seasoning if needed.  I occasionally find that the quinoa is tender before all the liquid is absorbed.  I just drain off the excess.",
+				"Serve warm or cold. This will keep in the refrigerator, well covered, for 2 to 3 days."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"onion",
+				"garlic cloves",
+				"sausage",
+				"olive oil",
+				"quinoa",
+				"chicken broth",
+				"mustard seeds",
+				"peas",
+				"salt",
+				"fresh ground pepper",
+				"fresh parsley"
+			],
+			"instructions": [
+				"Heat oil in large saucepan over medium heat.",
+				"Add onion and garlic and sautee for 3 minutes.",
+				"Add sausage and sautee for 8 minutes, stirring occasionally.",
+				"Add quinoa and chicken broth.",
+				"Bring to a boil, reduce heat, and simmer for 15-20 minutes, or until quinoa is tender.",
+				"Stir in mustard and peas.",
+				"Cook an additional 3 minutes to let flavors blend.",
+				"Season to taste with salt and pepper.",
+				"Garnish with fresh chopped parsley."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"olive oil",
+				"pea",
+				"fresh ground pepper",
+				"chicken broth",
+				"quinoa",
+				"mustard seeds",
+				"onion",
+				"fresh parsley",
+				"sausage",
+				"garlic cloves"
+			],
+			"instructions": [
+				"trim onion",
+				"oil some olive oil",
+				"divide a quinoa",
+				"shred some chicken broth",
+				"bake in mustard seeds",
+				"grind the pea",
+				"rinse salt",
+				"macerate fresh parsley",
+				"cut some sausage",
+				"curdle the garlic cloves and blend together it",
+				"toss together the fresh ground pepper; pre - set it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 29,
+			"ingredients": [
+				"spinach",
+				"cottage cheese",
+				"egg",
+				"parmesan cheese",
+				"pepper",
+				"chicken",
+				"olive oil",
+				"oregano",
+				"rosemary",
+				"dried whole thyme"
+			],
+			"instructions": [
+				"Drain spinach; press between paper towels to remove excess moisture.  Combine the spinach and the next 5 ingredients. Stir well, and set aside.",
+				"Remove the giblets and neck from the chicken. Reserve for other uses.  Place the chicken on a work surface, breast side up.  Cut completely through the breast bone.  Turn the chicken over; flatten the chicken back, breaking the breast and rib bones. (I can usually get the butcher at my grocery store to do this for me!).",
+				"Turn the chicken breast side up.  Starting at the neck cavity, loosen the skin from the breast and drumsticks by inserting one hand, palm side down.  Gently push your hand beneath the skin against the meat to loosen the skin, being careful not to tear the skin.  Spoon the spinach mixture into the pockets beneath the skin.",
+				"Place the chicken, breast side up, in a roasting pan.  Combine the olive oil, oregano, rosemary, and thyme; brush over the chicken.",
+				"Bake, uncovered at 375 degrees for 1 hour or until the chicken is done."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"spinach",
+				"cottage cheese",
+				"egg",
+				"parmesan cheese",
+				"pepper",
+				"chicken",
+				"olive oil",
+				"oregano",
+				"rosemary",
+				"dried whole thyme"
+			],
+			"instructions": [
+				"Preheat oven to 350\u00b0F.",
+				"In large bowl combine spinach, cottage cheese, egg, parmesan cheese, pepper, bread crumbs, oregano, rosemary, basil and chopped onion.",
+				"In medium nonstick skillet, heat 1 Tbs oil over medium heat.",
+				"Add chicken to skillet and cook 5 minutes on each side or until browned and cooked through.",
+				"Remove chicken and keep warm.",
+				"Repeat with remaining oil and chicken.",
+				"Sprinkle with oregano and herbs.",
+				"Spoon filling into casserole dish.",
+				"Sprinkle with crumb mixture.",
+				"Bake uncovered for 35 to 45 minutes or until top is golden brown."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"olive oil",
+				"egg",
+				"cottage cheese",
+				"chicken",
+				"spinach",
+				"pepper",
+				"rosemary",
+				"oregano",
+				"dried whole thyme",
+				"parmesan cheese"
+			],
+			"instructions": [
+				"mash some spinach",
+				"thaw cottage cheese",
+				"stuff a egg",
+				"flour some parmesan cheese",
+				"cut some olive oil",
+				"filling a oregano",
+				"roll rosemary",
+				"cook stir dried whole thyme",
+				"slice the chicken",
+				"toss in an pepper"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 30,
+			"ingredients": [
+				"sugar",
+				"cornstarch",
+				"salt",
+				"soymilk",
+				"margarine",
+				"vanilla extract",
+				"chocolate chips"
+			],
+			"instructions": [
+				"Bake pie shell; cool.",
+				"Stir together sugar, cornstarch and salt in 2 quart saucepan.",
+				"Combine egg yolks and milk in container with pouring spout.",
+				"Gradually blend milk mixture into sugar mixture.",
+				"Cook over medium heat, stirring constantly, until mixture comes to a boil.",
+				"Boil and stir 1 minute.",
+				"Remove from heat; stir in butter and vanilla.",
+				"Add 1-3/4 cups chocolate chips; stir until chips are melted and mixture is well blended.",
+				"Pour into prepared pie shell; press plastic wrap onto filling.",
+				"Cool.",
+				"Refrigerate several hours or until chilled and firm.",
+				"Garnish with whipped topping and remaining chocolate chips, if desired."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"sugar",
+				"cornstarch",
+				"salt",
+				"soymilk",
+				"margarine",
+				"vanilla extract",
+				"chocolate chips"
+			],
+			"instructions": [
+				"Combine sugar, cornstarch and salt in a saucepan; mix well.",
+				"Gradually add soy milk and margarine; cook over medium heat until thickened and bubbly.",
+				"Add flavoring, milk and chips; bring to a boil.",
+				"Reduce heat, and simmer, stirring occasionally, for 1 to 2 minutes.",
+				"(Mixture should be thick but not runny)."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"vanilla extract",
+				"chocolate chips",
+				"sugar",
+				"soymilk",
+				"margarine",
+				"cornstarch"
+			],
+			"instructions": [
+				"fill sugar",
+				"wipe the cornstarch",
+				"grease the soymilk",
+				"shred margarine",
+				"beat the vanilla extract; cooking it",
+				"prepare the salt; toss in it",
+				"combine a chocolate chips"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 31,
+			"ingredients": [
+				"basmati rice",
+				"olive oil",
+				"white wine vinegar",
+				"tomatoes",
+				"red onion",
+				"cilantro",
+				"kalamata olive"
+			],
+			"instructions": [
+				"Cook rice according to package directions, either on stove top or in rice cooker.",
+				"Once rice is cooked, transfer to a large bowl and allow to cool, tossing with a rubber spoon until at room temperature.",
+				"Wisk together ingredients for the dressing: oil, vinegar, salt and pepper in a bowl.",
+				"Fold tomatoes, onion, cilantro and olives into the cooled rice.",
+				"Add vinaigrette and toss to combine.",
+				"Add salt and pepper to taste.",
+				"**Notefor Leftovers: Leftover rice salad can be tossed with a can or two of white tuna, drained and flaked.",
+				"Makes a nice lunch!"
+			]
+		},
+		"model": {
+			"ingredients": [
+				"basmati rice",
+				"olive oil",
+				"white wine vinegar",
+				"tomatoes",
+				"red onion",
+				"cilantro",
+				"kalamata olive"
+			],
+			"instructions": [
+				"Cook rice as per package directions, allow to cool and steam.",
+				"Cook couscous as per package instructions.",
+				"Heat oil and vinegar in a skillet over medium heat.",
+				"Add tomatoes, onions and cilantro.",
+				"Cover, cook until tomatoes are transparent, about 10 minutes.",
+				"Cut a circle out of the middle of the rice with a paring knife.",
+				"Set rice in bowl, spoon sauce over rice, serve."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"kalamata olive",
+				"tomato",
+				"olive oil",
+				"cilantro",
+				"white wine vinegar",
+				"red onion",
+				"basmati rice"
+			],
+			"instructions": [
+				"stuff some basmati rice",
+				"crack the olive oil",
+				"beat tomato",
+				"slice red onion",
+				"shape kalamata olive",
+				"fill cilantro; grind it",
+				"toss some white wine vinegar",
+				"whisk in the results of previous steps",
+				"combine the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 32,
+			"ingredients": [
+				"paprika",
+				"ground cumin",
+				"fine sea salt",
+				"ground black pepper",
+				"garlic cloves",
+				"white wine vinegar",
+				"canola oil",
+				"bell peppers",
+				"chicken",
+				"lemon"
+			],
+			"instructions": [
+				"Heat oven to 425\u00b0F Grease a 9 x 13-inch roasting pan and set aside.",
+				"In a small bowl, combine paprika, cumin, salt, pepper, garlic, vinegar and oil to make a paste.",
+				"Place onions in a large bowl and toss with 2 tablespoons of the paste. Rub chicken pieces with remaining paste and place in pan, then cover with onions, peppers and lemon. Roast until chicken is cooked through and onions are very tender, about 35 minutes.",
+				"Spoon pan juices over the entire mixture halfway through roasting.",
+				"Remove chicken from oven and let rest 5 minutes before serving."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"paprika",
+				"ground cumin",
+				"fine sea salt",
+				"ground black pepper",
+				"garlic cloves",
+				"white wine vinegar",
+				"canola oil",
+				"bell peppers",
+				"chicken",
+				"lemon"
+			],
+			"instructions": [
+				"Mix paprika, cumin, salt and pepper together in a large bowl.",
+				"Add chicken pieces, a few at a time, shaking to coat.",
+				"In a separate bowl combine vinegar, oil and lemon juice.",
+				"Add chicken and toss to coat.",
+				"Cover and chill for 2 to 24 hours.",
+				"After chicken is marinated, remove and discard marinade.",
+				"Grill or broil chicken until cooked through, turning once and brushing often with the vinegar mixture.",
+				"About 8 to 10 minutes per side."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"lemon",
+				"ground black pepper",
+				"fine sea salt",
+				"bell peppers",
+				"chicken",
+				"white wine vinegar",
+				"canola oil",
+				"ground cumin",
+				"paprika",
+				"garlic cloves"
+			],
+			"instructions": [
+				"beat together the paprika",
+				"prepare a ground cumin",
+				"simmer the fine sea salt",
+				"steam garlic cloves",
+				"prepare some white wine vinegar",
+				"brush canola oil",
+				"wipe chicken",
+				"beat in the lemon and wash it",
+				"combine bell peppers and ground black pepper"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 33,
+			"ingredients": [
+				"shallot",
+				"fresh dill",
+				"fresh tarragon",
+				"fresh parsley",
+				"garlic cloves",
+				"Dijon mustard",
+				"white wine vinegar",
+				"olive oil",
+				"small red potatoes",
+				"fresh peas",
+				"bacon"
+			],
+			"instructions": [
+				"In a small bowl, whisk all dressing ingredients together until well blended. Set aside.",
+				"Cook potatoes in boiling salted water for about 12 minutes. Drain, let cool to touch, and cut into quarters.",
+				"Cook fresh peas in salted boiling water for 6 minutes, frozen peas for 3 minutes. Drain under cold water and let cool.",
+				"In a large bowl, toss still-warm potatoes with about half of dressing and let cool. Combine with peas and bacon and add remaining dressing. Taste and adjust seasoning."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"shallot",
+				"fresh dill",
+				"fresh tarragon",
+				"fresh parsley",
+				"garlic cloves",
+				"Dijon mustard",
+				"white wine vinegar",
+				"olive oil",
+				"small red potatoes",
+				"fresh peas",
+				"bacon"
+			],
+			"instructions": [
+				"TO MAKE POTATOES: In a large saucepan, saute shallots, dill, tarragon and parsley in olive oil until softened, about 3-5 minutes.",
+				"Add garlic and mustard and saute for 2 minutes longer.",
+				"Add vinegar, one tablespoon at a time, whisking constantly until all vinegar has been incorporated.",
+				"Stir in 1/2 cup chicken stock.",
+				"Simmer until reduced by half.",
+				"Add potatoes and peas and simmer until peas and potatoes are tender.",
+				"Season to taste with salt and pepper and serve with extra stock if desired."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"olive oil",
+				"fresh tarragon",
+				"bacon",
+				"white wine vinegar",
+				"fresh parsley",
+				"Dijon mustard",
+				"fresh peas",
+				"shallot",
+				"fresh dill",
+				"small red potatoes",
+				"garlic cloves"
+			],
+			"instructions": [
+				"cut a shallot",
+				"knead a fresh tarragon",
+				"brush fresh parsley",
+				"cook a garlic cloves",
+				"bake the Dijon mustard",
+				"crumple a olive oil",
+				"preheat the small red potatoes",
+				"slice a bacon",
+				"boil some fresh peas",
+				"spoon into some white wine vinegar",
+				"shape some fresh dill",
+				"add them and mound it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 34,
+			"ingredients": [
+				"milk",
+				"gruyere cheese",
+				"parmesan cheese",
+				"cornflour",
+				"parmesan cheese",
+				"rock salt"
+			],
+			"instructions": [
+				"Prep time is for oysters already halved.",
+				"Heat milk in a pan, when hot, mix a little water with cornflour, add to milk and stir until mixture thickens, it should be quite a thick consistency.",
+				"Add Gruyere and 2 tablespoons Parmesan stir until cheese has melted.",
+				"Pour rock salt into an oven proof dish enough to cover the bottom, helps oysters to sit evenly, place oysters in dish, spoon sauce over oysters to cover, sprinkle remaining Parmesan cheese over each oyster (note: 2 Tablespoons approx enough to cover.).",
+				"Grill Oysters until browned and bubbling."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"milk",
+				"gruyere cheese",
+				"parmesan cheese",
+				"cornflour",
+				"parmesan cheese",
+				"rock salt"
+			],
+			"instructions": [
+				"Put milk in a saucepan and heat on medium heat.",
+				"Put in Gruyere and stir frequently for 3 minutes or until fluffy.",
+				"Meanwhile, combine cornflour and parmesan and beat into Gruyere mixture.",
+				"Continue to cook until mixture thickens.",
+				"Stir in the pureed cheese and rock salt.",
+				"Refrigerate in a covered container for at least 2 hours until creamy.",
+				"Spoon about 1/4 cup cheese mixture onto each bread slice."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"milk",
+				"gruyere cheese",
+				"cornflour",
+				"rock salt",
+				"parmesan cheese"
+			],
+			"instructions": [
+				"squeeze some milk",
+				"cut in a gruyere cheese",
+				"oil cornflour",
+				"crush some parmesan cheese",
+				"filling rock salt",
+				"add in them",
+				"beat together parmesan cheese; thaw it",
+				"toss in the results of previous steps",
+				"add the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 35,
+			"ingredients": [
+				"sole fillets",
+				"flour",
+				"dried herbs",
+				"salt",
+				"pepper",
+				"butter",
+				"butter",
+				"fresh lemon juice"
+			],
+			"instructions": [
+				"Combine flour, half the herbs, and half the salt.",
+				"Season the fish with additional salt and pepper, then dredge in flour mixture to coat, shaking off the excess.",
+				"Heat 1 TBS butter in a large skillet over moderately high heat and cook fish 3 minutes on each side.  Remove from pan.",
+				"Reduce heat to moderately low and add butter pieces and simmer until a light golden brown, about 5 minutes.",
+				"Remove skillet from heat and stir in lemon juice, remaining herbs, salt and pepper to taste.",
+				"Pour over fish fillets."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"sole fillets",
+				"flour",
+				"dried herbs",
+				"salt",
+				"pepper",
+				"butter",
+				"butter",
+				"fresh lemon juice"
+			],
+			"instructions": [
+				"Combine flour, herbs, salt and pepper in a shallow dish or pie plate.",
+				"Dredge fillets in flour mixture and shake off excess.",
+				"Heat butter in large skillet over medium high heat and saute fillets until light brown on both sides. Remove fillets from pan and keep warm.",
+				"Pour off excess fat from the pan, add lemon juice and stir until hot. Pour sauce over fillets."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"dried herbs",
+				"salt",
+				"sole fillets",
+				"flour",
+				"# # art sauce",
+				"pepper",
+				"fresh lemon juice",
+				"butter"
+			],
+			"instructions": [
+				"warm through the sole fillets",
+				"crush flour",
+				"brown some dried herbs",
+				"fill a salt",
+				"squeeze some butter",
+				"break some fresh lemon juice then mince it",
+				"wash pepper and then beat it",
+				"wipe butter; brown it",
+				"add some # # art sauce"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 36,
+			"ingredients": [
+				"butter",
+				"sugar",
+				"eggs",
+				"vanilla",
+				"sweet wine",
+				"flour",
+				"powdered sugar",
+				"milk",
+				"vanilla",
+				"salt"
+			],
+			"instructions": [
+				"Preheat oven to 375 degrees.  Cream butter and sugar together.  Beat in eggs, vanilla and wine.  Stir in flour, one cup at a time.  Dough will be stiff.  Roll out dough, on well-floured pastry sheet, to a 1/4 inch thickness.  Cut into desired shapes with cookie cutter.  Bake on greased cookie sheet for 10 minutes.",
+				"Make icing by combining above ingredients.  (Should be an almost runny consistency).  Frost cookies.  These cookies will keep for up to one year in an airtight container."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"butter",
+				"sugar",
+				"eggs",
+				"vanilla",
+				"sweet wine",
+				"flour",
+				"powdered sugar",
+				"milk",
+				"vanilla",
+				"salt"
+			],
+			"instructions": [
+				"Cream butter and sugar, add eggs and vanilla; blend well.",
+				"Combine flour and powdered sugar; add gradually.",
+				"Add milk and vanilla; mix well.",
+				"Pour into prepared pan and bake at 325* for 1 hour.",
+				"Remove from oven, add salt.",
+				"Cut into bars.",
+				"Return to oven and bake an additional 20 minutes.",
+				"If desired, you can add 1 teaspoon of chocolate chips."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"milk",
+				"salt",
+				"cook veggie",
+				"egg",
+				"vanilla",
+				"flour",
+				"sugar",
+				"powdered sugar",
+				"butter",
+				"sweet wine"
+			],
+			"instructions": [
+				"cut up the sugar",
+				"prepare a egg",
+				"wash the vanilla",
+				"roast sweet wine",
+				"beat the flour",
+				"simmer the powdered sugar",
+				"peel the vanilla",
+				"mash the salt",
+				"squeeze the butter",
+				"crush the milk",
+				"toss the cook veggie",
+				"spoon into them",
+				"stir in them; fight it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 37,
+			"ingredients": [
+				"fresh green beans",
+				"red onion",
+				"garlic cloves",
+				"of fresh mint",
+				"lemon, juice and zest of",
+				"Dijon mustard",
+				"olive oil",
+				"sour cream",
+				"Tabasco sauce"
+			],
+			"instructions": [
+				"In a small bowl, whisk together the garlic, mint, lemon zest and juice, and mustard.  While whisking, slowly add the olive oil and whisk until thick and emulsified.",
+				"Whisk in the sour cream and Tabasco sauce.",
+				"Season to taste with salt and pepper.",
+				"Put green beans and red onion into a large bowl.",
+				"Pour the dressing over the beans and toss well.  refrigerate at least 30 minutes or up to 24 hours before serving. The 30 minutes is not cooking time, but is the time allowed to blend the flavors while in the refrigerator."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"fresh green beans",
+				"red onion",
+				"garlic cloves",
+				"of fresh mint",
+				"lemon, juice and zest of",
+				"Dijon mustard",
+				"olive oil",
+				"sour cream",
+				"Tabasco sauce"
+			],
+			"instructions": [
+				"Toss the green beans with the lemon rind, mint and garlic.",
+				"Whisk the Dijon mustard, olive oil and lemon juice in a small bowl.",
+				"In a separate bowl, whisk the sour cream and Tabasco with salt and pepper.",
+				"Pour the dressing over the green beans and toss well.",
+				"Sprinkle with mint sprigs."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"olive oil",
+				"of fresh mint",
+				"lemon, juice and zest of",
+				"Tabasco sauce",
+				"Dijon mustard",
+				"sour cream",
+				"red onion",
+				"fresh green beans",
+				"garlic cloves"
+			],
+			"instructions": [
+				"parboil fresh green beans",
+				"cut the red onion",
+				"steam the garlic cloves",
+				"warm a of fresh mint",
+				"cooking lemon, juice and zest of",
+				"brush olive oil",
+				"beat together sour cream",
+				"heat Tabasco sauce",
+				"poach Dijon mustard then parboil it",
+				"put them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 38,
+			"ingredients": [
+				"all-purpose flour",
+				"sugar",
+				"baking soda",
+				"salt",
+				"egg",
+				"sour cream",
+				"milk",
+				"raw cranberries",
+				"sugar"
+			],
+			"instructions": [
+				"Sift together flour, 1/4 cup sugar, baking soda and salt into bowl.",
+				"Combine egg, sour cream, milk and oil in small bowl; blend well.",
+				"Add all at once to dry ingredients, stirring just enough to moisten.",
+				"Combine cranberries and 1/2 cup sugar; stir into batter.",
+				"Spoon batter into greased 3 1/2-inch muffin-pan cups, filling equally, or use 12 cup 2 1/2 inch muffin pan.",
+				"Bake in 375\u00b0F oven 20 minutes for 12 muffins and 30 minutes for 6 muffins or until golden brown.",
+				"Good hot or cold with butter, easy to reheat in micro."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"all-purpose flour",
+				"sugar",
+				"baking soda",
+				"salt",
+				"egg",
+				"sour cream",
+				"milk",
+				"raw cranberries",
+				"sugar"
+			],
+			"instructions": [
+				"Preheat the oven to 350.",
+				"Line a baking sheet with parchment paper or wax paper, spray with non-stick spray or rub with flour.",
+				"Set aside.",
+				"In a large bowl, combine flour, sugar, baking soda and salt.",
+				"In a separate bowl, whisk together egg and sour cream.",
+				"Add the milk, oil and cranberries to the flour mixture.",
+				"Mix well.",
+				"Pour 1 1/2 cups batter onto the baking sheet.",
+				"Top with cranberries.",
+				"Bake for 35 to 40 minutes, until golden.",
+				"Stir once halfway through baking.",
+				"Remove from oven and let cool before serving."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"milk",
+				"salt",
+				"baking soda",
+				"egg",
+				"sugar",
+				"all-purpose flour",
+				"sour cream",
+				"raw cranberries"
+			],
+			"instructions": [
+				"warm the all-purpose flour",
+				"grate some sugar",
+				"heat through the baking soda",
+				"debone some egg",
+				"stuff some sour cream",
+				"break the milk",
+				"thaw sugar",
+				"mash salt and then heat it",
+				"combine the raw cranberries"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 39,
+			"ingredients": [
+				"elbow macaroni",
+				"margarine",
+				"ham",
+				"onions",
+				"thyme",
+				"salt",
+				"pepper",
+				"milk",
+				"cheddar cheese"
+			],
+			"instructions": [
+				"Cook noodles according to package instructions.",
+				"Drain and add butter, making sure to mix to coat.",
+				"Set aside for now.",
+				"Add oil to large skillet, heat and add onions, ham and seasonings.",
+				"Cook until onions become translucent and start to brown slightly.",
+				"Remove from heat.",
+				"In a bowl add soups and milk mix well together.",
+				"Pour into pan with onion and ham mix.",
+				"When it becomes bubbly add cheese; stir to melt cheese and remove.",
+				"Add to noodles, mixing well and serve.",
+				"This is excellent with a side salad and garlic bread to lighten it up."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"elbow macaroni",
+				"margarine",
+				"ham",
+				"onions",
+				"thyme",
+				"salt",
+				"pepper",
+				"milk",
+				"cheddar cheese"
+			],
+			"instructions": [
+				"In large pot, bring just to boil (ice water to boil).",
+				"Boil macaroni (stir boiling water).",
+				"Salt and Pepper to taste.",
+				"Add cooked macaroni.",
+				"Mix together and cover.",
+				"Cook on medium heat for 5 minutes.",
+				"Add ham, onion, thyme, salt and pepper to taste.",
+				"Stir until well blended.",
+				"Pour over noodles.",
+				"Cover and simmer 5 more minutes.",
+				"If soup gets too thick, add a small amount of water.",
+				"Stir occasionally.",
+				"Serve with grated cheese and chopped parsley on top."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"milk",
+				"salt",
+				"ham",
+				"thyme",
+				"onion",
+				"pepper",
+				"elbow macaroni",
+				"margarine",
+				"bouillon",
+				"cheddar cheese"
+			],
+			"instructions": [
+				"knead elbow macaroni",
+				"rinse a margarine",
+				"grate ham",
+				"mash the onion",
+				"trim thyme",
+				"beat together pepper",
+				"shape the milk",
+				"beat a cheddar cheese",
+				"pour in them",
+				"add in bouillon and salt"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 40,
+			"ingredients": [
+				"flour",
+				"baking powder",
+				"baking soda",
+				"butter",
+				"sugar",
+				"egg",
+				"vanilla extract"
+			],
+			"instructions": [
+				"Preheat the oven to 350 degrees Fahrenheit or 175 degrees Celsius.",
+				"Mix the flour, baking powder, and baking soda together in a bowl; set the mixture aside.",
+				"Cream the butter and sugar.",
+				"Beat in the egg and vanilla extract.",
+				"Once combined, slowly blend in the dry ingredients until evenly mixed.",
+				"Searate dough into tablespoon-sized balls.",
+				"Place onto an ungreased cookie sheet.",
+				"Place on center rack and bake for 5 to 7 minutes (or until golden brown). Let the cookies sit for 2 minutes before cooling on wire racks."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"flour",
+				"baking powder",
+				"baking soda",
+				"butter",
+				"sugar",
+				"egg",
+				"vanilla extract"
+			],
+			"instructions": [
+				"Preheat oven to 350 degrees.",
+				"Sift flour, cocoa, baking powder, baking soda, and salt into a large bowl.",
+				"Cream butter and sugar with an electric mixer on medium speed.",
+				"Add egg and vanilla.",
+				"Add dry ingredients slowly, beating well after each addition.",
+				"Spread into a greased 13 x 9 inch pan.",
+				"Bake for 20 to 25 minutes, or until a toothpick inserted near the center comes out clean.",
+				"Cool completely, about 1 hour before cutting."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"baking soda",
+				"egg",
+				"vanilla extract",
+				"flour",
+				"sugar",
+				"baking powder",
+				"butter"
+			],
+			"instructions": [
+				"toast some baking soda",
+				"cut in a sugar",
+				"beat together the egg",
+				"prepare some butter and then roast it",
+				"roll some flour and then top it",
+				"trim some vanilla extract",
+				"mix in the baking powder"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 41,
+			"ingredients": [
+				"water",
+				"rolled oats",
+				"ground cinnamon",
+				"cardamom",
+				"dried cranberries",
+				"maple syrup",
+				"honey",
+				"brown sugar"
+			],
+			"instructions": [
+				"Place water and juice in a small saucepan and bring to a boil over medium heat.",
+				"Combine the oats, bran, spices and cranberries.",
+				"Add to juice mixture, stirring briskly with fork or wire whisk to prevent lumps from forming.",
+				"Cook until desired consistency, approximately 5 minutes.",
+				"Serve topped with your favorite sweetener."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"water",
+				"rolled oats",
+				"ground cinnamon",
+				"cardamom",
+				"dried cranberries",
+				"maple syrup",
+				"honey",
+				"brown sugar"
+			],
+			"instructions": [
+				"In a medium saucepan, bring water, oats, cinnamon, cardamom, and dried cranberries to a boil over medium-high heat.",
+				"Reduce heat to medium-low and simmer for 8-10 minutes or until oats are tender.",
+				"Stir in syrup, honey and brown sugar.",
+				"Cool completely.",
+				"Spread almonds onto a baking sheet lined with parchment paper.",
+				"Sprinkle almond mixture over almonds, pressing to cover almonds.",
+				"Refrigerate at least 3 hours or overnight."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"ground cinnamon",
+				"dried cranberries",
+				"maple syrup",
+				"water",
+				"honey",
+				"rolled oats",
+				"brown sugar",
+				"cardamom"
+			],
+			"instructions": [
+				"peel water",
+				"curdle a rolled oats",
+				"stuff ground cinnamon",
+				"beat the cardamom",
+				"cook dried cranberries",
+				"season honey and grate it",
+				"tent some brown sugar; grind it",
+				"trim a maple syrup and wash it",
+				"toss together the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 42,
+			"ingredients": [
+				"soy sauce",
+				"honey",
+				"cider vinegar",
+				"garlic clove",
+				"ground ginger",
+				"black pepper"
+			],
+			"instructions": [
+				"Mix all ingredients together in a small bowl.",
+				"Store in refrigerator."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"soy sauce",
+				"honey",
+				"cider vinegar",
+				"garlic clove",
+				"ground ginger",
+				"black pepper"
+			],
+			"instructions": [
+				"Mix all ingredients in a jar, cover and shake well.",
+				"Serve over steamed vegetables."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"black pepper",
+				"ground ginger",
+				"garlic clove",
+				"soy sauce",
+				"honey",
+				"cider vinegar"
+			],
+			"instructions": [
+				"tossing some cider vinegar; peel it",
+				"thaw the ground ginger",
+				"chop the black pepper",
+				"peel the garlic clove",
+				"cut in honey and then place it",
+				"peel a soy sauce and then mixing it",
+				"spoon into the results of previous steps",
+				"blend together them",
+				"stir the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 43,
+			"ingredients": [
+				"extra virgin olive oil",
+				"garlic cloves",
+				"onion",
+				"tomatoes",
+				"bay leaves",
+				"thyme"
+			],
+			"instructions": [
+				"In a large saucepan, heat the olive oil over medium high heat; add the garlic, onions, and jalapeno and cook, stirring occasionally, until softened, about 3 minutes.",
+				"Stir in the tomatoes, collard greens, bay leaves, and thyme; cover, reduce heat to medium low, and cook, stirring occasionally, until collards are tender, about 20 minutes.",
+				"Remove the bay leaves, thyme sprigs, and jalapeno and discard; season with salt and pepper.",
+				"This dish can be prepared a day in advance and reheated."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"extra virgin olive oil",
+				"garlic cloves",
+				"onion",
+				"tomatoes",
+				"bay leaves",
+				"thyme"
+			],
+			"instructions": [
+				"Heat olive oil in a saucepan over medium heat.",
+				"Add garlic and onion and cook, stirring occasionally, until onions are tender, about 10 minutes.",
+				"Stir in the tomato, stock, bay leaves, thyme, salt and pepper.",
+				"Simmer until the mixture is reduced by half, about 20 minutes.",
+				"Cool and refrigerate until needed.",
+				"Season to taste with salt and pepper."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"tomato",
+				"thyme",
+				"extra virgin olive oil",
+				"onion",
+				"bay leaves",
+				"garlic cloves"
+			],
+			"instructions": [
+				"saute the garlic cloves",
+				"fasten a onion; shape it",
+				"squeeze tomato",
+				"cutting some bay leaves",
+				"macerate thyme and bake in it; combine it",
+				"mix in the extra virgin olive oil",
+				"mix them; pat dry it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 44,
+			"ingredients": [
+				"chicken breast halves",
+				"eggs",
+				"celery",
+				"fresh onions",
+				"green pepper",
+				"salt",
+				"black pepper",
+				"sugar",
+				"Miracle Whip"
+			],
+			"instructions": [
+				"Combine all ingredients except the dressing.",
+				"Add dressing until you achieve the ratio of dressing to other ingredients you prefer.",
+				"Chill."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"chicken breast halves",
+				"eggs",
+				"celery",
+				"fresh onions",
+				"green pepper",
+				"salt",
+				"black pepper",
+				"sugar",
+				"Miracle Whip"
+			],
+			"instructions": [
+				"In a medium mixing bowl, combine the first 8 ingredients.",
+				"Mix well.",
+				"Cover and refrigerate for 1 hour.",
+				"Before using, stir in the sugar.",
+				"To serve:",
+				"Spread a thin layer of Miracle Whip on one half of the bread slices.",
+				"Spread chicken mixture over lettuce.",
+				"On top of chicken, place celery, onion and green pepper.",
+				"Top with remaining bread slices.",
+				"Spread the salad with cream cheese.",
+				"Cover with plastic wrap.",
+				"Freeze."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"celery",
+				"green pepper",
+				"salt",
+				"egg",
+				"black pepper",
+				"Miracle Whip",
+				"sugar",
+				"fresh onions",
+				"chicken breast halves"
+			],
+			"instructions": [
+				"preheat a chicken breast halves",
+				"chop up the egg",
+				"wash the celery",
+				"broil fresh onions",
+				"top some salt then cut it",
+				"fill sugar",
+				"fry some Miracle Whip",
+				"cut up a green pepper; freeze it; fill it",
+				"beat together black pepper",
+				"combine them then leave to drain it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 45,
+			"ingredients": [
+				"eggplant",
+				"tahini",
+				"ground cumin",
+				"ground coriander",
+				"salt",
+				"garlic cloves",
+				"chickpeas"
+			],
+			"instructions": [
+				"Preheat oven to 375\u00b0F.",
+				"Pierce eggplant with a fork.",
+				"Place eggplant on a jelly roll pan.",
+				"Bake for 30 minutes or until tender.",
+				"Cool and peel; discard skin.",
+				"Combine eggplant and remaining ingredients in a food processor; process until smooth."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"eggplant",
+				"tahini",
+				"ground cumin",
+				"ground coriander",
+				"salt",
+				"garlic cloves",
+				"chickpeas"
+			],
+			"instructions": [
+				"Slice eggplant into 1/2 inch slices; place on broiler pan coated with cooking spray. Broil 5-7 minutes, until pale golden.",
+				"Combine tahini, cumin, coriander, salt and garlic in a small bowl.",
+				"Drizzle oil over eggplant slices. Broil 3 minutes more.",
+				"Let stand 2 minutes.",
+				"Using slotted spoon, remove each slice of eggplant and lay flat on paper towels to drain.",
+				"Drizzle 2 tablespoons oil over each eggplant slice."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"eggplant",
+				"ground coriander",
+				"salt",
+				"chickpea",
+				"ground cumin",
+				"tahini",
+				"garlic cloves"
+			],
+			"instructions": [
+				"flour eggplant",
+				"beat tahini",
+				"separate ground cumin and thaw it",
+				"shape ground coriander",
+				"knead salt",
+				"heat through some garlic cloves",
+				"squeeze a chickpea",
+				"add in them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 46,
+			"ingredients": [
+				"cream cheese",
+				"mayonnaise",
+				"green onion",
+				"bacon bits",
+				"cheddar cheese",
+				"tomatoes"
+			],
+			"instructions": [
+				"Mix mayo and cream cheese.",
+				"Add remaining ingredients.  I prefer to make this the night before.",
+				"Serve with crackers-I think this tastes best with Ritz."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"cream cheese",
+				"mayonnaise",
+				"green onion",
+				"bacon bits",
+				"cheddar cheese",
+				"tomatoes"
+			],
+			"instructions": [
+				"Cook the shrimp in a small amount of water until cooked and shrimp are pink.",
+				"Drain.",
+				"Mash together cream cheese, mayonnaise, and onions.",
+				"Add shrimp and crab meat, cheese, and bacon.",
+				"Mix well.",
+				"Refrigerate for at least 30 minutes before serving."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"tomato",
+				"green onion",
+				"mayonnaise",
+				"bacon bits",
+				"cream cheese",
+				"cheddar cheese"
+			],
+			"instructions": [
+				"dice a cream cheese",
+				"beat mayonnaise",
+				"chop green onion",
+				"break an tomato",
+				"preheat some bacon bits and then whisking it",
+				"mixing cheddar cheese",
+				"add in the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 47,
+			"ingredients": [
+				"fresh asparagus",
+				"rice vinegar",
+				"soy sauce",
+				"sugar",
+				"scallion"
+			],
+			"instructions": [
+				"Cook the asparagus in salted boiling water until tender but crisp.",
+				"Drain, and rinse with cold running water, set aside.",
+				"In a large ziplock bag, mix the rice vinegar, soy sauce, oils, sugar, salt, and pepper.",
+				"Seal the asparagus in the bag and marinate overnight in the refrigerator.",
+				"Sprinkle the marinated asparagus with almonds and scallions before serving."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"fresh asparagus",
+				"rice vinegar",
+				"soy sauce",
+				"sugar",
+				"scallion"
+			],
+			"instructions": [
+				"Cook asparagus in a saucepan of boiling water for 4 minutes.",
+				"In a medium bowl, stir together vinegar, soy sauce, sugar, and sesame oil.",
+				"Drain asparagus; place in a large serving bowl.",
+				"Toss with vinegar mixture and scallion greens."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"rice vinegar",
+				"soy sauce",
+				"sugar",
+				"fresh asparagus",
+				"scallion"
+			],
+			"instructions": [
+				"cook stir a fresh asparagus",
+				"assemble some rice vinegar; thaw it",
+				"grate some sugar",
+				"put a scallion; knead it",
+				"combine the soy sauce",
+				"mix in the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 48,
+			"ingredients": [
+				"mayonnaise",
+				"barbecue sauce",
+				"cheddar cheese",
+				"deli ham",
+				"tomatoes",
+				"butter"
+			],
+			"instructions": [
+				"Combine mayonnaise and barbecue sauce and spread over one side of each slice of bread.",
+				"Top two slices with 1/2 of the cheese and layer with ham, tomato, turkey and remaining cheese.",
+				"Top with remaining bread.",
+				"Spread outside of sandwiches with butter.",
+				"In a skillet, toast sandwiches over medium heat until lightly browned on both sides."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"mayonnaise",
+				"barbecue sauce",
+				"cheddar cheese",
+				"deli ham",
+				"tomatoes",
+				"butter"
+			],
+			"instructions": [
+				"In a small bowl, mix the mayonnaise, barbecue sauce and red pepper together.",
+				"Spread over bread and wrap in plastic wrap.",
+				"Refrigerate for at least an hour.",
+				"Preheat oven to 400 degrees.",
+				"Arrange cut up sandwiches on a lightly sprayed baking sheet and brush with melted butter or if desired, corn oil.",
+				"Bake for 10-15 minutes until the bottoms are golden brown.",
+				"Serve warm or cold."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"tomato",
+				"vanilla bean stalk",
+				"mayonnaise",
+				"deli ham",
+				"barbecue sauce",
+				"butter",
+				"cheddar cheese"
+			],
+			"instructions": [
+				"cut in a barbecue sauce",
+				"cutting a cheddar cheese",
+				"stuff the tomato",
+				"offer butter; beat together it",
+				"scorch deli ham then toss together it",
+				"whisk in vanilla bean stalk; frost it",
+				"cut in a mayonnaise",
+				"stir the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 49,
+			"ingredients": [
+				"blueberries",
+				"sugar",
+				"water",
+				"cornstarch",
+				"butter",
+				"lemon zest",
+				"cinnamon",
+				"sour cream",
+				"eggs",
+				"vanilla extract",
+				"confectioners' sugar",
+				"vanilla"
+			],
+			"instructions": [
+				"Make Filling: Put 1 cup of blueberries, sugar and 1 Tbsp water in a medium saucepan.  Simmer over low heat until it becomes liquid.  Mix remaining water and cornstarch and add to pan, cooking until it comes to a boil.  Add the butter and cinnamon, stirring until the butter is melted, then add the rest of the blueberries.  Cook for another minute, take off the heat and add the lemon zest.  Set aside to cool.",
+				"Make Cake: Preheat the oven to 350 degrees.  Grease and flour a 9 x 13 cake pan (or use a cooking spray with flour).",
+				"Put the cake mix, sour cream, milk, oil, eggs and vanilla in a large mixing bowl.  Mix for 1 minute on low speed.  Scrape down the bowl and mix on med-high speed for another 2 minutes.",
+				"Pour cake batter into the prepared pan.  Using 1/2 of the blueberry filling, put dollops of the filling on the batter and swirl lightly with a knife.  Bake the cake until it is light brown and starts to pull away from the sides of the pan, 35-40 minutes.",
+				"Cool cake and spread the rest of the blueberry filling on top.",
+				"Make frosting: Using chilled bowl and beaters, whip the cream until soft peaks form.  Add vanilla, then the sugar while continung to beat until stiff peaks form.",
+				"Spread topping on cooled cake.",
+				"Serve with additional berries, if desired."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"blueberries",
+				"sugar",
+				"water",
+				"cornstarch",
+				"butter",
+				"lemon zest",
+				"cinnamon",
+				"sour cream",
+				"eggs",
+				"vanilla extract",
+				"confectioners' sugar",
+				"vanilla"
+			],
+			"instructions": [
+				"1) In a heavy saucepan, combine the blueberries and sugar; stir until the berries are completely coated.",
+				"2) Cook over medium heat for 5 minutes, until berries begin to soften and mixture starts to thicken; remove pan from heat and let mixture cool 5 minutes.",
+				"3) Combine the cornstarch and butter in a medium bowl; stir in lemon zest, cinnamon, and salt and pepper.",
+				"4) In a large bowl, whisk the sour cream, eggs, and vanilla; stir into the cooled blueberry mixture.",
+				"5) Preheat oven to 350\u00b0F Lightly grease a 9x13 baking dish and pour batter into pan; bake for 40 to 45 minutes or until a toothpick inserted near the center comes out clean.",
+				"6) Let cake cool completely before frosting or making icing.",
+				"7) Prepare the icing while cake is warm: In a small bowl, beat the icing ingredients until smooth and creamy; spread over the cooled cake."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"egg",
+				"vanilla extract",
+				"vanilla",
+				"water",
+				"sugar",
+				"lemon zest",
+				"blueberry",
+				"cinnamon",
+				"sour cream",
+				"confectioners' sugar",
+				"butter",
+				"cornstarch"
+			],
+			"instructions": [
+				"rinse blueberry",
+				"mash a water",
+				"squeeze the cornstarch",
+				"oil a butter",
+				"beat together the lemon zest",
+				"beat some cinnamon",
+				"chop a sour cream",
+				"form the vanilla extract",
+				"fry a confectioners' sugar",
+				"shape a vanilla",
+				"butter the egg",
+				"put the results of previous steps",
+				"slice the sugar",
+				"add in them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 50,
+			"ingredients": [
+				"butter",
+				"brown sugar"
+			],
+			"instructions": [
+				"Preheat oven to 375.",
+				"Unroll the crescent rolls leaving it in one continuous sheet of dough.",
+				"Wrap the wheel of brie in the crescent roll dough and seal the joining edges.",
+				"Place on lightly greased baking sheet and bake for 20 minutes.",
+				"While the brie is baking, melt butter in small saucepan and add enough brown sugar to make a paste.",
+				"Remove brie from oven and pour brown sugar paste onto the top.",
+				"Sprinkle with sliced almonds.",
+				"Return to oven and bake an additional 10 minutes.",
+				"Remove from oven and place on serving platter.",
+				"Let sit for 15 minutes before serving with a variety of crackers."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"butter",
+				"brown sugar"
+			],
+			"instructions": [
+				"Preheat oven to 350 degrees.",
+				"In a medium saucepan, combine potatoes, 3 tablespoons butter and brown sugar.",
+				"Bring to a boil, reduce heat and simmer, uncovered, for 10 minutes or until potatoes are tender.",
+				"Add cereal; toss to coat.",
+				"Spread in a 13 x 9 inch baking pan.",
+				"Bake at 350 degrees for 15 to 20 minutes or until browned.",
+				"To serve, remove pan from oven.",
+				"Place remaining butter and brown sugar in a microwaveable bowl.",
+				"Cook, uncovered, on high 1-2 minutes or until melted.",
+				"Sprinkle over potatoes."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"brown sugar",
+				"black sesame seed",
+				"butter"
+			],
+			"instructions": [
+				"cut off some butter and then soak it",
+				"dice a brown sugar and then spoon it then toss together it",
+				"stir a black sesame seed",
+				"stir them; warm through it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 51,
+			"ingredients": [
+				"butter",
+				"olive oil",
+				"sweet onion",
+				"red bell pepper",
+				"frozen spinach",
+				"fresh cilantro",
+				"feta cheese",
+				"eggs",
+				"milk",
+				"mozzarella cheese"
+			],
+			"instructions": [
+				"Heat butter and olive oil in a small saute pan.  Add sweet onion, a generous dash of salt, and several grinds of fresh black pepper.  Cook slowly over low heat until onions are nicely caramelized.",
+				"Meanwhile, quarter, stem and seed the bell pepper, being sure to cut away any white pith.  Place the pepper quarters skin side up under the broiler for about 5 minutes, or until the skin is beginning to char.  Remove peppers to a closed container or a bowl with a plate across it.  Once cool enough to handle, slough off the skin and dice the pepper.",
+				"Squeeze as much moisture out of the thawed spinach as possible.  In a wide bowl, combine spinach, cilantro, caramelized onion, diced roasted pepper and any collected pepper juices until evenly mixed.  Gently stir in feta.",
+				"In a separate bowl or small pitcher, whisk together eggs and milk.  If desired, add a tablespoon of grainy mustard or a teaspoon of prepared horseradish, along with additional ground black pepper, into the custard.",
+				"Spray a large deep lidded casserole with cooking spray.  Spray the edges of the lid as well.  Spread half of the bread cubes across the bottom.  Arrange spinach mixture over bread to cover, all the way out to the edges.  Top spinach with shredded cheese and then remaining bread cubes.",
+				"Slowly pour the custard mixture evenly over the strata, moving in concentric circles.  Cover strata and refrigerate at least one hour and up to one day.",
+				"Preheat oven to 350 degrees.  Bake strata, covered, 30 minutes.  Remove lid and continue to bake 20-25 minutes, or until golden.  Remove from oven and allow to stand 5 - 10 minutes."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"butter",
+				"olive oil",
+				"sweet onion",
+				"red bell pepper",
+				"frozen spinach",
+				"fresh cilantro",
+				"feta cheese",
+				"eggs",
+				"milk",
+				"mozzarella cheese"
+			],
+			"instructions": [
+				"Preheat oven to 350\u00baF.",
+				"Place one 12-oz. glass pie dish on a rimmed baking sheet.",
+				"Melt butter in a heavy skillet over medium-high heat; add in onion, red bell pepper, spinach and chopped cilantro.",
+				"Cook stirring often, until spinach wilts (about 5 minutes) remove from heat; add in feta and eggs; mix until combined.",
+				"Spoon the spinach filling into the baking dish (do not stir); spoon spinach mixture evenly over filling.",
+				"Whisk together the eggs and milk; pour over the filling.",
+				"Sprinkle with mozzarella and cheddar cheese.",
+				"Bake for 50-55 minutes or until the custard is set in the center.",
+				"Let stand 5 minutes before serving."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"milk",
+				"olive oil",
+				"egg",
+				"fresh cilantro",
+				"feta cheese",
+				"frozen spinach",
+				"sweet onion",
+				"red bell pepper",
+				"butter",
+				"mozzarella cheese"
+			],
+			"instructions": [
+				"cut up butter",
+				"prepare the sweet onion",
+				"beat some red bell pepper",
+				"debone fresh cilantro",
+				"peel feta cheese",
+				"grate the egg",
+				"rinse some milk",
+				"make some mozzarella cheese",
+				"prepare a olive oil",
+				"peel the frozen spinach",
+				"toss in them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 52,
+			"ingredients": [
+				"apples",
+				"brown sugar",
+				"butter",
+				"margarine",
+				"cinnamon"
+			],
+			"instructions": [
+				"Preheat oven to 350\u00b0F.",
+				"Spray an 8-inch square baking pan with non-stick vegetable spray.",
+				"Spread the apples evenly in the prepared pan.",
+				"In a mixing bowl, combine the brown sugar and butter with a pastry blender until crumbly.",
+				"Using a wooden spoon, stir the cereal into the butter mixture.",
+				"Sprinkle the cereal topping over the apples.",
+				"Bake for 20 minutes or until apples are tender and topping is light brown."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"apples",
+				"brown sugar",
+				"butter",
+				"margarine",
+				"cinnamon"
+			],
+			"instructions": [
+				"Preheat oven to 375.",
+				"Core apples and cut into wedges.",
+				"Set aside.",
+				"Grease a 9 X 13 pan.",
+				"Mix brown sugar, butter or margarine and cinnamon.",
+				"Sprinkle the apples in pan.",
+				"Drizzle any liquid from the pan over the apples.",
+				"Drizzle remaining liquid on top.",
+				"Bake in preheated oven for 30 minutes.",
+				"When done let cool, cut and serve."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"mash turnip",
+				"cinnamon",
+				"brown sugar",
+				"butter",
+				"margarine",
+				"apple"
+			],
+			"instructions": [
+				"chop the apple",
+				"beat together brown sugar",
+				"cut in the butter",
+				"peel margarine",
+				"process the cinnamon",
+				"stir in mash turnip and then combine it",
+				"combine them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 53,
+			"ingredients": [
+				"salt pork",
+				"butter",
+				"onions",
+				"fresh thyme",
+				"potatoes",
+				"heavy cream"
+			],
+			"instructions": [
+				"Heat a 4- to 6-quart heavy pot over low heat and add the diced salt pork. Once it has rendered a few tablespoons of fat, increase the heat to medium and cook until the pork is a crisp golden brown. Use a slotted spoon to transfer the cracklings to a small ovenproof dish, leaving the fat in the pot, and reserve until later.",
+				"Add the butter, onions, savory or thyme, and bay leaves to the pot and saut\u00e9, stirring occasionally with a wooden spoon, for about 8 minutes, until the onions and softened but not browned.",
+				"Add the potatoes and stock. If the stock doesn\u2019t cover the potatoes, add just enough water to cover them. Turn up the heat and bring to a boil, cover, and cook the potatoes vigorously for about 10 minutes, until they are soft on the outside but still firm in the center. If the stock hasn\u20194hickened lightly, smash a few of the potato slices against the side of the pot and cook for a minute or two longer to release their starch. Reduce the heat to low and season assertively with salt and pepper (you want to almost overseason the chowder at this point to avoid having to stir it much once the fish is added). Add the fish fillets and cook over low heat for 5 minutes, then remove the pot from the heat and allow the chowder to sit for 10 minutes (the fish will finish cooking during this time).",
+				"Gently stir in the cream and taste for salt and pepper. If you are not serving the chowder within the hour, let it cool a bit, then refrigerate; cover the chowder after it has chilled completely. Otherwise, let it sit for up to an hour at room temperature, allowing the flavors to meld.",
+				"When ready to serve, reheat the chowder over low heat; don\u2019,et it boil. Warm the cracklings in a low oven (200\u00b0 F) for a few minutes.",
+				"Use a slotted spoon to mound the chunks of fish, the onions, and potatoes in the center of large soup plates or shallow bowls, and ladle the creamy broth around. Scatter the cracklings over the individual servings and finish each with a sprinkling of chopped parsley and minced chives."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"salt pork",
+				"butter",
+				"onions",
+				"fresh thyme",
+				"potatoes",
+				"heavy cream"
+			],
+			"instructions": [
+				"Prepare thyme leaves as directed on package; let stand 10 minutes to soften.",
+				"Cut pork into 1/2-inch cubes and cook in 12-inch skillet over medium heat, stirring occasionally, until pork loses pink color and is browned, 10 to 12 minutes.",
+				"Reduce heat to medium low.",
+				"Stir in butter and onions and cook, stirring, until softened, about 10 minutes.",
+				"Stir in remaining ingredients and bring to a boil.",
+				"Reduce heat to low.",
+				"Simmer, partially covered, until potatoes are tender, stirring occasionally, about 30 minutes.",
+				"Uncover and continue simmering, stirring occasionally, until mixture is thickened and coats back of spoon, 1 to 2 minutes.",
+				"Season to taste with salt and pepper."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt pork",
+				"potato",
+				"blueberry sauce",
+				"onion",
+				"fresh thyme",
+				"butter",
+				"heavy cream"
+			],
+			"instructions": [
+				"crumple some salt pork",
+				"knead the fresh thyme",
+				"prepare a potato",
+				"trim heavy cream",
+				"roll a onion",
+				"cut off the butter and then drop it",
+				"toss together blueberry sauce"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 54,
+			"ingredients": [
+				"sugar",
+				"butter",
+				"eggs",
+				"lemon juice",
+				"lemons, rind of",
+				"flour",
+				"salt",
+				"baking powder",
+				"milk",
+				"blueberries",
+				"lemon juice",
+				"sugar"
+			],
+			"instructions": [
+				"Cream butter in 1 cup sugar.",
+				"Add eggs and 1 tablespoon of lemon juice.  Mix well.",
+				"Sift flour, salt and baking powder.  Add alternately with milk to creamed mixture.",
+				"Stir in lemon peel and blueberries.  Bake in well greased bundt pan at 325 degrees for 1 hour or until golden brown.",
+				"Mix lemon juice and sugar - use a toothpick to make holes in top of cake and drizzle lemon glaze over warm cake."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"sugar",
+				"butter",
+				"eggs",
+				"lemon juice",
+				"lemons, rind of",
+				"flour",
+				"salt",
+				"baking powder",
+				"milk",
+				"blueberries",
+				"lemon juice",
+				"sugar"
+			],
+			"instructions": [
+				"Line an 8x8-inch baking pan with foil.",
+				"Prepare pastry.",
+				"Cream sugar and butter.",
+				"Add eggs, lemon juice, rind, and flour; beat well.",
+				"Add salt, baking powder, and milk.",
+				"Pour into prepared pan.",
+				"Bake at 350\u00b0F for 1 hour.",
+				"Cool, and chill for 2 hours.",
+				"To make the blueberry sauce, combine blueberries and lemon juice.",
+				"Sprinkle over the filling.",
+				"Mix sugar, and spoon over the blueberry mixture.",
+				"Bake for 30 more minutes.",
+				"Let cool in pan."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"milk",
+				"salt",
+				"lemon juice",
+				"lemons, rind of",
+				"egg",
+				"flour",
+				"sugar",
+				"blueberry",
+				"baking powder",
+				"butter"
+			],
+			"instructions": [
+				"crack sugar",
+				"brush the egg",
+				"form a lemon juice",
+				"saute the lemons, rind of",
+				"grind the flour",
+				"beat a baking powder",
+				"process some milk",
+				"crumple a blueberry",
+				"knead some sugar",
+				"grind the salt",
+				"grind some butter",
+				"put the results of previous steps",
+				"peel some lemon juice",
+				"toss together the results of previous steps",
+				"spoon into them and # # umble it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 55,
+			"ingredients": [
+				"butter",
+				"garlic cloves",
+				"carrots",
+				"celery",
+				"low sodium chicken broth",
+				"potatoes",
+				"lentils",
+				"bacon",
+				"cumin",
+				"dried thyme",
+				"dried fennel",
+				"ground cloves",
+				"cinnamon"
+			],
+			"instructions": [
+				"Melt butter, saut\u00e9 minced garlic and onion.",
+				"Add celery and carrot, saut\u00e9 another few minutes.",
+				"Add broth, rinsed/drained lentils, and potatoes, bring to a boil.",
+				"Reduce to a simmer, add bacon and spices.",
+				"Cook 30-40 minutes or until lentils and potatoes are tender."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"butter",
+				"garlic cloves",
+				"carrots",
+				"celery",
+				"low sodium chicken broth",
+				"potatoes",
+				"lentils",
+				"bacon",
+				"cumin",
+				"dried thyme",
+				"dried fennel",
+				"ground cloves",
+				"cinnamon"
+			],
+			"instructions": [
+				"Melt butter in a saucepan.",
+				"Add in the garlic, carrot, and celery and saute for about 3-5 minutes.",
+				"Add in the remaining ingredients, including some salt and pepper (I like to use black pepper, I like mine with a nice kick).",
+				"Bring to a boil, then lower the heat and simmer until the soup is desired consistency.",
+				"If it is too thick, add a little water.",
+				"I like to serve this soup with mashed potato and celery sticks, or wild rice and a nice green salad!",
+				"If you want it thicker, use a little broth to thin it out a bit more!"
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"celery",
+				"carrot",
+				"# # d bell pepper",
+				"potato",
+				"lentil",
+				"bacon",
+				"ground cloves",
+				"cumin",
+				"cinnamon",
+				"dried thyme",
+				"dried fennel",
+				"low sodium chicken broth",
+				"butter",
+				"garlic cloves"
+			],
+			"instructions": [
+				"burn garlic cloves",
+				"cut a celery",
+				"boil a low sodium chicken broth",
+				"beat a potato",
+				"chop bacon",
+				"knead some cumin",
+				"cut up dried thyme",
+				"fry some dried fennel",
+				"brown some ground cloves",
+				"form a cinnamon",
+				"form some carrot",
+				"grate a butter and then place it",
+				"combine lentil and # # d bell pepper"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 56,
+			"ingredients": [
+				"whole wheat flour",
+				"buckwheat flour",
+				"all-purpose flour",
+				"baking powder",
+				"baking soda",
+				"sugar",
+				"salt",
+				"eggs",
+				"buttermilk",
+				"extra virgin olive oil",
+				"canola oil",
+				"fresh sage leaf"
+			],
+			"instructions": [
+				"Preheat oven to 400 degrees F; line a baking sheet with aluminum foil and oil lightly.",
+				"Place squash on the foil, skin side up, and roast until thoroughly tender, about 45 minutes to an hour; let cool until cool enough to handle.",
+				"Remove skin and puree in a food processor, fitted with the steel blade; you should have about 3/4 cups puree.",
+				"Sift together flours, baking powder, baking soda, sugar, and salt; in a medium-sized bowl, beat the eggs, then whisk in the buttermilk and pureed squash.",
+				"Add 2 tablespoons oil and whisk again.",
+				"Heat the remaining oil in a skillet over medium-high heat and fry the sage leaves until they begin to crisp, about 10 seconds only; remove, let cool a few minutes, then add to the liquid ingredients.",
+				"Whisk the dry ingredients into the liquids.",
+				"Heat griddle over medium-high heat and ladle 1 to 2 tablespoons of the batter per blini (they should be 2 to 3 inches in diameter; cook until bubbles break through, then flip and cook until lightly browned.",
+				"NOTE:  These can be made weeks ahead and frozen.  Place a small piece of parchment paper between them and freeze in stacks of about 8.  Wrap tightly in plastic, then place in freezer bag for storage.  They can be thawed in the microwave or a medium oven (300 degrees F)."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"whole wheat flour",
+				"buckwheat flour",
+				"all-purpose flour",
+				"baking powder",
+				"baking soda",
+				"sugar",
+				"salt",
+				"eggs",
+				"buttermilk",
+				"extra virgin olive oil",
+				"canola oil",
+				"fresh sage leaf"
+			],
+			"instructions": [
+				"Preheat the oven to 350 degrees F.",
+				"Sift together the flours, baking powder, baking soda, and salt.",
+				"In a large bowl, beat together the eggs, buttermilk, oil, and vinegar; stir into the dry ingredients just until moistened.",
+				"Fold in the sage.",
+				"Spoon the batter into a 13 x 9-inch baking pan that has been sprayed with nonstick cooking spray; bake for 25 minutes or until a toothpick inserted in the center comes out clean.",
+				"Cool in the pan for 10 minutes; cut into wedges and serve.",
+				"Makes 12 large or 12 small.",
+				"Tip: These can be baked ahead of time and frozen.",
+				"Cool completely in the pan, then bake at 350 degrees F for 45 minutes or until set."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"baking soda",
+				"buttermilk",
+				"egg",
+				"extra virgin olive oil",
+				"whole wheat flour",
+				"sugar",
+				"canola oil",
+				"all-purpose flour",
+				"buckwheat flour",
+				"baking powder",
+				"fresh sage leaf"
+			],
+			"instructions": [
+				"cut up the whole wheat flour",
+				"crack a buckwheat flour",
+				"peel some baking powder",
+				"broil an baking soda",
+				"beat together a sugar",
+				"squeeze salt",
+				"mash some buttermilk",
+				"poach the extra virgin olive oil",
+				"stuff canola oil",
+				"scorch the fresh sage leaf",
+				"roll a egg",
+				"put some all-purpose flour"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 57,
+			"ingredients": [
+				"salmon steaks",
+				"onions",
+				"garlic",
+				"tomatoes",
+				"parsley",
+				"dry white wine",
+				"salt",
+				"oregano",
+				"pepper",
+				"cumin"
+			],
+			"instructions": [
+				"In a medium sized frying pan, heat oil and saute onions, garlic& peppers over medium heat for about 10 minutes.",
+				"Add remaining ingredients (except fish), bring to a boil, then lower heat& simmer for 5 minutes.",
+				"Place the fish into a greased medium sized casserole dish.",
+				"Pour the tomato mixture over the fish& bake, uncovered, in a preheated 350F oven for 30 minutes."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"salmon steaks",
+				"onions",
+				"garlic",
+				"tomatoes",
+				"parsley",
+				"dry white wine",
+				"salt",
+				"oregano",
+				"pepper",
+				"cumin"
+			],
+			"instructions": [
+				"Heat oil in large frying pan and saute onion and garlic until soft.",
+				"Stir in the tomatoes, parsley, wine and salt.",
+				"Stir in the herbs, oregano and pepper.",
+				"Arrange salmon on bottom of pan with onions and garlic and pour over the sauce.",
+				"Bring to boil and reduce heat.",
+				"Cover and cook 10-15 minutes or until salmon is cooked through."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"tomato",
+				"salt",
+				"dry white wine",
+				"cumin",
+				"onion",
+				"pepper",
+				"parsley",
+				"garlic",
+				"oregano",
+				"salmon steaks"
+			],
+			"instructions": [
+				"bake some salmon steaks",
+				"cut onion",
+				"slice garlic",
+				"fill a parsley",
+				"scorch some dry white wine",
+				"process salt",
+				"stuff a pepper",
+				"shred the cumin and grill it",
+				"add in tomato",
+				"beat together oregano then grease it",
+				"add the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 58,
+			"ingredients": [
+				"great northern beans",
+				"green pepper",
+				"onion",
+				"green chilies",
+				"garlic cloves",
+				"oregano",
+				"cumin",
+				"sea salt",
+				"chicken",
+				"chicken broth"
+			],
+			"instructions": [
+				"Poach 3-4 skinned and boned chicken breast halves in boiling water or broth. Cover and cook over medium heat for approximately 12 minutes or until done. Drain, cool and dice.",
+				"Add all ingredients to a crock-pot and cook 4-8 hours.",
+				"Top with shredded Monterrey Jack cheese and serve with tortilla chips instead of crackers."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"great northern beans",
+				"green pepper",
+				"onion",
+				"green chilies",
+				"garlic cloves",
+				"oregano",
+				"cumin",
+				"sea salt",
+				"chicken",
+				"chicken broth"
+			],
+			"instructions": [
+				"Cook the beans in water for 2 hours or longer if possible.",
+				"Drain and put into saucepan.",
+				"Put in stock pot.",
+				"Add onions, green peppers, cumin, oregano and seasonings and bring to a boil.",
+				"Add chicken and heat through.",
+				"(Can be done in advance and reheated in microwave for a taste).",
+				"Serve with cornbread."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"green pepper",
+				"great northern beans",
+				"chicken broth",
+				"sea salt",
+				"cumin",
+				"chicken",
+				"onion",
+				"green chilies",
+				"oregano",
+				"garlic cloves"
+			],
+			"instructions": [
+				"toast the great northern beans",
+				"cut off green pepper",
+				"divide the onion",
+				"cooking some garlic cloves",
+				"crush oregano",
+				"make a cumin",
+				"cut in chicken",
+				"rinse a chicken broth",
+				"open sea salt and then fry it",
+				"mixing a green chilies"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 59,
+			"ingredients": [
+				"onion",
+				"tomatoes",
+				"water",
+				"curry powder"
+			],
+			"instructions": [
+				"In a pot, boil the beans in the water until they are cooked.",
+				"In a pan, fry the onion.",
+				"Add the tomato and the curry powder.",
+				"Empty the cooked sugar beans and any remaining water into the frying pan.",
+				"Stir in the soup powder and simmer.",
+				"Serve with rice or mashed potato."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"onion",
+				"tomatoes",
+				"water",
+				"curry powder"
+			],
+			"instructions": [
+				"Preheat oven to 425.",
+				"Wash fish and pat dry.",
+				"Put fish in a single layer on a jelly roll pan with the skin side up and spread curry powder over top.",
+				"Bake for 30 minutes, basting with pan juices several times, until fish is no longer pink in the center.",
+				"Serve with salad and some crusty bread for an easy meal.",
+				"Note: for a broth stew, substitute beef with pork (or chicken, or turkey).",
+				"Note: for a soup stew, prepare stew with some onion, tomatoes and water.",
+				"Note: For a chili spice (or ketchup), mix 1 1/2 teaspoons chopped chili powder with 1/2 teaspoons curry powder."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"tomato",
+				"water",
+				"curry powder",
+				"onion"
+			],
+			"instructions": [
+				"break the water",
+				"cut off curry powder",
+				"grind a onion",
+				"mash a tomato and then crumple it",
+				"combine them",
+				"combine them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 60,
+			"ingredients": [
+				"beer",
+				"parsley",
+				"soy sauce",
+				"garlic cloves"
+			],
+			"instructions": [
+				"In a mixing bowl, combine all ingredients.",
+				"Marinate meat in mixture for a few hours to overnight.",
+				"Cover and refrigerate while marinating.",
+				"Cook meat as desired (BBQ or Broil)."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"beer",
+				"parsley",
+				"soy sauce",
+				"garlic cloves"
+			],
+			"instructions": [
+				"Add enough water to be a 1/4 cup liquid.",
+				"Combine beer and flavorings.",
+				"Add hot meat, mixing well.",
+				"Cover and refrigerate overnight, stirring occasionally.",
+				"Drain meat from marinade.",
+				"Pat dry with paper towels.",
+				"Roll meat into balls, discarding marinade.",
+				"Put balls in a colander and let drain for several hours, shaking pan to remove excess liquid.",
+				"Grind garlic in processor until fine.",
+				"Pour marinade over meat balls and add meat, stirring well.",
+				"Cover and refrigerate for several hours.",
+				"Serve with rice, if desired."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"beer",
+				"soy sauce",
+				"beef chuck roast",
+				"parsley",
+				"barley mixture",
+				"garlic cloves"
+			],
+			"instructions": [
+				"butter beer",
+				"wash parsley",
+				"warm a garlic cloves",
+				"slice soy sauce and then carve it",
+				"add barley mixture and beef chuck roast",
+				"mix in them",
+				"add the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 61,
+			"ingredients": [
+				"unsalted butter",
+				"egg",
+				"vanilla",
+				"brown sugar",
+				"granulated sugar",
+				"baking powder",
+				"baking soda",
+				"salt",
+				"all-purpose flour",
+				"white chocolate"
+			],
+			"instructions": [
+				"Preheat over to 350\u00b0F.",
+				"Sift flour, baking soda, baking powder and salt into a bowl.",
+				"In the bowl of a mixer, beat butter, sugars, egg until creamy.",
+				"Add vanilla.",
+				"Scrape down the sides of bowl occasionally.",
+				"Add dry ingredients and only mix until incorporated.",
+				"Stir in nuts and chocolate with a wooden spoon.",
+				"Form 1 inch balls.",
+				"Put them on baking sheets (I used parchment).",
+				"Don't crowd the sheets - they spread.",
+				"Bake about 12 minutes - depends on your oven.",
+				"makes about 40 cookies."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"unsalted butter",
+				"egg",
+				"vanilla",
+				"brown sugar",
+				"granulated sugar",
+				"baking powder",
+				"baking soda",
+				"salt",
+				"all-purpose flour",
+				"white chocolate"
+			],
+			"instructions": [
+				"Heat oven to 350\u00ba.",
+				"Cream butter and sugars in a large bowl with electric mixer.",
+				"Add egg and vanilla; beat until smooth.",
+				"Add flour, baking powder, baking soda and salt; mix well.",
+				"Stir in flour mixture.",
+				"Using teaspoon, scoop dough onto ungreased baking sheet 2 inches apart.",
+				"Bake until golden brown, about 15 minutes.",
+				"Sprinkle with chocolate pieces, if desired.",
+				"Cool slightly.",
+				"Transfer cookies to a cooling rack; chill until completely chilled."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"baking soda",
+				"white chocolate",
+				"egg",
+				"brown sugar",
+				"all-purpose flour",
+				"baking powder",
+				"unsalted butter",
+				"granulated sugar",
+				"vanilla"
+			],
+			"instructions": [
+				"brown some unsalted butter",
+				"beat a egg",
+				"divide brown sugar",
+				"macerate a granulated sugar",
+				"bake some baking soda",
+				"open a white chocolate",
+				"beat together some vanilla",
+				"roll baking powder",
+				"warm a all-purpose flour",
+				"cut a salt; warm through it",
+				"stir them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 62,
+			"ingredients": [
+				"banana",
+				"strawberries",
+				"vanilla yogurt"
+			],
+			"instructions": [
+				"Peel peaches and pit them, peel banana and cut in half, take tops off of strawberries.",
+				"Place above listed ingredients into a blender and mix until well combined.  Pour into glasses and serve."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"banana",
+				"strawberries",
+				"vanilla yogurt"
+			],
+			"instructions": [
+				"Mash banana.",
+				"Add strawberries and mix well.",
+				"Add yogurt and fruit, if desired.",
+				"Chill."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"banana",
+				"vanilla yogurt",
+				"strawberry"
+			],
+			"instructions": [
+				"slice the strawberry",
+				"roll some vanilla yogurt",
+				"roll a banana",
+				"whisk in the results of previous steps",
+				"mix the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 63,
+			"ingredients": [
+				"dry pinto beans",
+				"bacon",
+				"tomatoes",
+				"cumin",
+				"chili powder",
+				"garlic",
+				"salt"
+			],
+			"instructions": [
+				"Cover the beans with water in a heavy saucepan and bring to a boil, drain.",
+				"Cover with water again, about 2 above the beans.",
+				"Add all the remaining ingredients, except salt.",
+				"Bring to a boil, reduce heat to low and simmer uncovered until the beans are very soft.",
+				"add more water if necessary.",
+				"Keep the beans submerged, takes approximately 3 1/2 hours.",
+				"Season with salt to taste.",
+				"If the beans are too liquid cool and sit overnight.",
+				"Reheat to serve, stir frequently so the beans do not stick."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"dry pinto beans",
+				"bacon",
+				"tomatoes",
+				"cumin",
+				"chili powder",
+				"garlic",
+				"salt"
+			],
+			"instructions": [
+				"Rinse beans, drain and rinse with cool water.",
+				"Place beans in crock pot.",
+				"In a large skillet heat the bacon fat and sautee the chopped tomatoes in the bacon grease until limp, but not browned.",
+				"Add to the beans and stir to coat with the bacon grease.",
+				"Season with cumin, chili powder, garlic salt and hot sauce to taste.",
+				"Cover and cook on low for 6 to 8 hours.",
+				"Stir occasionally.",
+				"Serve hot."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"tomato",
+				"salt",
+				"chili powder",
+				"bacon",
+				"cumin",
+				"dry pinto beans",
+				"garlic"
+			],
+			"instructions": [
+				"parboil some dry pinto beans",
+				"chop up bacon",
+				"dice tomato",
+				"filling the cumin",
+				"brush salt",
+				"shred chili powder",
+				"toss them then toss together it",
+				"divide garlic and grease it",
+				"put them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 64,
+			"ingredients": [
+				"powdered sugar",
+				"Karo light corn syrup",
+				"sugar",
+				"cinnamon"
+			],
+			"instructions": [
+				"Place nut and wafers into a food processor and process till fine.",
+				"Add rest of ingredients and process till all well combined.",
+				"Shape into 1 inch balls pressing to mold them.",
+				"Roll in cinnamon and sugar."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"powdered sugar",
+				"Karo light corn syrup",
+				"sugar",
+				"cinnamon"
+			],
+			"instructions": [
+				"Combine first 5 ingredients in saucepan, bring to a boil, stirring constantly.",
+				"Reduce heat, cover and simmer for 3 minutes.",
+				"Remove from heat.",
+				"Slowly add sugar and cinnamon.",
+				"Cool at room temperature until syrupy, about 15 minutes.",
+				"Store tightly covered in refrigerator."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"powdered sugar",
+				"cinnamon",
+				"Karo light corn syrup",
+				"sugar"
+			],
+			"instructions": [
+				"broil a powdered sugar",
+				"crush a sugar",
+				"blend together Karo light corn syrup and cinnamon",
+				"add the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 65,
+			"ingredients": [
+				"rice",
+				"rice vinegar",
+				"sugar",
+				"salt",
+				"water",
+				"cucumber",
+				"Japanese roasted nori"
+			],
+			"instructions": [
+				"cook the rice and the rice water in a rice cooker.",
+				"when rice is done, wait for the rice to cool.",
+				"after rice is cooled, add the rice vinegar, salt, and sugar and mix thoroughly.",
+				"place the seaweed sheets onto the bamboo sheet and spread a layer of the sushi rice onto the seaweed.",
+				"add the cooked spam and chopped cucumber onto the rice.",
+				"using the bamboo sheet, roll the sheet.",
+				"cut the sushi roll into desired pieces."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"rice",
+				"rice vinegar",
+				"sugar",
+				"salt",
+				"water",
+				"cucumber",
+				"Japanese roasted nori"
+			],
+			"instructions": [
+				"Cut rice into 2 inch cubes.",
+				"Combine vinegar, sugar, salt, water, oil and rice in saucepan and bring to boil.",
+				"Cover and reduce heat.",
+				"Simmer until rice is tender and most of the liquid is absorbed (about 15 minutes) remove from heat.",
+				"Slice cucumber and stir into rice mixture.",
+				"Stir in mushrooms.",
+				"Serve with nori."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"rice vinegar",
+				"water",
+				"rice",
+				"cucumber",
+				"sugar",
+				"Japanese roasted nori",
+				"cream cheese layer"
+			],
+			"instructions": [
+				"grind the rice",
+				"whisk some rice vinegar then cutting it",
+				"process the sugar",
+				"wash salt",
+				"crush the water",
+				"coat Japanese roasted nori",
+				"blend together cucumber and cream cheese layer; dry - fry it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 66,
+			"ingredients": [
+				"pasta",
+				"pancetta",
+				"onion",
+				"heavy cream",
+				"sherry wine",
+				"gorgonzola",
+				"ground nutmeg",
+				"parmesan cheese"
+			],
+			"instructions": [
+				"Cook pasta according to package directions.",
+				"While pasta is cooking, heat a cast iron skillet to medium high.  Add pancetta and saute until fat begins to render.  Add onion and saute until the onion is translucent and the pancetta begins to brown, about 5 minutes.",
+				"Add the heavy cream and the sherry.  Bring to a boil and then remove from heat.",
+				"Add the gorgonzola and stir until smooth.  Place the pan back on the heat just until the cheese is fully melted and stir in the nutmeg.",
+				"Drain the pasta and put back into the pasta pot or a pasta bowl.  Pour sauce over pasta and mix.  Serve in shallow bowls and pass parmesan cheese for diners to grate over the hot pasta."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"pasta",
+				"pancetta",
+				"onion",
+				"heavy cream",
+				"sherry wine",
+				"gorgonzola",
+				"ground nutmeg",
+				"parmesan cheese"
+			],
+			"instructions": [
+				"Cook pasta according to package directions. Drain.",
+				"Meanwhile, in a medium-size saucepan, heat a drizzle of olive oil over medium heat. Add pancetta and cook until golden brown, about 3 minutes.",
+				"Add onion and cook, stirring frequently, until lightly golden, about 5 minutes. Add mushrooms and cook, stirring often, for 10 minutes. Add cream, bring to a simmer, and cook until mixture is reduced to 1/2 cup, about 5 minutes.",
+				"Stir in sherry, gorgonzola, nutmeg, and chives. Season with salt and pepper to taste. Transfer to a serving bowl and top with Parmesan cheese."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"pasta",
+				"sherry wine",
+				"onion",
+				"parmesan cheese",
+				"gorgonzola",
+				"ground nutmeg",
+				"shred italian cheese",
+				"heavy cream",
+				"pancetta"
+			],
+			"instructions": [
+				"crack a pancetta",
+				"shred some heavy cream",
+				"grill the sherry wine",
+				"make the gorgonzola",
+				"shred the ground nutmeg",
+				"brush parmesan cheese",
+				"thaw a onion",
+				"mix them and then spoon into it",
+				"toss together shred italian cheese",
+				"put them",
+				"cut pasta and then cut up it",
+				"mix in the results of previous steps; re - set it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 67,
+			"ingredients": [
+				"acorn squash",
+				"onion",
+				"garlic cloves",
+				"butter",
+				"margarine",
+				"green pepper",
+				"eggs",
+				"plain yogurt",
+				"feta cheese",
+				"salt",
+				"pepper",
+				"cayenne pepper",
+				"sunflower seeds"
+			],
+			"instructions": [
+				"Cut squash in half; discard seeds. Place squash cut side down in a greased 15-in. x 10-in. x 1-in. baking pan. Bake at 375\u00b0 for 35-40 minutes or until tender; cool slightly. Carefully scoop out squash; place in a bowl and mash.",
+				"In a skillet, saute onion and garlic in butter until tender. Add peppers; saute until crisp-tender. In a large bowl, whisk eggs and yogurt until blended. Stir in squash, onion mixture, feta cheese, salt, pepper and cayenne if desired. Transfer to a greased 11-in. x 7-in. x 2-in. baking dish. Sprinkle with sunflower kernels.",
+				"Cover and bake at 375\u00b0 for 25 minutes. Uncover; bake 25-30 minutes longer or until a knife inserted near the center comes out clean."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"acorn squash",
+				"onion",
+				"garlic cloves",
+				"butter",
+				"margarine",
+				"green pepper",
+				"eggs",
+				"plain yogurt",
+				"feta cheese",
+				"salt",
+				"pepper",
+				"cayenne pepper",
+				"sunflower seeds"
+			],
+			"instructions": [
+				"Preheat oven to 350 degrees F (175 degrees C).",
+				"Peel squash and cut squash lengthwise into 2 1/2-inch (4 cm) lengths.",
+				"Chop onion and garlic into chunks.",
+				"Melt butter in saucepan over medium heat. Add squash and onion and saute, stirring frequently, until tender, about 5 minutes. Remove from heat and stir in green pepper, sour cream, yogurt, chopped squash, and salt and pepper to taste. Transfer to 8x8x2 inch baking dish or one 9-inch square baking dish.",
+				"Pour egg mixture over squash. Sprinkle with feta cheese.",
+				"Bake, uncovered, for 45 to 55 minutes in preheated oven.",
+				"Sprinkle with sunflower seeds, if using, and bake 10 minutes longer or until set."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"green pepper",
+				"egg",
+				"acorn squash",
+				"sunflower seeds",
+				"feta cheese",
+				"onion",
+				"pepper",
+				"cayenne pepper",
+				"butter",
+				"margarine",
+				"garlic cloves",
+				"plain yogurt"
+			],
+			"instructions": [
+				"divide the acorn squash",
+				"simmer the garlic cloves",
+				"cut off the butter",
+				"crush margarine",
+				"form some egg",
+				"burn a plain yogurt",
+				"break the feta cheese",
+				"wash a salt",
+				"process the pepper",
+				"debone some cayenne pepper",
+				"poach the sunflower seeds",
+				"add a onion",
+				"spoon into the results of previous steps",
+				"brush some green pepper; fill it",
+				"spoon into them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 68,
+			"ingredients": [
+				"eggs",
+				"flour",
+				"milk",
+				"butter",
+				"powdered sugar"
+			],
+			"instructions": [
+				"Beat eggs well.",
+				"Add flour and milk.  Mix well.",
+				"Melt butter in a baking pan, any size.",
+				"Pour batter into pan and bake at 425* for 15 minutes.",
+				"Remove pan from oven and sprinkle powdered sugar on top. (Feel free to add more or less).",
+				"Bake for an additional 5 minutes.  Remove and let cool.  You can cut it up or tear at it with your hands."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"eggs",
+				"flour",
+				"milk",
+				"butter",
+				"powdered sugar"
+			],
+			"instructions": [
+				"Beat eggs, gradually.",
+				"Stir in flour, add milk.",
+				"Melt butter in large skillet over medium heat.",
+				"Pour batter into skillet; swirl to coat the bottom.",
+				"Cook till bubbles form on surface; turn and cook on other side.",
+				"Place 1-1/2 tablespoons butter in shallow pan over low heat.",
+				"Place 2 brownie cutlets in pan and coat with batter.",
+				"Brown and turn.",
+				"Top with remaining butter.",
+				"Dust with powdered sugar."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"milk",
+				"egg",
+				"flour",
+				"powdered sugar",
+				"butter"
+			],
+			"instructions": [
+				"peel the egg and then filling it",
+				"beat together the flour",
+				"shape the butter",
+				"cooking the powdered sugar and then toss in it",
+				"flour the milk",
+				"stir them",
+				"combine the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 69,
+			"ingredients": [
+				"heavy cream",
+				"dark brown sugar",
+				"Irish Mist liqueur",
+				"brewed coffee"
+			],
+			"instructions": [
+				"Place 1 tbsp brown sugar in bottom of each clear goblet.",
+				"Add jigger of Irish Mist to each glass and stir.",
+				"Place teaspoon in bottom of glass and slowly pour coffee into goblet until about 1/4 from top of glass.",
+				"(The spoon wil protect goblet from cracking from heat of coffee) Move teaspoon to edge of coffee on top of glass.",
+				"SLOWLY pour heavy cream into spoon allowing overfill into glass.",
+				"If you do it correctly, the heavy cream will float on top of coffee.",
+				"DO NOT STIR.",
+				"SIP COFFEE THRU THE CREAM.",
+				"Delightful."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"heavy cream",
+				"dark brown sugar",
+				"Irish Mist liqueur",
+				"brewed coffee"
+			],
+			"instructions": [
+				"In a bowl, whisk the cream until well-blended.",
+				"Slowly pour in the dark brown sugar, whisking vigorously until the sugar dissolves.",
+				"Cover and chill the cream, covered, at least 1 hour.",
+				"When ready to serve, stir in the liqueur.",
+				"Stir in half of the fruit slices and/or coffee crystals.",
+				"Serve in coffee glasses."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"brewed coffee",
+				"reserved vegetable",
+				"dark brown sugar",
+				"banana layer",
+				"Irish Mist liqueur",
+				"heavy cream"
+			],
+			"instructions": [
+				"beat together a heavy cream",
+				"simmer Irish Mist liqueur",
+				"curdle the brewed coffee",
+				"mash a dark brown sugar",
+				"stir reserved vegetable",
+				"combine the banana layer and flip it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 70,
+			"ingredients": [
+				"potatoes",
+				"cottage cheese",
+				"eggs",
+				"butter",
+				"green onions",
+				"garlic cloves",
+				"salt",
+				"pepper"
+			],
+			"instructions": [
+				"boil potatoes until fork tender.  Drain and return to the heat for approximately 2 minutes stirring - to eliminate any leftover water.",
+				"Mash the potatoes and let cool.",
+				"in a separate bowl - beat (with a hand mixer)  together eggs, butter, cottage cheese, salt and pepper until fluffy.",
+				"Add the cooled potatoes, onions and garlic and mix together with your electric mixer.",
+				"heavily spray a mufin tin with pam or other spray.",
+				"spoon the mixture into the tins approximately 3/4 full.",
+				"Bake at 450 for approximately 25 minutes (ovens vary).  The potatoes wil lpuff up and get a little brown on top."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"potatoes",
+				"cottage cheese",
+				"eggs",
+				"butter",
+				"green onions",
+				"garlic cloves",
+				"salt",
+				"pepper"
+			],
+			"instructions": [
+				"Preheat oven to 350 degrees.",
+				"Peel and cube potatoes.",
+				"Cut potatoes into bite-sized chunks.",
+				"Place in saucepan with potatoes, water, cottage cheese, eggs and butter.",
+				"Cook on medium heat, stirring constantly, until eggs are set.",
+				"Remove from heat.",
+				"In a separate bowl, mix green onions, garlic and salt and pepper.",
+				"Drain the potatoes.",
+				"Add to egg mixture.",
+				"Grease a 2-quart casserole dish or 2 ramekins with butter.",
+				"Add potatoes and stir to coat well.",
+				"Place in oven and bake for 25-30 minutes or until fork can be inserted in the center of the potatoes and the top is lightly browned."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"egg",
+				"potato",
+				"cottage cheese",
+				"green onions",
+				"pepper",
+				"butter",
+				"garlic cloves"
+			],
+			"instructions": [
+				"grate the potato",
+				"chop up the butter",
+				"saute some garlic cloves",
+				"chop a pepper",
+				"roast some green onions and saute it",
+				"stir salt, cottage cheese and egg"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 71,
+			"ingredients": [
+				"cabbage",
+				"dried cranberries",
+				"pineapple chunks in juice",
+				"carrots",
+				"pine nuts",
+				"mayonnaise",
+				"cranberry sauce",
+				"honey",
+				"salt"
+			],
+			"instructions": [
+				"Shred the cabbage into 1/4-inch slices.",
+				"Shred the carrots.",
+				"Toast the pine nuts, if desired.",
+				"In a small bowl, mix the mayonnaise (may use light mayo), cranberry shallot relish, honey and salt to make a dressing.",
+				"In a larger bowl, combine the other ingredients.  Pour over and fold in the dressing mixture to coat all the ingredients well.",
+				"Chill at least a couple of hours to meld flavors."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"cabbage",
+				"dried cranberries",
+				"pineapple chunks in juice",
+				"carrots",
+				"pine nuts",
+				"mayonnaise",
+				"cranberry sauce",
+				"honey",
+				"salt"
+			],
+			"instructions": [
+				"Drain cabbage, dice pineapple, carrot and pine nuts, set aside.",
+				"In a large bowl add shredded cabbage, cranberries, pineapple and almonds and stir well.",
+				"In another bowl, add mayonnaise, cranberry sauce, honey and salt, stir well.",
+				"Add drained pineapple and orange juice.",
+				"Toss until everything is coated.",
+				"Chill for 1 hour before serving.",
+				"(Serve with cold blueberry sauce or tartar sauce."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"dried cranberries",
+				"pine nuts",
+				"carrot",
+				"salt",
+				"cranberry sauce",
+				"mayonnaise",
+				"honey",
+				"pineapple chunks in juice",
+				"cabbage"
+			],
+			"instructions": [
+				"grate cabbage",
+				"simmer the dried cranberries",
+				"cooking pineapple chunks in juice",
+				"rinse the carrot",
+				"braise pine nuts",
+				"crumple the mayonnaise",
+				"beat honey",
+				"break some salt",
+				"whisk together the results of previous steps",
+				"macerate some cranberry sauce",
+				"spoon into them and then decorate it",
+				"whisk in the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 72,
+			"ingredients": [
+				"water",
+				"brown sugar",
+				"apple cider",
+				"rum",
+				"cinnamon sticks",
+				"butter"
+			],
+			"instructions": [
+				"Steep tea bags in hot water for 30 minutes or longer.",
+				"Remove tea bags, add brown sugar, apple cider,cinnamon sticks and butter and heat over medium/low  heat for about 15 minutes.",
+				"Add rum and ladle into mugs.",
+				"Garnish with cinnamon stick and orange."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"water",
+				"brown sugar",
+				"apple cider",
+				"rum",
+				"cinnamon sticks",
+				"butter"
+			],
+			"instructions": [
+				"In a large pot bring water, sugar, cider, and rum to a boil.",
+				"Reduce heat and simmer uncovered until a candy thermometer reaches 240 degrees, about 3 hours.",
+				"Strain through a sieve lined with cheesecloth to remove solids.",
+				"Discard solids.",
+				"Discard pulp.",
+				"Discard seeds and cinnamon sticks.",
+				"Place candy in a glass bowl and add water to taste.",
+				"Set aside for 1 hour.",
+				"Stir in 2 tablespoons almonds and the whiskey.",
+				"Cover, and set bowl over a saucepan of barely simmering water until mixture starts to drop, about 20 minutes.",
+				"Set aside.",
+				"In a 13x9 inch baking pan, combine the butter and 1 1/2 cups brown sugar.",
+				"Heat until butter melts, about 3 minutes.",
+				"Remove from heat and stir in the almonds and cinnamon sticks.",
+				"Spread the brown sugar mixture over the popcorn.",
+				"Sprinkle with the remaining 1/2 cup almonds.",
+				"Bake until popcorn begins to bubble and is fragrant, about 30 minutes.",
+				"Cool completely before storing in an airtight container.",
+				"Shake shake well before using."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"apple cider",
+				"water",
+				"juice mix",
+				"rum",
+				"chop grapefruit section",
+				"cinnamon sticks",
+				"brown sugar",
+				"butter"
+			],
+			"instructions": [
+				"stuff the water",
+				"brush some brown sugar",
+				"form the rum",
+				"brown the cinnamon sticks",
+				"cut up a butter and then pour over it",
+				"whisk together apple cider, juice mix and chop grapefruit section then knread it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 73,
+			"ingredients": [
+				"salmon",
+				"brown sugar"
+			],
+			"instructions": [
+				"Put salmon in a ziplock bag with the teriyaki sauce and marinate in refridgerator for 1-2 hours.",
+				"Lightly spray 9 by 13 pan with pam or other cooking oil.",
+				"Lay salmon(skin side down) in pan and sprinkle brown sugar all over the top. Use more or less according to how sweet you would like it.",
+				"Cook in oven at 375 for about 30 minutes or until salmon flakes with a fork.  Cooking time will vary based on how thick the salmon fillets are.",
+				"***Just a note -- I usually spoon the pan juices that are in the bottom of the dish over the salmon -- YUMMEEE.  The kids love it."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"salmon",
+				"brown sugar"
+			],
+			"instructions": [
+				"Rinse and pat dry the fish.",
+				"Sprinkle with salt and pepper.",
+				"Cut the salmon into 1 pieces each.",
+				"Sprinkle the juice of the can on the fish.",
+				"Sprinkle with sugar.",
+				"Stuff the can on the fish.",
+				"Roll up the piece of fish and secure with toothpicks.",
+				"Bake in a 400 oven for 20 minutes, until cooked.",
+				"Remove from oven, and turn over and continue cooking for another 20 minutes.",
+				"(Cool and cook in a 13 x 9 pan.",
+				"Serve with a gravy of your choice)."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"buttered side",
+				"salmon",
+				"cayenne powder",
+				"apple sauce",
+				"brown sugar"
+			],
+			"instructions": [
+				"oil a salmon",
+				"splitting the brown sugar",
+				"stir in cayenne powder and chop up it",
+				"toss together apple sauce and buttered side"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 74,
+			"ingredients": [
+				"apples",
+				"artificial sweetener",
+				"cinnamon"
+			],
+			"instructions": [
+				"core apples, place in casserole dish.",
+				"pour soda over apples, sprinkle with cinnamon and splenda.",
+				"bake at 375 for 45 minutes (until apples are tender).",
+				"can be served warm, hot, or cold."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"apples",
+				"artificial sweetener",
+				"cinnamon"
+			],
+			"instructions": [
+				"Place sliced apples in a 13x9 inch baking pan.",
+				"Mix both cans of Sweetner with the juice and pour over apples.",
+				"Spread with icing sugar and sprinkle on cinnamon.",
+				"Bake at 350\u00b0F for 1 hour."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"soft tortilla",
+				"artificial sweetener",
+				"cinnamon",
+				"apple"
+			],
+			"instructions": [
+				"cooking some artificial sweetener",
+				"form some cinnamon",
+				"macerate some apple and then spoon it; burn it then stir in it",
+				"blend together some soft tortilla"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 75,
+			"ingredients": [
+				"cream cheese",
+				"butter",
+				"sugar",
+				"eggs",
+				"cinnamon",
+				"lemon, rind of",
+				"unbleached flour",
+				"salt",
+				"confectioners' sugar"
+			],
+			"instructions": [
+				"Preheat the oven to 400 degrees F.",
+				"In a large mixing bowl, cream the cheese, 1 tb of the butter and the sugar.",
+				"Do not beat.",
+				"Stir in the eggs, one at a time, beating well after each addition.",
+				"Add the cinnamon, lemon rind, flour, and salt; blend well.",
+				"Butter the pan with the remaining 2 tb of butter, using your fingers to spread the butter completely.",
+				"Pour the mixture into the prepared pan and bake for 12 minutes at 400 degrees, then reduce the temperature to 350 degrees and bake for another 25 to 30 minutes.",
+				"The knife should come out clean.",
+				"Cool the cake to room temperature, then sprinkle with confectioners' sugar."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"cream cheese",
+				"butter",
+				"sugar",
+				"eggs",
+				"cinnamon",
+				"lemon, rind of",
+				"unbleached flour",
+				"salt",
+				"confectioners' sugar"
+			],
+			"instructions": [
+				"Heat oven to 350\u00b0F.",
+				"Line a 10x15 baking pan with foil, and butter the foil well.",
+				"For the crust, cream the softened cream cheese and butter.",
+				"Add sugar, eggs, cinnamon, lemon peel and flour.",
+				"Beat on low speed until blended.",
+				"Using a hand-held mixer on low speed, beat in the salt.",
+				"Add the prepared filling.",
+				"Beat on high speed until blended.",
+				"Divide dough into thirds.",
+				"On each third, roll out to a rectangle about 10 x 13-inches.",
+				"With a serrated knife, cut into 8 strips.",
+				"Place strips 1 1/2 inches apart on the prepared pan.",
+				"Bake until golden brown, about 18-20 minutes.",
+				"Cool for 1 hour.",
+				"Dust with confectioners sugar before serving."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"egg",
+				"sugar",
+				"lemon, rind of",
+				"confectioners' sugar",
+				"cinnamon",
+				"unbleached flour",
+				"butter",
+				"cream cheese"
+			],
+			"instructions": [
+				"shred some cream cheese",
+				"beat butter",
+				"swirling a sugar then spoon into it then mash it",
+				"cut the egg",
+				"steam the lemon, rind of",
+				"curdle the unbleached flour",
+				"process the salt",
+				"grill the confectioners' sugar; whisk together it",
+				"crack some cinnamon; put it",
+				"add the results of previous steps"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 76,
+			"ingredients": [
+				"broccoli",
+				"mushroom",
+				"garlic",
+				"water",
+				"oyster sauce"
+			],
+			"instructions": [
+				"Clean broccoli.",
+				"Trim off flowers into bite-size pieces, lightly peel broccoli stalks and slice into diagonal medallions.",
+				"Heat wok on high. Add the oil and when the oil is hot add the broccoli, stir-fry rapidly until the broccoli is covered in oil.",
+				"When the wok is no longer oily, add a splash of water or chicken stock and continue to fry, stirring constantly for 3 minutes, replenishing water/chicken stock whenever wok becomes dry.",
+				"Toss in the prepared mushrooms and the garlic, stir, add half of the oyster sauce, stir, cover and simmer at medium heat two minutes.",
+				"Serve drizzled with the remaining oyster sauce."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"broccoli",
+				"mushroom",
+				"garlic",
+				"water",
+				"oyster sauce"
+			],
+			"instructions": [
+				"Combine soup and water and cook for 15 minutes.",
+				"Saute mushrooms and garlic in a large skillet.",
+				"Add stock and let simmer until it has absorbed the liquid.",
+				"Add oyster sauce, garlic salt, and pepper.",
+				"Serve with steamed rice."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"broccoli",
+				"oyster sauce",
+				"water",
+				"mushroom",
+				"garlic"
+			],
+			"instructions": [
+				"make water",
+				"shape garlic",
+				"toss together broccoli, mushroom and oyster sauce"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 77,
+			"ingredients": [
+				"eggs",
+				"sour cream",
+				"sugar",
+				"ground cinnamon",
+				"pecans"
+			],
+			"instructions": [
+				"1.Preheat oven to 350F Grease a 13 x 9 inch baking pan.",
+				"2.Combine cake mix, vegetable oil, eggs and sour cream in a large bow. Beat two minutes with a mixer at low speed, scraping sides of bowl frequently.",
+				"3. Mix sugar, cinnamon and pecans in a medium bowl.",
+				"4. Spread half the batter in pan. Sprinkle half the pecan mixture over top. Repeat with remaining batter and pecan mixture.",
+				"5. Bake 40-45 minutes, or until a wooden toothpick inserted in the center comes out clean. Serves 20."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"eggs",
+				"sour cream",
+				"sugar",
+				"ground cinnamon",
+				"pecans"
+			],
+			"instructions": [
+				"Preheat oven to 375.",
+				"Combine cake mix, eggs, sour cream, and orange juice in a large bowl.",
+				"Mix with mixer on low speed about 2 minutes.",
+				"Beat on medium speed for about 2 minutes or until well mixed.",
+				"Stir in nuts.",
+				"Pour batter into a greased and floured 13x9 inch pan.",
+				"Bake for 35 minutes or until cake springs back when lightly touched.",
+				"Cool.",
+				"Cut into squares."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"ground cinnamon",
+				"egg",
+				"pecan",
+				"sugar",
+				"lychee fruit",
+				"sour cream"
+			],
+			"instructions": [
+				"squeeze some sour cream",
+				"pat dry sugar then heat it and then brush it",
+				"sift together the pecan; cut in it",
+				"stuff the egg and then whisk together it and then add in it",
+				"blend together lychee fruit and ground cinnamon"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 78,
+			"ingredients": [
+				"guava paste",
+				"sharp cheddar cheese"
+			],
+			"instructions": [
+				"Skewer one cube of the guava paste and one cube of cheddar cheese on a toothpick.",
+				"Repeat with the remaining guava paste and cheddar cheese cubes.",
+				"Refrigerate until serving time."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"guava paste",
+				"sharp cheddar cheese"
+			],
+			"instructions": [
+				"In a medium sized bowl, combine the guava paste and soup.",
+				"Let sit until thickened slightly.",
+				"Add cheese, stirring until melted.",
+				"Garnish with more grated cheese, if desired.",
+				"Serve with crackers."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"sharp cheddar cheese",
+				"guava paste",
+				"limoncello",
+				"bannetons"
+			],
+			"instructions": [
+				"preheat a sharp cheddar cheese",
+				"peel guava paste",
+				"mixing bannetons and limoncello and then put back it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 79,
+			"ingredients": [
+				"chicken",
+				"sour cream",
+				"corn tortillas",
+				"monterey jack cheese"
+			],
+			"instructions": [
+				"In a greased 13X9in baking dish, layer half of the chicken, enchilada sauce, sour cream, tortillas and cheese.  Repeat layers.",
+				"Cover and bake @ 375 for 40 minutes. Uncover; bake 10 minutes longer or until bubbly.  Let stand for 15 minutes before serving."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"chicken",
+				"sour cream",
+				"corn tortillas",
+				"monterey jack cheese"
+			],
+			"instructions": [
+				"Preheat oven to 350\u00b0F.",
+				"Cut chicken into strips approximately 4 inches long and slightly larger than tortillas.",
+				"Place chicken in a shallow pan and cover with water.",
+				"Bring to a boil.",
+				"Reduce heat, cover and simmer for 15 minutes.",
+				"Drain well.",
+				"Place chicken in a blender container and puree until smooth.",
+				"Return to pan and add sour cream, taco seasoning, cream, cheddar cheese and cooked chicken.",
+				"Cook for 5 minutes.",
+				"Pour into tortillas, top with cheese and bake for 20 minutes or until hot."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"corn tortillas",
+				"chicken",
+				"sour cream",
+				"monterey jack cheese",
+				"ground cumin"
+			],
+			"instructions": [
+				"mash the sour cream",
+				"cook stir a corn tortillas",
+				"form some monterey jack cheese",
+				"grate a chicken and then boil it and spread it",
+				"mix in ground cumin"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 80,
+			"ingredients": [
+				"egg",
+				"butter",
+				"margarine",
+				"cream cheese",
+				"powdered sugar",
+				"eggs",
+				"vanilla"
+			],
+			"instructions": [
+				"Preheat oven to 350 degrees.",
+				"Spray 13X9 inch pan with Pam.",
+				"Mix cake mix, 1 egg and 1 stick melted margarine.",
+				"Press into bottom and spread a little up sides of pan.",
+				"Topping.",
+				"Beat remaining ingredients until smooth and creamy, about two to three minutes.",
+				"Spread over cake mixture evenly.",
+				"Bake until light brown, 30 to 40 minutes.",
+				"Cool completely before cutting with a sharp knife."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"egg",
+				"butter",
+				"margarine",
+				"cream cheese",
+				"powdered sugar",
+				"eggs",
+				"vanilla"
+			],
+			"instructions": [
+				"Preheat oven to 350 degrees F.",
+				"Mix cake mix, 1 egg, 1 1/2 cups softened butter, and remaining cake ingredients together.",
+				"Press into greased and floured 9-inch pan.",
+				"Bake for 20 minutes, remove from oven, let cool slightly and frost cake.",
+				"Beat cream cheese, powdered sugar, eggs, and vanilla until smooth.",
+				"Stir in chocolate chips.",
+				"Spread over cooled cake.",
+				"Refrigerate for 1 hour or until firm."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"egg",
+				"vanilla",
+				"ground oreo",
+				"powdered sugar",
+				"butter",
+				"margarine",
+				"cream cheese"
+			],
+			"instructions": [
+				"divide egg",
+				"fill margarine",
+				"cut up the cream cheese",
+				"beat together vanilla",
+				"prepare egg then mix it",
+				"combine some ground oreo",
+				"steam powdered sugar and mash it",
+				"peel the butter",
+				"stir the results of previous steps then microwave it then squirt it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 81,
+			"ingredients": [
+				"butter",
+				"sugar",
+				"gelatin",
+				"cream cheese",
+				"sour cream",
+				"eggs",
+				"butter",
+				"cornstarch",
+				"sugar",
+				"vanilla"
+			],
+			"instructions": [
+				"Crust: mix crumbs with butter, sugar, and gelatin.",
+				"Pat out evenly over bottom of a greased 9 springform pan.  Bake at 350, for exactly 8 minutes.",
+				"Filling: beat with electric mixer: cream cheese, sour cream, eggs, butter, cornstarch, sugar and vanilla.",
+				"When filling is perfectly smooth and creamy, pour into crust.",
+				"Return to 350 oven and bake 30-35 minute (took an extra 40 minutes in my oven) or until knife inserted in the center comes out clean.",
+				"Cool 20 minutes before cutting.",
+				"Sprinkle top with cookie crumbs."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"butter",
+				"sugar",
+				"gelatin",
+				"cream cheese",
+				"sour cream",
+				"eggs",
+				"butter",
+				"cornstarch",
+				"sugar",
+				"vanilla"
+			],
+			"instructions": [
+				"Cream the butter and sugar together.",
+				"Cream cheese and sour cream until fluffy.",
+				"Blend in eggs.",
+				"Fold in grated cheese.",
+				"Spread into 9x13 pan.",
+				"Pour cake mix in with batter.",
+				"Bake at 350 degrees for 25 minutes or until golden brown.",
+				"Cool in pan.",
+				"Mix topping ingredients in a bowl.",
+				"Pour over cooled cake.",
+				"Refrigerate."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"gelatin",
+				"egg",
+				"vanilla",
+				"sugar",
+				"sour cream",
+				"butter",
+				"cream cheese",
+				"cornstarch"
+			],
+			"instructions": [
+				"cut in some butter",
+				"open the sugar",
+				"wash some gelatin",
+				"dice the cream cheese",
+				"stuff sour cream",
+				"cut up a cornstarch",
+				"grind some sugar",
+				"prepare vanilla",
+				"beat egg",
+				"blend together a butter and proof again it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 82,
+			"ingredients": [
+				"olive oil",
+				"boneless chicken breast",
+				"water",
+				"yellow rice",
+				"carrot",
+				"potato"
+			],
+			"instructions": [
+				"In a large skillet, heat oil.",
+				"Add chicken, and saute until slightly browned, about 5 minutes or so.",
+				"Add 3 cups water, bring to a boil.",
+				"Stir in rice mixes, cover tightly, and reduce heat to simmer.",
+				"Cook 25 minutes.",
+				"After 25 minutes, stir in remaining ingredients, just until they are heated through.",
+				"This takes only a couple of minutes.",
+				"Then serve!"
+			]
+		},
+		"model": {
+			"ingredients": [
+				"olive oil",
+				"boneless chicken breast",
+				"water",
+				"yellow rice",
+				"carrot",
+				"potato"
+			],
+			"instructions": [
+				"Cook water and carrots in skillet until water is absorbed.",
+				"Add chicken and cook until opaque.",
+				"Add rice, chicken, chicken stock, and potatoes and mix well.",
+				"Cover and simmer for 20 minutes, until all liquid is absorbed.",
+				"Remove from heat and season to taste with salt, pepper, and a bit of cayenne pepper."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"carrot",
+				"olive oil",
+				"boneless chicken breast",
+				"potato",
+				"water",
+				"yellow rice"
+			],
+			"instructions": [
+				"stuff a olive oil",
+				"prepare the water",
+				"mash some carrot",
+				"shape the potato",
+				"whisk together boneless chicken breast and yellow rice"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 83,
+			"ingredients": [
+				"beets",
+				"water",
+				"lemon juice",
+				"granulated sugar",
+				"raspberry Jell-O gelatin"
+			],
+			"instructions": [
+				"Cook beets in water until tender.",
+				"Drain.",
+				"Reserve juice.",
+				"Combine reserved juice, lemon juice, and pectin crystals in large pot.",
+				"Heat and stir on medium-high until it comes to a boil.",
+				"Stir in sugar and gelatin.",
+				"Boil 6 minutes stirring coccasionally.",
+				"Skim off foam.",
+				"Pour into hot sterilized half pint jars to within 1/4 inch of top.",
+				"Place sterilized metal lids on jars and screw metal bands on securely.",
+				"For added assurance against spoilage, you may choose to process in a boiling water bath for 5 minutes."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"beets",
+				"water",
+				"lemon juice",
+				"granulated sugar",
+				"raspberry Jell-O gelatin"
+			],
+			"instructions": [
+				"Heat oven to 350 degrees F.",
+				"Spray cookie sheet with nonstick spray or line with parchment paper.",
+				"In a saucepan combine beet juice and water; cook and stir over medium heat until gelatin is melted.",
+				"Remove from heat.",
+				"Add lemon juice mixture to gelatin mixture.",
+				"Stir until well blended.",
+				"Pour into a 9x13 baking dish that has been sprayed with nonstick spray.",
+				"Set aside.",
+				"In a saucepan combine the orange juice and lemon juice; cook and stir over medium heat until the gelatin is completely dissolved.",
+				"Stir in sugar.",
+				"Heat the mixture for about 10 minutes or until the gelatin is completely dissolved.",
+				"Cool for about 1 hour, stirring occasionally.",
+				"Pour into a large bowl; beat the gelatin with a wire whisk for about 2 minutes or until smooth.",
+				"Gently stir the whipped cream into the gelatin mixture; chill until firm (about 30 minutes).",
+				"Stir in gelatin mixture until well blended.",
+				"Pour over beets.",
+				"Chill for at least 1 hour before serving."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"lemon juice",
+				"water",
+				"coke mixture",
+				"raspberry Jell-O gelatin",
+				"granulated sugar",
+				"beet"
+			],
+			"instructions": [
+				"slice the beet",
+				"beat a water",
+				"fill a granulated sugar",
+				"dice lemon juice",
+				"add in coke mixture and raspberry Jell-O gelatin",
+				"stir them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 84,
+			"ingredients": [
+				"coarse sea salt",
+				"water",
+				"mayonnaise",
+				"apple cider vinegar",
+				"prepared yellow mustard",
+				"coarse salt",
+				"coarse black pepper",
+				"carrot",
+				"green bell pepper",
+				"sweet onion"
+			],
+			"instructions": [
+				"Place rinse potatoes into a large stockpot and cover with enough cold water to cover them about an inch.",
+				"Add about 1 Tbsp coarse sea salt and bring to a boil, then lower heat and cook until fork tender, maybe 10-15 minutes.",
+				"Drain and rinse and let cool to room temperature, then cover and chill.",
+				"Once potatoes are nice and cool, peel skins if desired (the Rainbow removes the skins, I like them on),dice them into small chunks and place in a  large bowl.",
+				"Add very, very finely chopped carrots, onions, and green peppers.",
+				"Add a few grinds of salt and pepper to your your liking, as much or as little as you prefer.",
+				"Squirt in about 1 Tbsp of mustard, about 1 cup or so mayo (start with a cup, add more if it needs more), and a splash of vinegar.",
+				"If you like lots of mayo, you will likely need more of all the seasonings too, so please adjust this the way you like it.",
+				"Stir gently to coat and chill overnight or at least several hours.",
+				"Taste again before serving, adding more dressing ingredients if needed."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"coarse sea salt",
+				"water",
+				"mayonnaise",
+				"apple cider vinegar",
+				"prepared yellow mustard",
+				"coarse salt",
+				"coarse black pepper",
+				"carrot",
+				"green bell pepper",
+				"sweet onion"
+			],
+			"instructions": [
+				"Prepare an ice bath with a fine mesh strainer.",
+				"Combine the sea salt, water, mayonnaise, vinegar, mustard, and pepper in a bowl and stir to dissolve the salt.",
+				"Season the beef with salt and pepper.",
+				"Place on a broiler pan and broil or grill, turning and brushing frequently with the cooking spray, about 10 minutes per side.",
+				"Meanwhile, in a small bowl, combine the vegetable stock and the sweet onions.",
+				"Drain the beef and shred with two forks, removing any of the fat.",
+				"Place the shredded beef and vegetables in a large bowl.",
+				"In a small bowl, combine the prepared dressing mix and sour cream.",
+				"Pour over the beef and vegetables and toss to coat."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"carrot",
+				"apple cider vinegar",
+				"water",
+				"prepared yellow mustard",
+				"mayonnaise",
+				"coarse sea salt",
+				"green bell pepper",
+				"coarse salt",
+				"sweet onion",
+				"coarse black pepper"
+			],
+			"instructions": [
+				"heat coarse sea salt",
+				"process a water",
+				"thaw the mayonnaise",
+				"brush some apple cider vinegar",
+				"poach prepared yellow mustard",
+				"make some green bell pepper",
+				"shred a sweet onion",
+				"preheat a coarse black pepper; spoon into it",
+				"peel carrot and cover it then layer it",
+				"macerate some coarse salt and then place it",
+				"mix the results of previous steps",
+				"stir in them; under beat it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 85,
+			"ingredients": [
+				"brown sugar",
+				"butter",
+				"milk",
+				"cornstarch",
+				"water",
+				"vanilla extract",
+				"creamy peanut butter"
+			],
+			"instructions": [
+				"Grease and 8x8 inch pan.",
+				"In a saucepan over medium heat, combine the brown sugar, butter and milk.",
+				"Cook until the mixture reaches the softball stage. 234-240 degrees F, 112-115 degrees C (Resembles frothy bubbles).",
+				"Combine the cornstarch and water, add to the saucepan and mix well. Remove from heat and beat for 2 minutes. (It will lose it's gloss as it gets close to being ready for next step).",
+				"Stir in the vanilla and peanut butter until well blended.",
+				"Spread evenly into prepared pan.",
+				"Let cool then cut into squares. (It will look a couple of shades paler)."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"brown sugar",
+				"butter",
+				"milk",
+				"cornstarch",
+				"water",
+				"vanilla extract",
+				"creamy peanut butter"
+			],
+			"instructions": [
+				"In a saucepan over medium heat combine sugar, butter, and milk, cooking until bubbly.",
+				"Mix cornstarch and water, stirring constantly.",
+				"Gradually stir into bubbly sauce, stirring constantly.",
+				"Boil until mixture thickens, stirring constantly.",
+				"Add vanilla extract and peanut butter; stir until smooth.",
+				"Pour into baked pie shell.",
+				"In a small bowl beat cream until stiff.",
+				"Fold into sauce.",
+				"Pour over pie filling and bake in preheated 350 degree oven for 20-25 minutes or until topping is golden brown and filling is set.",
+				"Cool and chill.",
+				"Garnish with whipped cream or spread with colored sprinkles."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"milk",
+				"vanilla extract",
+				"water",
+				"ground masala",
+				"creamy peanut butter",
+				"brown sugar",
+				"butter",
+				"cornstarch"
+			],
+			"instructions": [
+				"form a milk",
+				"knead the cornstarch",
+				"cut vanilla extract",
+				"dice creamy peanut butter",
+				"grind some brown sugar and heat it",
+				"blend together ground masala and water",
+				"toss together the results of previous steps",
+				"grind the butter",
+				"whisk in them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 86,
+			"ingredients": [
+				"low sodium soy sauce",
+				"water",
+				"garlic cloves",
+				"brown sugar",
+				"sesame seeds",
+				"sesame seeds",
+				"fresh ground pepper",
+				"green onions",
+				"fresh chili pepper"
+			],
+			"instructions": [
+				"Combine all ingredients except ribs in a 1 gallon ziplock bag. Add ribs and seal bag, squeezing out excess air.",
+				"Work sauce into ribs by kneading bag (be careful not to poke a hole in it).",
+				"Marinade several hours (no more than 4 if using very thin meat, such as for sukiyaki), or freeze.",
+				"To cook: If frozen, thaw first by placing in refrigerator the day before.",
+				"Drain meat, reserving marinade.",
+				"Grill over medium-hot coals until done to taste (time will vary depending on meat used).",
+				"Meanwhile, place reserved marinade in a small saucepan, bring to a boil, and simmer for 3-5 minutes.",
+				"I like to serve this sliced, over rice topped with shredded cabbage (I use undressed coleslaw salad mix), with the sauce drizzled on top. Kimchi makes a good side dish, too."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"low sodium soy sauce",
+				"water",
+				"garlic cloves",
+				"brown sugar",
+				"sesame seeds",
+				"sesame seeds",
+				"fresh ground pepper",
+				"green onions",
+				"fresh chili pepper"
+			],
+			"instructions": [
+				"Combine the first 4 ingredients and 1 tablespoon oil in a medium saucepan and bring to a simmer.",
+				"Add the chicken pieces, sprinkle with sesame seeds and pepper and simmer for 15 minutes.",
+				"Remove the chicken and shred the meat into bite size pieces.",
+				"Warm the remaining tablespoon of oil in a skillet and add the minced green onion and saute until tender.",
+				"Add the chili pepper and the chicken to the skillet and cook for another minute or so.",
+				"Add the meat and heat through.",
+				"Serve immediately, topped with sesame seeds and pepper to taste."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"fresh ground pepper",
+				"low sodium soy sauce",
+				"fresh chili pepper",
+				"water",
+				"green onions",
+				"brown sugar",
+				"garlic cloves",
+				"sesame seeds"
+			],
+			"instructions": [
+				"brown the low sodium soy sauce",
+				"stuff water",
+				"simmer a garlic cloves",
+				"warm through the sesame seeds",
+				"poach the fresh ground pepper",
+				"braise some green onions",
+				"parboil some fresh chili pepper",
+				"drizzle the sesame seeds",
+				"mash brown sugar",
+				"add the results of previous steps",
+				"combine them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 87,
+			"ingredients": [
+				"potatoes",
+				"green bell peppers",
+				"tomatoes",
+				"eggs",
+				"salt",
+				"nutmeg"
+			],
+			"instructions": [
+				"Wash potatoes thoroughly,dry,peel and dice small.",
+				"Dice onion and peppers into very small pieces.",
+				"Beat eggs slightly in a pan and set aside.",
+				"Skin tomatoes and cut into very small pieces.",
+				"Heat oil in deep frying pan.",
+				"Add onion and peppers, and saute until soft.",
+				"Add potatoes and cook until crisp.",
+				"Add tomatoes and let cook for 5 minutes, stirring occasionally.",
+				"Stir salt into frying mixture and mix well.",
+				"Add beaten eggs quickly into frying pan, stir briskly and cook until hardened uniformly. Place over toasted bread slices immediately.",
+				"Grate a few shavings of nutmeg (optional)."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"potatoes",
+				"green bell peppers",
+				"tomatoes",
+				"eggs",
+				"salt",
+				"nutmeg"
+			],
+			"instructions": [
+				"Slice boiled potatoes and cut in half lengthwise.",
+				"Place half in a greased 9x13 inch baking dish, and the remainder in another pan.",
+				"In a large bowl, beat together the eggs, cream, salt, nutmeg.",
+				"Pour egg mixture over the potatoes and peppers.",
+				"Bake, uncovered at 375 degrees for 1 hour or until done."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"tomato",
+				"salt",
+				"egg",
+				"potato",
+				"green bell peppers",
+				"nutmeg"
+			],
+			"instructions": [
+				"peel egg",
+				"process the salt",
+				"roll some nutmeg",
+				"rinse some tomato then prepare it and whisk together it",
+				"add in green bell peppers and potato"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 88,
+			"ingredients": [
+				"flour",
+				"salt",
+				"sugar",
+				"unsalted butter"
+			],
+			"instructions": [
+				"Measure the flour, salt, and sugar into a food processor.",
+				"Add a few 1 Tbsp butter piece at a time, and pulse until coarsely chopped.",
+				"Repeat until all butter has been incorporated. Don't pulse too much in between.",
+				"Add a couple of tablespoons of water and pulse. Repeat until the dough is just forming little balls, and falls from the sides.",
+				"Place half the mixture on a sheet of plastic wrap and squish the particles together until you form  nice disc. Wrap the disc in the plastic wrap and refrigerate.",
+				"KEY: Refrigerate for at least 1 hour before rolling out.",
+				"Repeat with remaining dough.",
+				"This recipe freezes well, so if you only need one 9in pie crust, you can save the other for next time. Just allow time for it to defrost naturally. Don't put in microwave."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"flour",
+				"salt",
+				"sugar",
+				"unsalted butter"
+			],
+			"instructions": [
+				"Preheat oven to 375 degrees F.",
+				"Line 9 square baking pan with foil.",
+				"Lightly sprinkle flour on foil.",
+				"Beat egg yolks and salt in medium bowl with electric mixer on medium speed until light and fluffy, about 3 minutes.",
+				"Gradually add sugar and continue beating until pale yellow and thickened, about 3 to 5 minutes.",
+				"Gradually add flour mixture, beating just until blended.",
+				"Fold in butter.",
+				"Transfer batter to prepared pan.",
+				"Bake until golden brown and cake tester inserted into center of cake comes out clean, 40 to 50 minutes.",
+				"Cool on wire rack 15 minutes.",
+				"Run knife around edges and invert onto serving plate.",
+				"Serve warm, or chilled, with whipped cream."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"salt",
+				"flour",
+				"sugar",
+				"ground tumeric",
+				"unsalted butter"
+			],
+			"instructions": [
+				"dive some flour and grind it",
+				"make some salt",
+				"prepare a sugar",
+				"toss unsalted butter",
+				"add them",
+				"add in them",
+				"add the ground tumeric"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 89,
+			"ingredients": [
+				"ketchup",
+				"water",
+				"garlic powder",
+				"onion powder",
+				"salt",
+				"pepper",
+				"Tabasco sauce"
+			],
+			"instructions": [
+				"Combine all ingredients in a small saucepan and cook over medium heat, stirring constantly, until the sauce begins to boil (5 to 10 minutes).",
+				"Remove from heat and allow to cool.",
+				"Pour into a covered container for storage.  Keeps for a month or two."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"ketchup",
+				"water",
+				"garlic powder",
+				"onion powder",
+				"salt",
+				"pepper",
+				"Tabasco sauce"
+			],
+			"instructions": [
+				"Mix all together, no prior salt.",
+				"Keep in tightly sealed container in the refrigerator.",
+				"(TIP: If you like your ribs thicker, you can always add a couple TBSP of bbq sauce to the mixture before adding the ribs)."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"garlic powder",
+				"salt",
+				"water",
+				"onion powder",
+				"ketchup",
+				"Tabasco sauce",
+				"pepper",
+				"banana leave"
+			],
+			"instructions": [
+				"oil ketchup",
+				"shred some onion powder",
+				"process some salt",
+				"chop up the pepper; thaw it",
+				"whisk in Tabasco sauce",
+				"cut garlic powder and then toss in it",
+				"stir banana leave and water"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 90,
+			"ingredients": [
+				"chili powder",
+				"cumin",
+				"thyme leaves",
+				"red pepper flakes",
+				"boneless chicken breasts"
+			],
+			"instructions": [
+				"In a large bowl, combine the onion recipe soup mix, bread crumbs, chili powder, cumin, thyme, and pepper.",
+				"Dip the cubed chicken in bread crumb mixture, coating well.",
+				"In a large skillet, heat 1/2-inch oil over medium temperature and saute chicken, turning once, until done; drain on paper towels.",
+				"Serve warm and, if desired, with assorted mustards and other condiments (blue cheese dip or buttermilk dressing are good)."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"chili powder",
+				"cumin",
+				"thyme leaves",
+				"red pepper flakes",
+				"boneless chicken breasts"
+			],
+			"instructions": [
+				"Preheat oven to 425 degrees.",
+				"Spray a large cookie sheet with cooking spray.",
+				"Cut chicken breast into pieces.",
+				"In a small bowl, stir together onion soup mix, spices, and dry dressing.",
+				"Add chicken to bowl; toss well.",
+				"Place 1 chicken breast piece on each piece of chicken.",
+				"Roll chicken tightly.",
+				"Place, seam side down, in a greased baking dish.",
+				"Cover dish with foil and bake at 425 degrees for 25 to 30 minutes.",
+				"Turn chicken once during the cooking.",
+				"Combine topping ingredients and spoon over each serving."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"chili powder",
+				"boneless chicken breasts",
+				"red pepper flakes",
+				"cumin",
+				"thyme leaves"
+			],
+			"instructions": [
+				"mash the cumin; parboil it; preheat it",
+				"cook a red pepper flakes",
+				"burn boneless chicken breasts then thicken it",
+				"saute a thyme leaves",
+				"toss in them",
+				"beat together some chili powder and bake in it",
+				"add them"
+			]
+		}
+	}
+]
