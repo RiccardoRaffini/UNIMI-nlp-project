@@ -13,7 +13,7 @@ def k_likely_mix_ingredients(mix_ingredients_matrix:MixedIngredientsMatrix, ingr
     ## Find top k likely mixed ingredients
     ingredient_index = mix_ingredients_matrix.label_to_index(ingredient, False)
     if ingredient_index == -1:
-        return None
+        ingredient_index = random.randint(0, len(mix_ingredients_matrix.get_labels())-1)
     
     ingredient_row = mix_ingredients_matrix.get_csr_matrix().getrow(ingredient_index)
     #ingredient_row = ingredient_row[0, ingredient_row.nonzero()[1]]
@@ -100,7 +100,7 @@ def generate_recipe_individual(
 
     ## Extract random mixing ingredients
     for ingredient, possible_mixing_ingredients in mixing_ingredients.items():
-        add_ingredients_number = random.randint(min_addition_size, max_addition_size+1)
+        add_ingredients_number = random.randint(min_addition_size, max_addition_size)
         selected_ingredients = set(random.choices(possible_mixing_ingredients, k=add_ingredients_number))
         selected_ingredients.discard(ingredient)
         mixing_ingredients[ingredient] = selected_ingredients
@@ -127,11 +127,14 @@ def generate_recipe_individual(
             ingredient_index = recipe_individual.add_ingredient_node(ingredient)
             nodes_indices.append(ingredient_index)
 
-        mix_action = random.choice(inverse_groups['mix'])
-        mix_action = Action(mix_action, 'mix')
+        if len(nodes_indices) > 1:
+            mix_action = random.choice(inverse_groups['mix'])
+            mix_action = Action(mix_action, 'mix')
 
-        mix_node_index = recipe_individual.add_action_node(mix_action, nodes_indices)
-        tree_roots.append(mix_node_index)
+            mix_node_index = recipe_individual.add_action_node(mix_action, nodes_indices)
+            tree_roots.append(mix_node_index)
+        else: # len(nodes_indices) == 1
+            tree_roots.append(nodes_indices[0])
 
     ## Join mix nodes
     mix_action = random.choice(inverse_groups['mix'])
