@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import string
+from collections import Counter
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
@@ -102,3 +103,14 @@ def knn_vectors(target_vector:np.ndarray, vectors_space:np.ndarray[np.ndarray], 
     top_k_distances = cosine_distances[top_k_indices]
 
     return top_k_indices, top_k_vectors, top_k_distances
+
+def average_score(reference_scores:List[float], weights:List[float] = None) -> float:
+    return np.average(reference_scores, weights=weights)
+
+def classification(reference_categories:List[str]) -> str:
+    categories_count = list(Counter(reference_categories).items())
+    categories_count.sort(key=lambda cv: cv[1], reverse=True)
+    
+    top_category, top_count = categories_count[0]
+
+    return top_category if top_count > 1 else 'uncategorized'
