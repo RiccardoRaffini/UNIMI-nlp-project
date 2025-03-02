@@ -6148,5 +6148,667 @@
 				"add them"
 			]
 		}
+	},
+	{
+		"reference": {
+			"index": 91,
+			"ingredients": [
+				"unsalted butter",
+				"sugar",
+				"orange marmalade",
+				"all-purpose flour",
+				"baking powder",
+				"eggs",
+				"bittersweet chocolate",
+				"unsalted butter",
+				"powdered sugar",
+				"pistachio nut"
+			],
+			"instructions": [
+				"Preheat oven to 300* F. Grease an 8 or 9-inch cake pan, line bottom with parchment paper, grease paper, and dust with cocoa.",
+				"Melt chocolate in a double boiler over barely simmering water. Allow to cool slightly.",
+				"Cream butter and sugar together until well mixed and fluffy. Add egg yolks and marmalade. Stir in melted chocolate.",
+				"Add flour, baking powder, and ground almonds. Stir to combine.",
+				"Whip egg whites until stiff. Fold into cake batter.",
+				"Pour into prepared pan and bake in a slow oven (about 300* F, 150* C, or gas mark 2) for 1 hour and 15 minutes.",
+				"Cool for a few minutes in pan, then remove from pan and cool on wire rack.",
+				"While cake cools, make icing. Cream all ingredients together. Warm slightly to facilitate spreading, if needed.",
+				"When cake is completely cool, slice in half crosswise to make 2 layers. Fill and ice top with the icing.",
+				"If desired, decorate with pistachios."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"unsalted butter",
+				"sugar",
+				"orange marmalade",
+				"all-purpose flour",
+				"baking powder",
+				"eggs",
+				"bittersweet chocolate",
+				"unsalted butter",
+				"powdered sugar",
+				"pistachio nut"
+			],
+			"instructions": [
+				"Preheat oven to 350 degrees F.",
+				"Lightly butter 9-inch springform pan and set aside.",
+				"Preheat oven to 350 degrees F.",
+				"In a small bowl, beat the butter, sugar and orange marmalade until light and fluffy.",
+				"In a medium bowl, combine the flour and baking powder.",
+				"Add eggs one at a time, beating after each addition.",
+				"Gradually stir in the chocolate.",
+				"Mix well.",
+				"In a large bowl, whisk together the melted butter, powdered sugar, pistachio nuts and 3/4 cup of the flour mixture.",
+				"The dough should be soft and moist.",
+				"Gather into a ball and wrap in plastic wrap.",
+				"Refrigerate for 30 minutes to an hour (or longer).",
+				"Using a serrated knife, cut the dough into 1-inch slices.",
+				"Arrange slices, cut sides down in the prepared pan and bake for 30 to 35 minutes, or until done.",
+				"The center will be a nice golden brown.",
+				"Cool on a wire rack.",
+				"For the glaze, combine the almonds and remaining flour.",
+				"Sift in the powdered sugar.",
+				"Whisk together and spread over cooled crust.",
+				"Let stand until glaze is firm.",
+				"Store in refrigerator.",
+				"Cut into bars and serve."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"unsalted butter",
+				"orange marmalade",
+				"all-purpose flour",
+				"pistachio nut",
+				"bittersweet chocolate",
+				"egg",
+				"sugar",
+				"baking powder",
+				"powdered sugar"
+			],
+			"instructions": [
+				"poach the unsalted butter",
+				"simmer the all-purpose flour",
+				"dice a egg",
+				"filling bittersweet chocolate",
+				"cook stir some unsalted butter",
+				"steam powdered sugar",
+				"toast some pistachio nut",
+				"process baking powder and remove it",
+				"fill the sugar",
+				"toss orange marmalade"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 92,
+			"ingredients": [
+				"onion",
+				"carrot",
+				"celery",
+				"garlic",
+				"olive oil",
+				"pearl barley",
+				"stewed tomatoes",
+				"chicken broth",
+				"water",
+				"bay leaf",
+				"black pepper"
+			],
+			"instructions": [
+				"Heat the olive oil in a large pot.",
+				"Add the onions, carrots, celery and garlic. Saute for about 10 minutes or until the vegetables are starting to soften.",
+				"While they are cooking pour the barley into a dish with water to cover.",
+				"Add the tomatoes, broth, water, bay leaf, and pepper and bring to a boil, stirring occasionally.",
+				"Drain the barley and add to the pot.",
+				"Reduce heat and cook at a low boil for about 45 minutes (until the barley is tender).",
+				"Add more water or broth if it thickens too much."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"onion",
+				"carrot",
+				"celery",
+				"garlic",
+				"olive oil",
+				"pearl barley",
+				"stewed tomatoes",
+				"chicken broth",
+				"water",
+				"bay leaf",
+				"black pepper"
+			],
+			"instructions": [
+				"In a Dutch oven, heat oil over medium heat; add onion, carrot and celery; cook until tender, about 5 minutes.",
+				"Add garlic, jalapeno and barley; cook, stirring often, for 5 to 7 minutes or until barley is tender.",
+				"Add all remaining ingredients except meat.",
+				"Cover and simmer for 1 to 1 1/2 hours or until barley is tender.",
+				"Stir in meat if necessary."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"stewed tomatoes",
+				"water",
+				"pearl barley",
+				"bay leaf",
+				"carrot",
+				"onion",
+				"chicken broth",
+				"olive oil",
+				"black pepper",
+				"celery",
+				"garlic"
+			],
+			"instructions": [
+				"flour onion",
+				"fill the carrot",
+				"cutting the garlic",
+				"beat some olive oil",
+				"make chicken broth",
+				"beat together some water",
+				"crumple some bay leaf",
+				"process black pepper",
+				"break some pearl barley",
+				"cook some stewed tomatoes",
+				"stir some celery and then combine it then reach it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 93,
+			"ingredients": [
+				"red onion",
+				"red bell pepper",
+				"yellow bell pepper",
+				"zucchini",
+				"olive oil",
+				"eggs",
+				"gruyere"
+			],
+			"instructions": [
+				"Preheat oven 200\u00b0C/400\u00b0F/Gas6.",
+				"Rollout the pastry and line a deep 10 inch/25 cm flan tin.",
+				"Line with baking paper and baking beans and blind bake for 10 minutes.",
+				"Remove paper and beans and return to bake for another 5 minutes.",
+				"Place all the vegetables on a baking tray and drizzle with olive oil.",
+				"Roast in the oven for about 25-30 minutes until slightly charred.",
+				"Set aside and cool slightly, seperate the onion layers.",
+				"Reduce the oven temperature to 180\u00b0C/350\u00b0F/Gas4.",
+				"In a bowl whisk the eggs with the cream, stir in the cheese and season with salt and pepper to taste (you can also mix in a few of your favourite herbs).",
+				"Spread the vegetables over the bottom of the pastry case and pour the egg mixture over.",
+				"Bake for approx 30-35 minutes.",
+				"Can be served hot or cold."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"red onion",
+				"red bell pepper",
+				"yellow bell pepper",
+				"zucchini",
+				"olive oil",
+				"eggs",
+				"gruyere"
+			],
+			"instructions": [
+				"Preheat oven to 400 degrees.",
+				"In a large skillet, heat 2 teaspoons oil over medium-high heat. Add onions and bell peppers and saut\u00e9 until soft, about 4 minutes. Add cubed meat, zucchini and salt and pepper to taste. Cook, stirring occasionally, until egg mixture is thick, 1 to 2 minutes. Season with salt and pepper.",
+				"Drain vegetables on paper towels and transfer to a 1-quart baking dish. Place remaining 2 teaspoons oil in a large skillet over medium-high heat.",
+				"Add eggs and cook until set and bottom browns, 8 to 10 minutes. Stir in cheese until melted and pour into dish. Place dish in preheated oven and cook until puffed and browned on top, 3 to 5 minutes. Serve immediately."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"yellow bell pepper",
+				"red bell pepper",
+				"egg",
+				"olive oil",
+				"red onion",
+				"zucchini",
+				"gruyere"
+			],
+			"instructions": [
+				"roll the yellow bell pepper",
+				"grate some zucchini",
+				"peel olive oil",
+				"dice the egg",
+				"wash the gruyere",
+				"crush red onion",
+				"break a red bell pepper and heat it; toast it; steam it; pour over it then whisk in it",
+				"blend together them and stir fry ) it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 94,
+			"ingredients": [
+				"green pepper",
+				"onion",
+				"celery",
+				"shrimp",
+				"shrimp",
+				"mayonnaise",
+				"Worcestershire sauce",
+				"salt",
+				"pepper",
+				"butter",
+				"margarine"
+			],
+			"instructions": [
+				"Heat oven to 350 degrees.",
+				"Mix all ingredients except bread crumbs and melted butter.",
+				"Pour mixture into ungreased 1-quart casserole or 6 individual baking shells.",
+				"Toss bread crumbs in melted butter; sprinkle over seafood mixture.",
+				"Bake uncovered 30 minutes."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"green pepper",
+				"onion",
+				"celery",
+				"shrimp",
+				"shrimp",
+				"mayonnaise",
+				"Worcestershire sauce",
+				"salt",
+				"pepper",
+				"butter",
+				"margarine"
+			],
+			"instructions": [
+				"Peel shrimp.",
+				"Cut shrimp lengthwise in half.",
+				"Remove and discard the pink.",
+				"Heat a large skillet over medium heat.",
+				"Add green pepper and onion.",
+				"Saute 5 minutes or until tender.",
+				"Set aside.",
+				"Saute shrimp in same skillet for 2 minutes or until just done.",
+				"Set aside.",
+				"In same pan, combine all the remaining ingredients except for the butter.",
+				"Bring to a boil over medium heat.",
+				"Boil for 2 minutes or until thoroughly heated.",
+				"Combine shrimp mixture, sauteed vegetables, and remaining ingredients.",
+				"Blend well.",
+				"Transfer to a greased 1-quart casserole dish.",
+				"Cover and bake at 350 degrees for 20 minutes or until bubbly.",
+				"Serve hot."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"mayonnaise",
+				"green pepper",
+				"Worcestershire sauce",
+				"margarine",
+				"salt",
+				"onion",
+				"pepper",
+				"shrimp",
+				"butter",
+				"celery"
+			],
+			"instructions": [
+				"process green pepper",
+				"cut off the onion",
+				"knead the celery",
+				"oil the shrimp",
+				"make the mayonnaise",
+				"bake in some Worcestershire sauce",
+				"trim the pepper",
+				"squeeze some butter",
+				"beat some margarine",
+				"prepare some salt",
+				"cut some shrimp and then poach it",
+				"put them then roll rectangle it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 95,
+			"ingredients": [
+				"carrot",
+				"celery",
+				"onion",
+				"garlic",
+				"canola oil",
+				"chicken broth",
+				"cheddar cheese",
+				"flour",
+				"dry mustard",
+				"Tabasco sauce",
+				"Worcestershire sauce",
+				"beer"
+			],
+			"instructions": [
+				"Saute the vegetables in the oil.",
+				"When onions are translucent, pour in the chicken broth.",
+				"Simmer 45 minutes.",
+				"Toss the flour and mustard with the cheese, and drop into broth.",
+				"Stir constantly, simmering until mixture thickens slightly.",
+				"Add the beer, and continue to stir.",
+				"Let thicken more.",
+				"Add seasonings; serve.",
+				"You can add sliced knockwurst during the last 1/2 hour if you're inclined.",
+				"Great with bagels."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"carrot",
+				"celery",
+				"onion",
+				"garlic",
+				"canola oil",
+				"chicken broth",
+				"cheddar cheese",
+				"flour",
+				"dry mustard",
+				"Tabasco sauce",
+				"Worcestershire sauce",
+				"beer"
+			],
+			"instructions": [
+				"Chop all veggies.",
+				"In a 5-qt pan combine oil, chicken broth and diced veggies.",
+				"Simmer gently, covered for 2-3 hours or until veggies are tender.",
+				"Dissolve balsamic vinegar in a 1/2 cup of boiling water.",
+				"Add cheese and cook until melted.",
+				"Combine flour and dry mustard and mix into liquid.",
+				"Cook, stirring constantly for 5 minutes.",
+				"Add remaining 1/2 cup of boiling water and simmer for about 3 minutes.",
+				"Slowly stir in sour cream.",
+				"Serve over veggies."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"canola oil",
+				"cheddar cheese",
+				"Worcestershire sauce",
+				"beer",
+				"Tabasco sauce",
+				"carrot",
+				"onion",
+				"chicken broth",
+				"celery",
+				"flour",
+				"dry mustard",
+				"garlic"
+			],
+			"instructions": [
+				"brush some carrot",
+				"cut some celery",
+				"chop a garlic",
+				"process the canola oil",
+				"debone the chicken broth",
+				"shape a flour",
+				"chop the dry mustard",
+				"fry the Tabasco sauce",
+				"bake in the Worcestershire sauce",
+				"open some beer",
+				"rinse a cheddar cheese; gut it",
+				"trim the onion",
+				"stir them"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 96,
+			"ingredients": [
+				"watermelon rind",
+				"water",
+				"sugar",
+				"lemon slices",
+				"whole cloves",
+				"cinnamon sticks",
+				"salt"
+			],
+			"instructions": [
+				"First, remove all green outer rind and red meat from watermelon rind and discard, retaining only the white part. Force remaining white rind through food chopper, using coarse blade. Measure it, there should be 6 cups. Put in a large saucepan or stockpot with water.",
+				"Cook slowly, uncovered, for 25 minutes, or until melon is translucent. Add sugar and lemon. Tie spices in a cheesecloth bag and add with salt to first mixture. Cook slowly, stirring frequently, for 1 hour, or until thickened. Remove spice bag, ladle mixture into hot sterilized jars; seal.",
+				"Yield: about 2-1/2 pints."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"watermelon rind",
+				"water",
+				"sugar",
+				"lemon slices",
+				"whole cloves",
+				"cinnamon sticks",
+				"salt"
+			],
+			"instructions": [
+				"In a large saucepan, combine the watermelon rind and sugar, stir in the water.",
+				"Bring to a boil over high heat.",
+				"Reduce heat, simmer, uncovered, for 10 minutes, or until sugar dissolves.",
+				"Remove rind from heat and add lemon and cloves.",
+				"Add cinnamon sticks and salt, stir.",
+				"Pour over the cooked watermelon mixture and cook, stirring, for 1 minute.",
+				"Serve hot."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"water",
+				"cinnamon sticks",
+				"salt",
+				"margarine chunk",
+				"watermelon rind",
+				"sugar",
+				"whole cloves",
+				"lemon slices"
+			],
+			"instructions": [
+				"brown some watermelon rind",
+				"break water",
+				"beat together the sugar",
+				"parboil whole cloves",
+				"steam some cinnamon sticks",
+				"prepare some salt",
+				"poach lemon slices",
+				"spoon into margarine chunk"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 97,
+			"ingredients": [
+				"light brown sugar",
+				"heavy cream",
+				"half-and-half",
+				"vanilla"
+			],
+			"instructions": [
+				"In heavy saucepan, whisk egg yolks and sugar till thick.",
+				"In another saucepan, bring cream and half and half just to a boil over medium heat.  Gradually whisk the hot cream into the egg mixture in a thin stream.",
+				"Cook over low heat, stirring constantly, till custard is thick enough to coat the back of a spoon (about 6 minutes).  Do not boil!",
+				"Strain into a bowl; add vanilla and let cool to room temperature",
+				"Cover and refrigerate over-night.",
+				"Pour into freezer and follow directions for your freezer."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"light brown sugar",
+				"heavy cream",
+				"half-and-half",
+				"vanilla"
+			],
+			"instructions": [
+				"Lightly coat a heavy, 8- to 10-inch (23 cm) springform pan with nonstick cooking spray.",
+				"In a large bowl, stir together the brown sugar, heavy cream, and vanilla until smooth.",
+				"Pour half the batter into the pan and tilt the pan to coat the bottom of the pan evenly; then pour the chocolate batter on top.",
+				"Bake the cheesecake at 325\u00b0F (160\u00b0C) for 1 hour.",
+				"Reduce the temperature to 300\u00b0F (150\u00b0C) and bake for 45 minutes longer.",
+				"Cool the cheesecake in the pan on a rack.",
+				"Serve the cheesecake topped with whipped cream and a dollop of whipped cream."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"vanilla",
+				"light brown sugar",
+				"half-and-half",
+				"heavy cream",
+				"frosted petal"
+			],
+			"instructions": [
+				"curdle a light brown sugar",
+				"macerate vanilla then mix it",
+				"spoon into the frosted petal",
+				"thaw the heavy cream",
+				"heat a half-and-half; cooking it",
+				"whisk together them",
+				"whisk in the results of previous steps then monitor it"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 98,
+			"ingredients": [
+				"low sodium soy sauce",
+				"mirin",
+				"sake",
+				"Worcestershire sauce",
+				"ketchup",
+				"hot mustard",
+				"egg",
+				"flour",
+				"panko breadcrumbs",
+				"corn",
+				"steamed rice"
+			],
+			"instructions": [
+				"Make the dipping sauce:",
+				"Stir together 1 T. of hot water and the soy sauce, mirin, worcestershire sauce, ketchup and mustard. Set aside.",
+				"Prep the pork:",
+				"Place the pork cutlets between 2 sheets of waxed paper or plastic wrap and pound them with a meat pounder until about 1/4 inch thick.  In a shallow bowl, lightly beat the egg. Spread the flour and panko on 2 separate plates. Season the flour with the salt and pepper. Also, season the pork cutlets with salt on both sides. Then dip the pork first into the flour, then the egg and last the panko (coating both sides). Press the panko into the pork so it stays put.",
+				"Panfry the pork:",
+				"Heat a large nonstick skillet over medium-high heat until just hot and then add the oil. Add the cutlets and fry, turning once, until golden brown on both sides and just opaque at the center (you don't want to overcook pork) - this should take approximately 5 minutes on each side.",
+				"Tranfer the cutlets to paper towel to drain briefly, then cut across the grain into strips 1/2 inch thick.",
+				"Serve with the dipping sauce and rice."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"low sodium soy sauce",
+				"mirin",
+				"sake",
+				"Worcestershire sauce",
+				"ketchup",
+				"hot mustard",
+				"egg",
+				"flour",
+				"panko breadcrumbs",
+				"corn",
+				"steamed rice"
+			],
+			"instructions": [
+				"To prepare beef meat, combine ingredients in a bowl, mixing until well blended. Place the beef mixture on a large piece of waxed paper.",
+				"Place the beef in the refrigerator for about 30 minutes (or more).",
+				"Preheat the oven to 375\u00b0F",
+				"Combine the corn, 1/4 cup rice, and the remaining ingredients (except for the flour) in a mixing bowl.",
+				"Press the beef mixture evenly into a greased 15 x 10 x 1 inch baking pan.",
+				"Arrange the meat over the corn mixture.",
+				"Bake, uncovered, for 45-60 minutes.",
+				"Invert on a cutting board and serve with warm, steamed rice."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"ketchup",
+				"hot mustard",
+				"steamed rice",
+				"Worcestershire sauce",
+				"panko breadcrumbs",
+				"mirin",
+				"low sodium soy sauce",
+				"corn",
+				"egg",
+				"flour",
+				"sake"
+			],
+			"instructions": [
+				"oil the mirin",
+				"thaw the sake",
+				"curdle Worcestershire sauce",
+				"brush the egg",
+				"process a flour",
+				"bake the panko breadcrumbs",
+				"arrange corn and then mash it",
+				"microwave a steamed rice",
+				"rinse some ketchup",
+				"coat hot mustard",
+				"spoon into the low sodium soy sauce"
+			]
+		}
+	},
+	{
+		"reference": {
+			"index": 99,
+			"ingredients": [
+				"plantains",
+				"raw honey",
+				"flaked coconut",
+				"limes",
+				"nonfat plain yogurt"
+			],
+			"instructions": [
+				"Peel plantains and cut in half.  Then, slice the halves lengthwise into 1/4 inch strips so that you have about eight slices per plantain each about four inches long.",
+				"Heat half the Grape Seed Oil in a large cast iron or non-stick frying pan on medium high heat, and add half of your plantain slices.",
+				"Fry the plantain slices till they turn slightly golden yellow and get crispy.  Don't overcook and turn them brown.  Remove the plantains from the frying pan and put on a serving plate.",
+				"Repeat with the 2nd half of the oil and plantains.  When these are cooked, add to your serving plate.",
+				"Using a butter knife, spread your raw honey lightly on the fried plantain slices and sprinkle with the coconut flakes.",
+				"Serve warm.  Squeeze the limes over the fried plantains, and serve with yogurt for dipping."
+			]
+		},
+		"model": {
+			"ingredients": [
+				"plantains",
+				"raw honey",
+				"flaked coconut",
+				"limes",
+				"nonfat plain yogurt"
+			],
+			"instructions": [
+				"Drain the plantains. Cut them in half lengthwise, and core each half to get a decent amount of flesh.",
+				"Dry one half of each slice of plantain with paper towels.",
+				"In a small bowl mix honey and 1 tablespoon of the coconut juice. Set aside.",
+				"To make the yogurt, in a nonreactive bowl, mix yogurt, remaining 2 tablespoons coconut juice, almonds, limes, and nonfat plain yogurt. Cover and refrigerate for at least two hours or overnight (this gives you time for all the flavors to meld and be able to blend the flavors more evenly).",
+				"Before serving, mix in the plantains."
+			]
+		},
+		"algorithm": {
+			"ingredients": [
+				"flaked coconut",
+				"raw honey",
+				"lime",
+				"nonfat plain yogurt",
+				"plantain"
+			],
+			"instructions": [
+				"mash the plantain",
+				"beat together the lime",
+				"coat the nonfat plain yogurt and whisking it",
+				"chop up flaked coconut",
+				"roast the raw honey; broil it",
+				"toss together them",
+				"add in them"
+			]
+		}
 	}
 ]

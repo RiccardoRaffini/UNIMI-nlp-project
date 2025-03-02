@@ -219,6 +219,11 @@ def main():
             with open(common_arguments.output_filename, 'w') as save_file:
                 json.dump(generated_recipes, save_file, indent='\t')
 
+    ## Final save
+    print('Saving generated recipes...')
+    with open(common_arguments.output_filename, 'w') as save_file:
+        json.dump(generated_recipes, save_file, indent='\t')
+
 if __name__ == '__main__':
     import warnings
     warnings.filterwarnings('ignore', 'You are using `torch.load` with `weights_only=False`*.')
