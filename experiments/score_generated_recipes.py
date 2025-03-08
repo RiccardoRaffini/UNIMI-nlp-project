@@ -55,10 +55,17 @@ def main():
         documents_data = json.load(data_file)
 
     ## Iterate on triplets
-    comparison_data = []
     columns = ['Ingredients', 'Instructions', 'Category', 'Rating', 'Distance']
     model_recipes = pd.DataFrame(columns=columns)
+    model_real_count = 0
+    model_near_count = 0
+    model_near_total = 0
     algorithm_recipes = pd.DataFrame(columns=columns)
+    algorithm_real_count = 0
+    algorithm_near_count = 0
+    algorithm_near_total = 0
+
+    model_better_count = 0
 
     print('Comparing recipes...')
     for documents_tuple in tqdm(documents_data):
@@ -91,12 +98,25 @@ def main():
         ## Determine reference distances
         reference_model_distance = distance.cosine(reference_vector, model_vector)
         reference_algorithm_distance = distance.cosine(reference_vector, algorithm_vector)
+        model_better_count += reference_model_distance < reference_algorithm_distance
 
         print('distances', reference_model_distance, reference_algorithm_distance)
 
         ## Determine nearest neighbors
         model_neighbors_indices, model_neighbors_vectors, model_neighbors_distances = knn_vectors(model_vector, documents_vector_space, arguments.k)
         algorithm_neighbors_indices, algorithm_neighbors_vectors, algorithm_neighbors_distances = knn_vectors(algorithm_vector, documents_vector_space, arguments.k)
+
+        if model_neighbors_indices[0] == reference_index:
+            model_real_count += 1
+        else:
+            model_near_count += reference_index in model_neighbors_indices
+            model_near_total += 1
+
+        if algorithm_neighbors_indices[0] == reference_index:
+            algorithm_real_count += 1
+        else:
+            algorithm_near_count += reference_index in algorithm_neighbors_indices
+            algorithm_near_total += 1
         
         ## Compute scores of generated recipes (weighted avg of knn)
         model_neighbors_scores = [reference_recipes.iloc[index]['Rating'] for index in model_neighbors_indices]
@@ -143,6 +163,26 @@ def main():
     plot_box_ingredients_comparison([reference_recipes, model_recipes, algorithm_recipes], ['Reference', 'Model', 'Algorithm'], False)
     plot_box_generic_comparison([model_recipes, algorithm_recipes], ['Model', 'Algorithm'], 'Distance', 'Reference distance', False)
     plot_box_generic_comparison([reference_recipes, model_recipes, algorithm_recipes], ['Reference', 'Model', 'Algorithm'], 'Rating', 'Rating', False)
+
+    print('Real counts')
+    print(f'{model_real_count}/100 {algorithm_real_count}/100')
+
+    print('Near counts')
+    print(f'{model_near_count}/{model_near_total} ({round(model_near_count/model_near_total, 3)}) {algorithm_near_count}/{algorithm_near_total} ({round(algorithm_near_count/algorithm_near_total, 3)})')
+
+    print('Model better')
+    print(model_better_count)
+
+    model_reference_rating_differences = [reference_recipes.iloc[index]['Rating'] - model_recipes.iloc[index]['Rating'] for index in range(100)]
+    algorithm_reference_rating_differences = [reference_recipes.iloc[index]['Rating'] - algorithm_recipes.iloc[index]['Rating'] for index in range(100)]
+    print('Rating difference')
+    print(sum(model_reference_rating_differences)/100, sum(algorithm_reference_rating_differences)/100)
+    print(sum(map(abs, model_reference_rating_differences))/100, sum(map(abs, algorithm_reference_rating_differences))/100)
+
+    model_reference_category = [reference_recipes.iloc[index]['Category'] == model_recipes.iloc[index]['Category'] for index in range(100)]
+    algorithm_reference_category = [reference_recipes.iloc[index]['Category'] == algorithm_recipes.iloc[index]['Category'] for index in range(100)]
+    print('Category equal')
+    print(f'{sum(model_reference_category)}/100 {sum(algorithm_reference_category)}/100')
 
 if __name__ == '__main__':
     main()
